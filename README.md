@@ -46,6 +46,6 @@ The authors particularly wish to thank the following beta-testers of the program
 - Geoff Prince
 - Michael Jerie
 
-## Upstream Homepage
+## Homepage
 
 - <https://www.latrobe.edu.au/mathematics-and-statistics/research/geometric-and-algebraic-techniques-for-differential-equations/dimsym>
