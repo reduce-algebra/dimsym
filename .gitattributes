@@ -1,0 +1,5 @@
+# Effectively disable Linguist
+doc/* linguist-vendored
+examples/* linguist-vendored
+src/* linguist-vendored
+./* linguist-vendored
