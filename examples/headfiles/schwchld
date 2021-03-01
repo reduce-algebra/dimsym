@@ -1,0 +1,57 @@
+%out "output.schwchld";
+
+%schwchld
+
+for all x let int(1/(sin(x)*cos(x)),x)=log(sin(x)/cos(x));
+for all x let int(1/((sin x)**3*cos(x)), x) = -1/(2*(sin x)**2) + log(sin x/cos x)$
+
+for all x let int(1/((sin x)**2), x) = -cos x/sin x$
+for all x let int(((sin x)**3), x) = -cos x + 1/3*(cos x)**3$
+for all x let int(1/((sin x)**2 - 1), x) = -sin x/cos x$
+for all x let int(1/((sin x)**4 - (sin x)**2), x) = 2*(1 - 2*sin(x)**2/(2*sin x * cos x))$
+for all x let int((sin x)**3/cos x, x) = -log cos x - 1/2*(sin x)**2;
+for all x let int((sin x)**2, x) = x/2 - sin x * cos x/2$
+for all x let int((sin x)/(2*sin(x)**2*cos x - cos x), x) = log(sin x/cos x)/2 - log((2*sin x * cos x)/(1 - 2*sin(x)**2))/2$
+for all x let int(1/(2*sin(x)**3*cos x - sin(x)*cos x), x)= - log((2*sin x * cos x)/(1 - 2*sin(x)**2))$
+for all x let int(log(x)/x**(5/4), x) = -16*x**(-1/4)-4*x**(-1/4)*log(x)$
+for all x let int(1/cos x, x) = log(1+sin x) - log cos x$
+for all x let int(sin(x)**2/cos x, x) = log(1+sin x) - log cos x - sin x$
+for all x let int(sin(x)/(sin(x)**2*cos(x)-cos x), x) = -1/(2*cos(x)**2)$
+for all x let int(sin(x)/((sin x)**2*cos(x)), x) = 1/(2*sin(x)**2 - 2)$
+for all x let int(1/(sin(x)**2-1), x) = -sin(x)/cos(x)$
+
+
+%load packages
+load dimsym23$
+
+freeunknown m;
+
+loaddeq ( u(1,1,1) = - 2*m*u(1,1)*u(2,1)/(u(2)*(u(2) - 2*m))               );
+
+loaddeq ( u(2,1,1) = (  u(1,1)**2*(-m*u(2)**2 + 4*m**2*u(2) - 4*m**3) 
+                      + u(2,1)**2*m*u(2)**2
+                      + u(3,1)**2*(u(2)**5 - 4*m*u(2)**4 + 4*m**2*u(2)**3)
+                      + u(4,1)**2*(sin u 3)**2*
+                                 (u(2)**5 - 4*m*u(2)**4 + 4*m**2*u(2)**3)
+                      )/
+                        (u(2)**3*(u(2) - 2*m))                             );
+
+loaddeq ( u(3,1,1) = ( - 2*u(2,1)*u(3,1) 
+                       + u(4,1)**2*u(2)*sin(u 3)*cos(u 3) )/u(2)           );
+
+loaddeq ( u(4,1,1) = ( - 2*u(2,1)*u(4,1)*sin(u 3)
+                       - 2*u(3,1)*u(4,1)*u(2)*cos(u 3)
+                     )/
+                        (u(2)*sin(u 3))                                     );
+
+mkdets(point);
+solvedets(std);
+solvedets(inttbt);
+solvedets(std);
+showdets();
+mkgens();
+stats();
+
+%shut "output.schwchld";
+
+end;

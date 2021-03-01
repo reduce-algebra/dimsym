@@ -1,0 +1,236 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % reid1
+
+% Example 1 from 
+% "Reduction of Systems of Differential Equations to Standard Form
+%  and Their Integration Using Directed Graphs"
+% G. Reid and A. Boulton
+% to appear in The Proceedings of the international Symposium
+% on Symbolic and Algebraic Computation; Bonn 1991
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+loaddeq( u(1,2,2) = u(1,1,1) + u(1)**2*u(1,1) );
+
+
+1
+
+
+mkdets(point);
+
+  
+solvedets stdsplit;
+
+Solving equations using stdsplit algorithm.
+
+
+There are 12 equations remaining.
+The equationgroup numbers of equations remaining are (3 4 5 14 6 7 8 16 11 18 12
+17)
+
+showdets();
+
+There are 12 determining equations remaining, which are...
+
+                                                                        2
+deteqn(1)=2*phi(1)*u(1) + 2*df(phi(1),u(1),x(1)) + 2*df(xi(2),x(2))*u(1)
+
+                                                                      2
+           + df(xi(1),x(2),2) - df(xi(1),x(1),2) - df(xi(1),x(1))*u(1)
+
+deteqn(2)=2*df(phi(1),u(1),x(2)) - df(xi(2),x(2),2) + df(xi(2),x(1),2)
+
+                                2
+           + df(xi(2),x(1))*u(1)
+
+                                                                      2
+deteqn(3)=df(phi(1),x(2),2) - df(phi(1),x(1),2) - df(phi(1),x(1))*u(1)
+
+                                                   2
+deteqn(4)=df(xi(2),u(1),x(1)) - df(xi(2),u(1))*u(1)  - df(xi(1),u(1),x(2))
+
+deteqn(5)=df(phi(1),u(1),2) - 2*df(xi(1),u(1),x(1))
+
+deteqn(6)=df(phi(1),u(1),2) - 2*df(xi(2),u(1),x(2))
+
+deteqn(7)=df(xi(1),u(1),2)
+
+deteqn(8)=df(xi(2),u(1),2)
+
+deteqn(9)=df(xi(2),x(2)) - df(xi(1),x(1))
+
+deteqn(10)=df(xi(2),x(1)) - df(xi(1),x(2))
+
+deteqn(11)=df(xi(2),u(1))
+
+deteqn(12)=df(xi(1),u(1))
+
+The remaining dependencies are ...
+
+(phi 1) depends on ((u 1) (x 2) (x 1))
+(xi 2) depends on ((u 1) (x 2) (x 1))
+(xi 1) depends on ((u 1) (x 2) (x 1))
+
+The dunkns in the remaining equations are: ((xi 2) (phi 1) (xi 1))
+
+The leading derivatives are: ((df (xi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (x
+2)) (df (xi 2) (x 2)) (df (xi 2) (u 1) 2) (df (xi 1) (u 1) 2) (df (phi 1) (u 1)
+2) (df (phi 1) (u 1) 2) (df (xi 1) (u 1) (x 2)) (df (phi 1) (x 2) 2) (df (phi 1)
+(u 1) (x 2)) (df (phi 1) (u 1) (x 1)))
+
+The parametric derviatives in the remaining equations are:
+((df (xi 2) (u 1) (x 2)) (df (xi 1) (u 1) (x 1)) (df (xi 2) (u 1) (x 1)) (df (
+phi 1) (x 1)) (df (phi 1) (x 1) 2) (df (xi 2) (x 1)) (df (xi 2) (x 1) 2) (df (xi
+2) (x 2) 2) (df (xi 1) (x 1)) (df (xi 1) (x 1) 2) (df (xi 1) (x 2) 2) (phi 1))
+
+
+solvedets stdform;
+
+Solving equations using stdform algorithm.
+
+
+made eqn 22 from integrability conditions on eqns 3 and 5 for (df (xi 1) (u 1) (
+x 2))
+
+made eqn 23 from integrability conditions on eqns 4 and 14 for (df (xi 2) (u 1)
+(x 2))
+
+made eqn 24 from integrability conditions on eqns 21 and 20 for (df (phi 1) (u 1
+) 2 (x 2))
+
+made eqn 25 from integrability conditions on eqns 21 and 19 for (df (phi 1) (u 1
+) 2 (x 1))
+
+made eqn 26 from integrability conditions on eqns 20 and 18 for (df (phi 1) (u 1
+) (x 2) 2)
+
+made eqn 27 from integrability conditions on eqns 20 and 19 for (df (phi 1) (u 1
+) (x 2) (x 1))
+
+made eqn 38 from integrability conditions on eqns 3 and 34 for (df (xi 1) (u 1)
+(x 1))
+
+made eqn 39 from integrability conditions on eqns 4 and 35 for (df (xi 2) (u 1)
+(x 2))
+
+made eqn 40 from integrability conditions on eqns 28 and 36 for (df (phi 1) (u 1
+) (x 2))
+
+made eqn 41 from integrability conditions on eqns 30 and 35 for (df (xi 2) (x 2)
+(x 1))
+
+made eqn 42 from integrability conditions on eqns 31 and 34 for (df (xi 1) (x 2)
+(x 1))
+
+made eqn 43 from integrability conditions on eqns 37 and 36 for (df (phi 1) (u 1
+) (x 1))
+
+There are 9 equations remaining.
+The equationgroup numbers of equations remaining are (3 4 28 30 31 37 34 35 36)
+
+showdets();
+
+There are 9 determining equations remaining, which are...
+
+deteqn(1)=phi(1) - df(phi(1),u(1))*u(1)
+
+deteqn(2)=2*phi(1) + df(xi(2),x(2))*u(1)
+
+deteqn(3)=2*phi(1) + df(xi(1),x(1))*u(1)
+
+deteqn(4)=df(phi(1),x(1))
+
+deteqn(5)=df(xi(1),x(2))
+
+deteqn(6)=df(xi(2),x(1))
+
+deteqn(7)=df(phi(1),x(2))
+
+deteqn(8)=df(xi(2),u(1))
+
+deteqn(9)=df(xi(1),u(1))
+
+The remaining dependencies are ...
+
+(phi 1) depends on ((u 1) (x 2) (x 1))
+(xi 2) depends on ((u 1) (x 2) (x 1))
+(xi 1) depends on ((u 1) (x 2) (x 1))
+
+The dunkns in the remaining equations are: ((xi 2) (phi 1) (xi 1))
+
+The leading derivatives are: ((df (xi 1) (u 1)) (df (xi 2) (u 1)) (df (phi 1) (x
+2)) (df (xi 2) (x 1)) (df (xi 1) (x 2)) (df (phi 1) (x 1)) (df (xi 1) (x 1)) (df
+(xi 2) (x 2)) (df (phi 1) (u 1)))
+
+The parametric derviatives in the remaining equations are:
+((phi 1))
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+
+mkgens();
+
+
+There are 3 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @
+          x(1)
+
+Gen(2) = @    *u(1) - 2*@    *x(2) - 2*@    *x(1)
+          u(1)           x(2)           x(1)
+
+Gen(3) = @
+          x(2)
+
+
+stats();
+
+
+Time: 221 ms
+
+Total of 55 equations used, with 4 new arbitrary functions made.
+
+successful operations were :((op*intslv 2) (op*simpeq 10) (op*shr1tm 7) (
+op*splitec 1) (op*exp1tm 1) (op*get1tm 2) (op*sub2sf 16) (addintcons 2) (
+op*spliteb 1) (op*proexp 1))
+
+Variables used to split determining equations were ((u 1) (u 1 1))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

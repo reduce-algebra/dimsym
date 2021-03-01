@@ -1,0 +1,52 @@
+% liouv3
+
+% Received from Alan Head 20/7/92
+
+%load packages
+load dimsym23$
+
+symbolic(!*keepints:=t);
+for all x,y,z such that (x neq 1) and x freeof z let int(x/y,z)=x*int(1/y,z);
+
+freeunknown p,q;
+depend p, x(1);
+depend q, u(1);
+
+loaddeq( u(1,1,1) = - p*u(1,1) + q*u(1,1)**2 ) ;
+
+mkdets point;
+solvedets std;
+showdets();
+
+temp1:=exp(int(q,u 1))*int(exp(-int(q,u 1)),u 1)*newconst();
+temp1:=temp1+exp(int(q,u 1))*newconst();
+c(1):=temp1;
+
+temp2:=exp(int(p,x 1))*int(exp(-int(p,x 1)),x 1)*newconst();
+temp2:=temp2+exp(int(p,x 1))*newconst();
+c(3):=temp2;
+
+showdets();
+simpdets();
+solvedets std;
+showdets();
+
+temp3:=exp(int(q,u 1))*newconst();
+temp3:=temp3+exp(int(q,u 1))*int(exp(-int(q,u 1)),u 1)*newconst();
+temp3:=temp3-2*c(7)*exp(int(q,u 1))*int(exp(-int(q,u 1))*int(exp(-int(q,u 1)),u 1),u 1);
+c(2):=temp3;
+
+temp4:=exp(int(p,x 1))*newconst();
+temp4:=temp4+exp(int(p,x 1))*int(exp(-int(p,x 1)),x 1)*newconst();
+temp4:=temp4-2*c(5)*exp(int(p,x 1))*int(exp(-int(p,x 1))*int(exp(-int(p,x 1)),x 1),x 1);
+c(4):=temp4;
+
+showdets();
+simpdets();
+solvedets std;
+showdets();
+
+mkgens();
+stats();
+
+end;

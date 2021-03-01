@@ -1,0 +1,20 @@
+%out "output.blasius"$
+
+%blasius
+
+%load packages
+load dimsym23$
+load dim2ode$
+
+freeunknown a;
+
+loaddeq( u(1,1,1,1) = - a*u(1)*u(1,1,1) );
+
+mkdets point;
+solvedets(std);
+mkgens();
+stats();
+
+%shut "output.blasius"$
+
+end;

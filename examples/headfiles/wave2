@@ -1,0 +1,17 @@
+%out "output.wave2";
+
+%wave2
+
+%load packages
+load dimsym23$
+
+loaddeq ( u(1,1,1) = u(1,3,3) - u(1,2,2)); %2d wave eqn
+
+mkdets(point);
+solvedets(std);
+mkgens();
+stats();
+
+%shut "output.wave2";
+
+end;

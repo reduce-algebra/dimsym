@@ -1,0 +1,14 @@
+% blas
+
+load dimsym23$
+
+freeunknown a;
+
+loaddeq( u(1,1,1,1) = -a*u(1)*u(1,1,1) );
+
+mkdets point;
+solvedets std;
+mkgens();
+stats();
+
+end;

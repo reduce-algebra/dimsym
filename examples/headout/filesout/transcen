@@ -1,0 +1,213 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:54:14 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: %out "output.transcen";
+
+%transcen
+
+for all x let cos(x)**2 = 1-sin(x)**2;
+
+
+for all x let sin(2*x)=2*sin(x)*cos(x);
+
+
+for all x let cos(2*x)=1-2*sin(x)**2;
+
+
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+loaddeq( u(1,1,1) = u(2,1)**2 - u(1,1)**2 );
+
+
+1
+ 
+loaddeq( u(2,1,1) = -2*u(2,1)*u(1,1)      );
+
+
+2
+ 
+
+mkdets(point);
+
+  
+solvedets(std);
+
+Solving equations using std algorithm.
+
+ While making eqngrp 50, found special function:
+
+ u(1)
+e
+
+
+Must have all of
+
+ u(1)
+e
+
+1
+
+linearly independent in (u 1)
+
+
+Must have all of
+
+ 2*u(1)
+e
+
+1
+
+linearly independent in (u 1)
+
+ While making eqngrp 101, found special function:
+
+cos(u(2))
+
+ While making eqngrp 101, found special function:
+
+sin(u(2))
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (119)
+
+solvedets(inttbt);
+
+Solving equations using inttbt algorithm.
+
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (126)
+
+solvedets(std);
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+ 
+showdets();
+
+There are no determining equations remaining.
+
+The remaining dependencies are ...
+
+
+
+mkgens();
+
+
+There are 15 symmetries found.
+
+The generators of the finite algebra are:
+
+             u(1)
+Gen(1) =  - e    *@    *cos(u(2))
+                   x(1)
+
+             u(1)
+Gen(2) =  - e    *@    *sin(u(2))
+                   x(1)
+
+             u(1)
+Gen(3) =  - e    *cos(u(2))*(@     + @    *x(1))
+                              u(1)    x(1)
+
+             u(1)
+Gen(4) =  - e    *sin(u(2))*(@     + @    *x(1))
+                              u(1)    x(1)
+
+Gen(5) = x(1)*(@     + @    *x(1))
+                u(1)    x(1)
+
+Gen(6) = @    *x(1)
+          x(1)
+
+Gen(7) = @
+          x(1)
+
+Gen(8) = @
+          u(2)
+
+          x(1)*( - @    *sin(u(2)) + @    *cos(u(2)))
+                    u(2)              u(1)
+Gen(9) = ---------------------------------------------
+                              u(1)
+                             e
+
+            - x(1)*(@    *cos(u(2)) + @    *sin(u(2)))
+                     u(2)              u(1)
+Gen(10) = ---------------------------------------------
+                               u(1)
+                              e
+
+           @    *sin(u(2)) - @    *cos(u(2))
+            u(2)              u(1)
+Gen(11) = -----------------------------------
+                          u(1)
+                         e
+
+           @    *cos(u(2)) + @    *sin(u(2))
+            u(2)              u(1)
+Gen(12) = -----------------------------------
+                          u(1)
+                         e
+
+Gen(13) =  - @
+              u(1)
+
+                              2
+Gen(14) =  - 2*@    *sin(u(2))  + @     + 2*@    *cos(u(2))*sin(u(2))
+                u(2)               u(2)      u(1)
+
+                                                            2
+Gen(15) =  - 2*@    *cos(u(2))*sin(u(2)) - 2*@    *sin(u(2))  + @
+                u(2)                          u(1)               u(1)
+
+
+stats();
+
+
+Time: 449 ms  plus GC time: 12 ms
+
+Total of 126 equations used, with 30 new arbitrary functions made.
+
+successful operations were :((op*trgexp 5) (op*inttbta 1) (op*simpeq 73) (
+op*slvall 2) (op*intslv 1) (op*splitec 19) (op*intfac 4) (op*shr1tm 3) (
+op*slvspl 1) (op*exp1tm 4) (op*get1tm 4) (op*proexp 2))
+successful operations on op!*intfac eqns were :((op*intslv 3) (op*slvall 1))
+
+Variables used to split determining equations were ((u 1) (x 1) (u 1 1) (u 2 1))
+
+
+%shut "output.transcen";
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

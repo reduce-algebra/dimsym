@@ -1,0 +1,219 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % Data for the Magneto-Hydrodynamics Eqs
+% Converted from Greg Reids data file for standardform
+%
+ 
+ 
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+freeunknown k;
+
+
+
+
+loaddeq(  u(1,4) = - u(3)*u(1,1)-u(4)*u(1,2)-u(5)*u(1,3)-u(1)*(u(3,1)+u(4,2)+u(5,3)) );
+
+
+1
+
+ 
+loaddeq(  u(2,1) = - u(1)*(u(3,4)+u(3)*u(3,1)+u(4)*u(3,2)+u(5)*u(3,3))
+                   - u(7)*u(7,1) - u(8)*u(8,1) + (u(7)*u(6,2)+u(8)*u(6,3)) );
+
+
+2
+
+ 
+loaddeq(  u(2,2) = - u(1)*(u(4,4)+u(3)*u(4,1)+u(4)*u(4,2)+u(5)*u(4,3))
+                   - u(6)*u(6,2) - u(8)*u(8,2) + (u(6)*u(7,1)+u(8)*u(7,3)) );
+
+
+3
+
+ 
+loaddeq( u(2,3) = - u(1)*(u(5,4)+u(3)*u(5,1)+u(4)*u(5,2)+u(5)*u(5,3))
+                  - u(6)*u(6,3) - u(7)*u(7,3) + (u(6)*u(8,1)+u(7)*u(8,2)) );
+
+
+4
+
+ 
+loaddeq( u(6,4) = - u(6)*(u(4,2)+u(5,3)) + (u(7)*u(3,2)+u(8)*u(3,3))
+                  + u(3)*u(7,2) - u(4)*u(6,2) + u(3)*u(8,3) - u(5)*u(6,3) );
+
+
+5
+
+ 
+loaddeq( u(7,4) = - u(7)*(u(3,1)+u(5,3)) + (u(6)*u(4,1)+u(8)*u(4,3))
+                  - u(3)*u(7,1) - u(4)*u(7,2) - u(5)*u(7,3)               );
+
+
+6
+
+ 
+loaddeq( u(8,4) = - u(8)*(u(3,1)+u(4,2)) + (u(6)*u(5,1)+u(7)*u(5,2))
+                  - u(3)*u(8,1) - u(5)*u(8,3) - u(4)*u(8,2)               );
+
+
+7
+
+   
+loaddeq( u(6,1) = - u(7,2) - u(8,3) );
+
+
+8
+
+ 
+loaddeq( u(2,4) = - u(3)*u(2,1) - u(4)*u(2,2) - u(5)*u(2,3) - k*u(2)*(u(3,1)+u(4,2)+u(5,3)) );
+
+
+9
+
+ 
+mkdets point;
+
+Equation for (u 1 4) is not strictly in semi-standard form, 
+because it should be solved for (u 5 3) as leading derivative, 
+which is nominally ordered higher than (u 1 4), although this should be ok.
+
+Equation for (u 2 1) is not strictly in semi-standard form, 
+because it should be solved for (u 8 1) as leading derivative, 
+which is nominally ordered higher than (u 2 1), although this should be ok.
+
+Equation for (u 2 2) is not strictly in semi-standard form, 
+because it should be solved for (u 8 2) as leading derivative, 
+which is nominally ordered higher than (u 2 2), although this should be ok.
+
+Equation for (u 2 3) is not strictly in semi-standard form, 
+because it should be solved for (u 8 2) as leading derivative, 
+which is nominally ordered higher than (u 2 3), although this should be ok.
+
+Equation for (u 2 4) is not strictly in semi-standard form, 
+because it should be solved for (u 5 3) as leading derivative, 
+which is nominally ordered higher than (u 2 4), although this should be ok.
+
+Equation for (u 6 1) is not strictly in semi-standard form, 
+because it should be solved for (u 8 3) as leading derivative, 
+which is nominally ordered higher than (u 6 1), although this should be ok.
+
+Equation for (u 6 4) is not strictly in semi-standard form, 
+because it should be solved for (u 8 3) as leading derivative, 
+which is nominally ordered higher than (u 6 4), although this should be ok.
+
+ Made substitution into given equation for (u 2 4)
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+ *** free or special functions found when dividing by 
+
+k
+
+
+There are 0 equations remaining.
+
+
+mkgens();
+
+
+There are 13 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @
+          x(1)
+
+Gen(2) = @    *x(4) + @    *x(3) + @    *x(2) + @    *x(1)
+          x(4)         x(3)         x(2)         x(1)
+
+Gen(3) = @    *u(6) - @    *u(8) + @    *u(3) - @    *u(5) + @    *x(1)
+          u(8)         u(6)         u(5)         u(3)         x(3)
+
+          - @    *x(3)
+             x(1)
+
+Gen(4) =  - @    *u(6) + @    *u(7) - @    *u(3) + @    *u(4) - @    *x(1)
+             u(7)         u(6)         u(4)         u(3)         x(2)
+
+          + @    *x(2)
+             x(1)
+
+Gen(5) = @     + @    *x(4)
+          u(3)    x(1)
+
+Gen(6) = @
+          x(3)
+
+Gen(7) = @     + @    *x(4)
+          u(5)    x(3)
+
+Gen(8) = @    *u(8) + @    *u(7) + @    *u(6) + 2*@    *u(2) + 2*@    *u(1)
+          u(8)         u(7)         u(6)           u(2)           u(1)
+
+Gen(9) = @    *u(5) + @    *u(4) + @    *u(3) - 2*@    *u(1) - @    *x(4)
+          u(5)         u(4)         u(3)           u(1)         x(4)
+
+Gen(10) = @
+           x(4)
+
+Gen(11) = @     + @    *x(4)
+           u(4)    x(2)
+
+Gen(12) =  - @    *u(7) + @    *u(8) - @    *u(4) + @    *u(5) - @    *x(2)
+              u(8)         u(7)         u(5)         u(4)         x(3)
+
+           + @    *x(3)
+              x(2)
+
+Gen(13) = @
+           x(2)
+
+
+stats();
+
+
+Time: 39754 ms  plus GC time: 876 ms
+
+Total of 5070 equations used, with 192 new arbitrary functions made.
+
+successful operations were :((op*simpeq 3637) (op*shr1tm 208) (op*findfr 1) (
+op*slvall 1) (op*slvtwo 46) (op*intslv 13) (op*splitec 570) (op*slvspl 5) (
+op*exp1tm 86) (op*get1tm 358) (op*proexp 9))
+
+Variables used to split determining equations were ((x 3) (x 1) (x 2) (x 4) (u 6
+) (u 7) (u 3) (u 4) (u 2) (u 1) (u 4 4) (u 5) (u 8) (u 1 2) (u 1 1) (u 1 3) (u 3
+4) (u 5 4) (u 6 3) (u 8 1) (u 4 1) (u 4 3) (u 5 3) (u 6 2) (u 3 2) (u 7 2) (u 3
+3) (u 7 1) (u 7 3) (u 5 1) (u 5 2) (u 3 1) (u 4 2) (u 8 2) (u 8 3))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

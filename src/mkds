@@ -1,0 +1,22 @@
+% dimsym make file 
+%
+% dimsym23.red and dim2ode.red are the names of the source files,
+% assumed to be in the current directory
+% 
+% The compiled programs becomes a fastloading module file in the
+% current directory. That is dimsym23 and dim2ode;
+%
+% It can then be loaded by calling 
+% load dimsym23$
+% Note: dimsym23 will automatically load dim2ode package
+%
+out mkdslog;
+faslout dimsym23;
+in "dimsym23.red";
+faslend;
+faslout dim2ode;
+in "dim2ode.red";
+faslend;
+showtime;
+shut mkdslog;
+bye;

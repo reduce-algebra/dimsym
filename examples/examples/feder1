@@ -1,0 +1,80 @@
+% Federbush Model
+
+% P. Kersten,
+% Software to compute Infinitesimal Symmetries
+% of Exterior Systems, with Applications.
+% Acta Appl. Math. 16 (1989) pp207-229
+
+%load packages
+load dimsym23$
+
+tracecute();
+
+freeunknown m1,m2,lam;
+
+t=x(1);
+x=x(x);
+
+u1:=u 1;
+u2:=u 2;
+u3:=u 3;
+u4:=u 4;
+
+v1:=u 5;
+v2:=u 6;
+v3:=u 7;
+v4:=u 8;
+
+p1:=u 9;
+p2:=u 10;
+
+u1t:=totder(1,u1);
+u2t:=totder(1,u2);
+u3t:=totder(1,u3);
+u4t:=totder(1,u4);
+u1x:=totder(2,u1);
+u2x:=totder(2,u2);
+u3x:=totder(2,u3);
+u4x:=totder(2,u4);
+v1t:=totder(1,v1);
+v2t:=totder(1,v2);
+v3t:=totder(1,v3);
+v4t:=totder(1,v4);
+v1x:=totder(2,v1);
+v2x:=totder(2,v2);
+v3x:=totder(2,v3);
+v4x:=totder(2,v4);
+
+r1:=u1**2 + v1**2;
+r2:=u2**2 + v2**2;
+r3:=u3**2 + v3**2;
+r4:=u4**2 + v4**2;
+
+loaddeq( u1t = lam*r4*v1 - u1x + m1*v2 );
+loaddeq( v1t =-lam*r4*u1 - v1x - m1*u2 );
+loaddeq( u2t =-lam*r3*v2 + u2x + m1*v1 );
+loaddeq( v2t = lam*r3*u2 + v2x - m1*u1 );
+loaddeq( u3t =-lam*r2*v3 - u3x + m2*v4 );
+loaddeq( v3t = lam*r2*u3 - v3x - m2*u4 );
+loaddeq( u4t = lam*r1*v4 + u4x + m2*v3 );
+loaddeq( v4t =-lam*r1*u4 + v4x - m2*u3 );
+ 
+loaddeq( totder(1,p1) = -r1+r2 );
+loaddeq( totder(2,p1) =  r1+r2 );
+loaddeq( totder(1,p2) = -r3+r4 );
+loaddeq( totder(2,p2) =  r3+r4 );
+
+mkdets point;
+%solvedets nosub;
+%pause;
+solvedets std;
+showdets();
+mkgens();
+
+stats();
+
+
+end;
+
+
+

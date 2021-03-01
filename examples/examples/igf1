@@ -1,0 +1,35 @@
+% igf1
+
+
+% 1-D isentropic gas flow.
+% see Courant & Hilbert " Methods of Math. Physics " Vol 2, p429 %
+
+% Received from Alan Head 21/7/92
+
+%load packages
+load dimsym23$
+
+tracecute();
+
+freeunknown K; depend K,u(2);
+
+loaddeq( u(2,1)   = -(u(1)*u(2)*u(1,1) + u(2)*u(1,2))/K );
+loaddeq( u(2,2)   = -u(2)*u(1,1) - u(1)*u(2,1)          );
+
+loaddeq( u(1,2,2) =   u(1,1,1)*K - 2*u(1,1)**2*u(1)
+                    - df(K,u(2))*u(2)*u(1,2)*u(1,1)/K 
+                    - df(K,u(2))*u(2)*u(1,1)**2*u(1)/K
+                    - 2*u(1,2,1)*u(1)
+                    - 2*u(1,2)*u(1,1) - u(1,1,1)*u(1)**2  );
+
+
+mkdets(point);
+
+%solvedets split;
+solvedets stdform1;
+solvedets std;
+showdets();
+mkgens();
+stats();
+
+end;

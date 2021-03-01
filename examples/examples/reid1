@@ -1,0 +1,24 @@
+% reid1
+
+% Example 1 from 
+% "Reduction of Systems of Differential Equations to Standard Form
+%  and Their Integration Using Directed Graphs"
+% G. Reid and A. Boulton
+% to appear in The Proceedings of the international Symposium
+% on Symbolic and Algebraic Computation; Bonn 1991
+
+%load packages
+load dimsym23$
+
+loaddeq( u(1,2,2) = u(1,1,1) + u(1)**2*u(1,1) );
+
+mkdets(point);  
+solvedets stdsplit;
+showdets();
+solvedets stdform;
+showdets();
+solvedets std;
+mkgens();
+stats();
+
+end;

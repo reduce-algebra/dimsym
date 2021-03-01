@@ -1,0 +1,139 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: %load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+loaddeq( u(1,1)    =  u(2,1)  );
+
+
+1
+
+loaddeq( u(1,2)    = -u(2,2)  );
+
+
+2
+
+loaddeq( u(2,1,1)  = u(2,1,2) );
+
+
+3
+
+
+mkdets point;
+
+Equation for (u 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 2 1) as leading derivative, 
+which is nominally ordered higher than (u 1 1), although this should be ok.
+
+Equation for (u 1 2) is not strictly in semi-standard form, 
+because it should be solved for (u 2 2) as leading derivative, 
+which is nominally ordered higher than (u 1 2), although this should be ok.
+
+Equation for (u 2 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 2 2 1) as leading derivative, 
+which is nominally ordered higher than (u 2 1 1), although this should be ok.
+
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (96)
+
+showdets();
+
+There are 1 determining equations remaining, which are...
+
+deteqn(1)=df(c(5),u(2)) + df(c(5),u(1))
+
+The remaining dependencies are ...
+
+(c 5) depends on ((x 2) (u 1) (u 2))
+
+The dunkns in the remaining equations are: ((c 5))
+
+The leading derivatives are: ((df (c 5) (u 2)))
+
+The parametric derviatives in the remaining equations are:
+((df (c 5) (u 1)))
+
+
+mkgens();
+
+
+There are 7 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @
+          x(1)
+
+Gen(2) = @    *x(2) + @    *x(1)
+          x(2)         x(1)
+
+Gen(3) = @     - 2*@
+          x(2)      x(1)
+
+Gen(4) = @     + @
+          u(2)    u(1)
+
+Gen(5) = @    *u(2) + @    *u(1) + @    *u(2) + @    *u(1)
+          u(2)         u(2)         u(1)         u(1)
+
+Gen(6) = x(1)*(@     + @    )
+                u(2)    u(1)
+
+The generators for the remaining equations are:
+
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+Gen (7) = c(5)*( - @     + @    )
+                    u(2)    u(1)
+
+(c 5) depends on ((x 2) (u 1) (u 2))
+
+stats();
+
+
+Time: 371 ms  plus GC time: 13 ms
+
+Total of 146 equations used, with 15 new arbitrary functions made.
+
+successful operations were :((op*sub2sf 9) (op*simpeq 78) (op*intslv 5) (
+op*shr1tm 10) (op*splitec 29) (op*exp1tm 5) (op*slvtwo 1) (op*get1tm 1) (
+op*proexp 3))
+
+Variables used to split determining equations were ((u 1) (x 1) (x 2) (u 2 2 2)
+(u 2 2 1) (u 2 2) (u 2 1))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

@@ -1,0 +1,200 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Thu Feb 19 14:12:37 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.2.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: %Lasted tested: 22 Jan 2004
+%On Dimsym23
+%Running on  reduce.3.7
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+% The force for the simple harmonic oscillator. 
+f:=-u(1);
+
+
+f :=  - u(1)
+
+
+% The vectorfield tangential to the flow.
+gam:=@(x 1) + u(1,1)*@(u 1) + f*@u(1,1);
+
+
+gam :=  - @      *u(1) + @    *u(1,1) + @
+           u(1,1)         u(1)           x(1)
+
+
+fi:=newarb x 1,u 1,u(1,1);
+
+
+fi := c(1)
+
+
+deteqn 1 := vecder(gam, fi);
+
+
+deteqn(1) :=  - df(c(1),u(1,1))*u(1) + df(c(1),u(1))*u(1,1) + df(c(1),x(1))
+
+
+readdets();
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (1)
+
+showdets();
+
+There are 1 determining equations remaining, which are...
+
+deteqn(1)=df(c(1),u(1,1))*u(1) - df(c(1),u(1))*u(1,1) - df(c(1),x(1))
+
+The remaining dependencies are ...
+
+(c 1) depends on ((u 1 1) (u 1) (x 1))
+
+The dunkns in the remaining equations are: ((c 1))
+
+The leading derivatives are: ((df (c 1) (u 1 1)))
+
+The parametric derviatives in the remaining equations are:
+((df (c 1) (x 1)) (df (c 1) (u 1)))
+
+
+
+deteqn 1:=fi-newpoly u(1,1),2,u 1,x 1;
+
+
+                           2
+deteqn(1) :=  - c(4)*u(1,1)  - c(3)*u(1,1) - c(2) + c(1)
+
+adddets();
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (13)
+
+solvedets inttbt;
+
+Solving equations using inttbt algorithm.
+
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (16)
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+
+fi;
+
+
+                           2                           2
+(4*c(11)*cos(2*x(1))*u(1,1)  - 4*c(11)*cos(2*x(1))*u(1)
+
+  + 8*c(11)*sin(2*x(1))*u(1,1)*u(1) - 8*c(10)*cos(2*x(1))*u(1,1)*u(1)
+
+                              2                           2              2
+  + 4*c(10)*sin(2*x(1))*u(1,1)  - 4*c(10)*sin(2*x(1))*u(1)  - c(9)*u(1,1)
+
+             2
+  - c(9)*u(1)  + 4*c(8)*cos(x(1))*u(1,1) + 4*c(8)*sin(x(1))*u(1)
+
+  - 4*c(7)*cos(x(1))*u(1) + 4*c(7)*sin(x(1))*u(1,1) + 4*c(6))/4
+
+symvec:=fi*@dummyvec;
+
+
+                                                2                           2
+symvec := (@        *(4*c(11)*cos(2*x(1))*u(1,1)  - 4*c(11)*cos(2*x(1))*u(1)
+            dummyvec
+
+               + 8*c(11)*sin(2*x(1))*u(1,1)*u(1)
+
+                                                                             2
+               - 8*c(10)*cos(2*x(1))*u(1,1)*u(1) + 4*c(10)*sin(2*x(1))*u(1,1)
+
+                                         2              2            2
+               - 4*c(10)*sin(2*x(1))*u(1)  - c(9)*u(1,1)  - c(9)*u(1)
+
+               + 4*c(8)*cos(x(1))*u(1,1) + 4*c(8)*sin(x(1))*u(1)
+
+               - 4*c(7)*cos(x(1))*u(1) + 4*c(7)*sin(x(1))*u(1,1) + 4*c(6)))/4
+
+% We can use mkgens() to give us the individual generators,
+% as we have now set up the problem so that all the info is in symvec
+
+mkgens();
+
+
+There are 6 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @
+          dummyvec
+
+                             2                   2
+         *(cos(2*x(1))*u(1,1)  - cos(2*x(1))*u(1)  + 2*sin(2*x(1))*u(1,1)*u(1))
+
+                                                                     2
+Gen(2) = @        *( - 2*cos(2*x(1))*u(1,1)*u(1) + sin(2*x(1))*u(1,1)
+          dummyvec
+
+                               2
+             - sin(2*x(1))*u(1) )
+
+                             2       2
+Gen(3) =  - @        *(u(1,1)  + u(1) )
+             dummyvec
+
+Gen(4) = @        *(cos(x(1))*u(1,1) + sin(x(1))*u(1))
+          dummyvec
+
+Gen(5) = @        *( - cos(x(1))*u(1) + sin(x(1))*u(1,1))
+          dummyvec
+
+Gen(6) = @
+          dummyvec
+
+
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

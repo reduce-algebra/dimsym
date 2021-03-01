@@ -1,0 +1,161 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:54:14 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: %out "output.navstoke";
+
+%navstoke
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+freeunknown nu;
+
+
+
+
+loaddeq(u(1,2,2) = (u(1,4) - u(1)*(u(2,2) + u(3,3)) 
+                    + u(2)*u(1,2) + u(3)*u(1,3)
+                    + u(4,1))/nu  - u(1,3,3) + u(2,2,1) + u(3,3,1));
+
+
+1
+
+
+loaddeq(u(2,2,2) = (u(2,4) + u(1)*u(2,1) + u(2)*u(2,2) + u(3)*u(2,3)
+                    + u(4,2))/nu - u(2,1,1) - u(2,3,3));
+
+
+2
+
+
+loaddeq(u(3,3,3) = (u(3,4) + u(1)*u(3,1) + u(2)*u(3,2) + u(3)*u(3,3) 
+                    + u(4,3))/nu - u(3,1,1) - u(3,2,2));
+
+
+3
+
+
+loaddeq( u(1,1) = - u(2,2) - u(3,3) );
+
+
+4
+
+
+mkdets(point);
+
+Equation for (u 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 3 3) as leading derivative, 
+which is nominally ordered higher than (u 1 1), although this should be ok.
+
+Equation for (u 1 2 2) is not strictly in semi-standard form, 
+because it should be solved for (u 3 3 1) as leading derivative, 
+which is nominally ordered higher than (u 1 2 2), although this should be ok.
+
+Equation for (u 2 2 2) is not strictly in semi-standard form, 
+because it should be solved for (u 2 3 3) as leading derivative, 
+which is nominally ordered higher than (u 2 2 2), although this should be ok.
+
+ *** free or special functions found when dividing by 
+
+nu
+
+
+solvedets(std);
+
+Solving equations using std algorithm.
+
+ Forming prolongation of equation for (u 1 1) to get equation for (u 1 2 1)
+ Forming prolongation of equation for (u 1 1) to get equation for (u 1 3 1)
+
+There are 0 equations remaining.
+
+
+mkgens();
+
+
+There are 9 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) =  - 2*@    *u(4) - @    *u(3) - @    *u(2) - @    *u(1) + 2*@    *x(4)
+               u(4)         u(3)         u(2)         u(1)           x(4)
+
+          + @    *x(3) + @    *x(2) + @    *x(1)
+             x(3)         x(2)         x(1)
+
+Gen(2) =  - @    *u(1) + @    *u(2) - @    *x(1) + @    *x(2)
+             u(2)         u(1)         x(2)         x(1)
+
+Gen(3) =  - @    *u(1) + @    *u(3) - @    *x(1) + @    *x(3)
+             u(3)         u(1)         x(3)         x(1)
+
+Gen(4) = @
+          x(4)
+
+Gen(5) = @    *u(2) - @    *u(3) + @    *x(2) - @    *x(3)
+          u(3)         u(2)         x(3)         x(2)
+
+The generators of the infinite algebra are:
+
+Gen (6) =  - @    *df(c(35),x(4),2)*x(1) + @    *df(c(35),x(4)) + @    *c(35)
+              u(4)                          u(1)                   x(1)
+
+Gen (7) =  - @    *df(c(38),x(4),2)*x(3) + @    *df(c(38),x(4)) + @    *c(38)
+              u(4)                          u(3)                   x(3)
+
+Gen (8) = @    *c(64)
+           u(4)
+
+Gen (9) =  - @    *df(c(39),x(4),2)*x(2) + @    *df(c(39),x(4)) + @    *c(39)
+              u(4)                          u(2)                   x(2)
+
+(c 64) depends on ((x 4))
+(c 39) depends on ((x 4))
+(c 38) depends on ((x 4))
+(c 35) depends on ((x 4))
+
+stats();
+
+
+Time: 3230 ms  plus GC time: 99 ms
+
+Total of 793 equations used, with 66 new arbitrary functions made.
+
+successful operations were :((op*exp1tm 19) (op*simpeq 400) (op*slvall 10) (
+op*shr1tm 54) (op*intslv 13) (op*splitec 174) (op*slvspl 10) (op*findfr 1) (
+op*slvtwo 8) (op*get1tm 15) (op*proexp 4))
+
+Variables used to split determining equations were ((x 2) (x 3) (u 3) (u 2) (u 1
+) (u 1 3 2) (u 1 3 3) (u 2 2 1) (u 2 1 1) (u 2 3 1) (u 2 3 2) (u 2 3 3) (u 3 2 1
+) (u 3 3 1) (u 3 3 2) (u 3 1 1) (u 3 2 2) (u 2 4) (u 4 1) (u 4 2) (u 1 3) (u 2 2
+) (u 2 1) (u 1 2) (u 2 3) (u 1 4) (u 3 1) (u 3 2) (u 3 3) (u 3 4) (u 4 3))
+
+
+%shut "output.navstoke";
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

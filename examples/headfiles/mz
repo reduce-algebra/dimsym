@@ -1,0 +1,38 @@
+%out "output.mz";
+%mz
+
+%load packages
+load dimsym23;
+
+% for all x let (cos x)**2 = 1 - (sin x)**2;                      % already done in dimsym
+for all x let int(1/((sin x)*cos(x)),x)=log(sin x/cos x)$
+for all x let int(1/((sin x)**2),x)=-cos x/sin x$
+for all x let int(1/((sin x)**2-1),x)=-sin x/cos x$
+for all x let int(1/((sin x)**4-(sin x)**2),x)=2*(1-2*sin(x)**2)/(2*sin x*cos x)$
+%df(int(1/((sin x)*cos(x)),x),x)-1/((sin x)*cos(x));      % Each of these expressions should 
+%df(int(1/((sin x)**2),x),x)-1/((sin x)**2);              % evaluate to zero- but from experience, 
+%df(int(1/((sin x)**2-1),x),x)-1/((sin x)**2-1);          % it is worthwhile checking for typo's.
+%df(int(1/((sin x)**4-(sin x)**2),x),x)-1/((sin x)**4-(sin x)**2);
+
+loaddeq( u(1,1,1) = u(2,1)**2*u 1 + (u(3,1)**2)*(sin(u 2)**2)*u 1 );
+
+loaddeq( u(2,1,1) = - 2*u(1,1)*u(2,1)/u(1) + (u(3,1)**2)*sin(u 2)*cos(u 2) );
+
+loaddeq( u(3,1,1) = - 2*u(1,1)*u(3,1)/u(1)
+                    -2*u(2,1)*u(3,1)*cos(u 2)/sin(u 2));
+                                
+mkdets(point);
+%vv:=sin(u(3))*sin(u(2))*@u(1);
+%check(vv);
+solvedets(std);
+solvedets(inttbt);
+solvedets(std);
+solvedets(inttbt);
+solvedets(std);
+showdets();
+%verify();
+mkgens();
+stats();
+%shut "output.mz";
+
+end;

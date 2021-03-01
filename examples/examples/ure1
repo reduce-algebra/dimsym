@@ -1,0 +1,47 @@
+% Ures Equations
+
+%  x(1) = x
+%  x(2) = phi
+%  u(1) = u
+%  u(2) = v
+%  u(3) = w
+%  u(4) = q/E
+
+% constants a,h,mu
+
+%load packages
+load dimsym23$
+
+on gc;
+
+freeunknown a,h,mu;
+
+
+% loaddeq( u(1,1,1) = (mu/a)*u(3,1) - (1-mu)*u(1,2,2)/(2*a**2) - (1+mu)*u(2,1,2)/(2*a)  );
+
+% loaddeq( u(1,1,2) = 2*(u(3,2)/a - a*(1-mu)*u(2,1,1)/2 - u(2,2,2)/a)/(1+mu) );
+
+% loaddeq( u(3,1,1,1,1) = -2*u(3,1,1,2,2)/a**2 - u(3,2,2,2)/a**4
+
+%                       + (12/h**2)*(a*u(2)*u(1,1) + u(2,2) - u(3) + a**2*u(4)*(1-mu**2)/h)/a**2 );
+
+
+% With the following form of the same equations, subbing goes into a loop.
+% This illustrates the need for the original equations to be in standard form.
+
+loaddeq( u(1,1,1) = (mu/a)*u(3,1) - (1-mu)*u(1,2,2)/(2*a**2) - (1+mu)*u(2,1,2)/(2*a)  );
+
+loaddeq( u(2,2,2) = u(3,2) - a*( (1+mu)*u(1,1,2)/2 + a*(1-mu)*u(2,1,1)/2) );
+
+loaddeq( u(3,2,2,2,2) = -2*a**2*u(3,1,1,2,2) - a**4*u(3,1,1,1,1)
+
+                      + (12*a**3/h**2)*(u(2)*u(1,1) + u(2,2)/a - u(3)/a + a*u(4)*(1-mu**2)/h) );
+
+mkdets point;
+solvedets std;
+showdets();
+verify();
+mkgens();
+stats();
+
+end;

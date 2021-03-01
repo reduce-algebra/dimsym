@@ -1,0 +1,64 @@
+REDUCE 3.7, 15-Apr-1999 ...
+% 1D heat equation;
+load dimsym23$
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+loaddeq( u(1,1,1) = u(1,2) );
+mkdets(point);
+  
+solvedets std;
+Solving equations using std algorithm.
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (24)
+
+showdets();
+There are 1 determining equations remaining, which are...
+deteqn(1)=df(c(1),x(2)) - df(c(1),x(1),2)
+The remaining dependencies are ...
+(c 1) depends on ((x 1) (x 2))
+The dunkns in the remaining equations are: ((c 1))
+The leading derivatives are: ((df (c 1) (x 1) 2))
+The parametric derviatives in the remaining equations are:
+((df (c 1) (x 2)))
+
+mkgens();
+There are 7 symmetries found.
+The generators of the finite algebra are:
+                                               2               2
+Gen(1) =  - 2*@    *u(1)*x(2) - @    *u(1)*x(1)  + 4*@    *x(2)
+               u(1)              u(1)                 x(2)
+
+          + 4*@    *x(2)*x(1)
+               x(1)
+
+Gen(2) = 2*@    *x(2) + @    *x(1)
+            x(2)         x(1)
+
+Gen(3) =  - @    *u(1)*x(1) + 2*@    *x(2)
+             u(1)                x(1)
+
+Gen(4) = @
+          x(1)
+
+Gen(5) = @    *u(1)
+          u(1)
+
+Gen(6) = @
+          x(2)
+
+The generators for the remaining equations are:
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+Gen (7) = @    *c(1)
+           u(1)
+(c 1) depends on ((x 1) (x 2))
+
+stats();
+Total of 31 equations used, with 10 new arbitrary functions made.
+Variables used to split determining equations were ((x 1) (u 1) (u 1 2 1) (u 1 2
+) (u 1 1))

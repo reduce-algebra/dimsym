@@ -1,0 +1,347 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % Ures Equations
+
+%  x(1) = x
+%  x(2) = phi
+%  u(1) = u
+%  u(2) = v
+%  u(3) = w
+%  u(4) = q/E
+
+% constants a,h,mu
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+% symbolic procedure uderivorder(u,v);
+% if null u or null v or atom u or atom v
+%   then rederr ("Bad uderivorder comparison of ",u," and ",v,".")
+%   % this would mean u and v were equal or of different diff'n order.
+% else if (car u)>(car v) then t
+% else if (car u)=(car v) then uderivorder(cdr u,cdr v);
+
+on gc;
+
+
+
+freeunknown a,h,mu;
+
+
+
+
+ loaddeq( u(1,1,1) = (mu/a)*u(3,1) - (1-mu)*u(1,2,2)/(2*a**2) - (1+mu)*u(2,1,2)/(2*a)  );
+
+
+1
+
+
+ loaddeq( u(1,1,2) = 2*(u(3,2)/a - a*(1-mu)*u(2,1,1)/2 - u(2,2,2)/a)/(1+mu) );
+
+
+2
+
+
+ loaddeq( u(3,1,1,1,1) = -2*u(3,1,1,2,2)/a**2 - u(3,2,2,2)/a**4
+
+                       + (12/h**2)*(a*u(2)*u(1,1) + u(2,2) - u(3) + a**2*u(4)*(1-mu**2)/h)/a**2 );
+
+
+3
+
+
+
+% With the following form of the same equations, subbing goes into a loop.
+% This illustrates the need for the original equations to be in standard form.
+
+% loaddeq( u(1,1,1) = (mu/a)*u(3,1) - (1-mu)*u(1,2,2)/(2*a**2) - (1+mu)*u(2,1,2)/(2*a)  );
+
+% loaddeq( u(2,2,2) = u(3,2) - a*( (1+mu)*u(1,1,2)/2 + a*(1-mu)*u(2,1,1)/2) );
+
+% loaddeq( u(3,2,2,2,2) = -2*a**2*u(3,1,1,2,2) - a**4*u(3,1,1,1,1)
+
+%                      + (12*a**3/h**2)*(u(2)*u(1,1) + u(2,2)/a - u(3)/a + a*u(4)*(1-mu**2)/h) );
+
+mkdets point;
+
+Equation for (u 1 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 2 2 1) as leading derivative, 
+which is nominally ordered higher than (u 1 1 1), although this should be ok.
+
+Equation for (u 1 2 1) is not strictly in semi-standard form, 
+because it should be solved for (u 2 2 2) as leading derivative, 
+which is nominally ordered higher than (u 1 2 1), although this should be ok.
+
+Equation for (u 3 1 1 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 3 2 2 1 1) as leading derivative, 
+which is nominally ordered higher than (u 3 1 1 1 1),
+ although this should be ok.
+
+ *** free or special functions found when dividing by 
+
+a
+
+ *** free or special functions found when dividing by 
+
+mu + 1
+
+ *** free or special functions found when dividing by 
+
+h
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+*** Garbage collection starting
+*** GC 1:  6-Feb-2004 11:50:17 (~ 526 ms cpu time, gc : 2 %)
+*** time 12 ms, 81035 occupied, 418951 recovered, 418965 free
+*** Garbage collection starting
+*** GC 2:  6-Feb-2004 11:50:18 (~ 871 ms cpu time, gc : 3 %)
+*** time 15 ms, 97945 occupied, 402040 recovered, 402055 free
+ *** free or special functions found when dividing by 
+
+  2
+mu  + 2*mu - 7
+
+ *** free or special functions found when dividing by 
+
+mu - 1
+
+*** Garbage collection starting
+*** GC 3:  6-Feb-2004 11:50:18 (~ 1134 ms cpu time, gc : 3 %)
+*** time 13 ms, 85339 occupied, 414646 recovered, 414661 free
+*** Garbage collection starting
+*** GC 4:  6-Feb-2004 11:50:18 (~ 1418 ms cpu time, gc : 3 %)
+*** time 13 ms, 83423 occupied, 416562 recovered, 416577 free
+ *** free or special functions found when dividing by 
+
+mu
+
+ Forming prolongation of equation for (u 1 2 1) to get equation for (u 1 2 2 1)
+*** Garbage collection starting
+*** GC 5:  6-Feb-2004 11:50:19 (~ 1750 ms cpu time, gc : 3 %)
+*** time 15 ms, 90239 occupied, 409746 recovered, 409761 free
+*** Garbage collection starting
+*** GC 6:  6-Feb-2004 11:50:19 (~ 2193 ms cpu time, gc : 3 %)
+*** time 15 ms, 98911 occupied, 401074 recovered, 401089 free
+*** Garbage collection starting
+*** GC 7:  6-Feb-2004 11:50:20 (~ 2844 ms cpu time, gc : 3 %)
+*** time 17 ms, 111235 occupied, 388750 recovered, 388765 free
+*** Garbage collection starting
+*** GC 8:  6-Feb-2004 11:50:20 (~ 3304 ms cpu time, gc : 3 %)
+*** time 19 ms, 120953 occupied, 379032 recovered, 379047 free
+*** Garbage collection starting
+*** GC 9:  6-Feb-2004 11:50:21 (~ 3770 ms cpu time, gc : 3 %)
+*** time 20 ms, 131247 occupied, 368738 recovered, 368753 free
+*** Garbage collection starting
+*** GC 10:  6-Feb-2004 11:50:21 (~ 3972 ms cpu time, gc : 3 %)
+*** time 18 ms, 119571 occupied, 380414 recovered, 380429 free
+*** Garbage collection starting
+*** GC 11:  6-Feb-2004 11:50:21 (~ 4116 ms cpu time, gc : 4 %)
+*** time 21 ms, 135113 occupied, 364872 recovered, 364887 free
+ *** free or special functions found when dividing by 
+
+3*mu - 1
+
+*** Garbage collection starting
+*** GC 12:  6-Feb-2004 11:50:21 (~ 4341 ms cpu time, gc : 4 %)
+*** time 20 ms, 128603 occupied, 371382 recovered, 371397 free
+*** Garbage collection starting
+*** GC 13:  6-Feb-2004 11:50:21 (~ 4606 ms cpu time, gc : 4 %)
+*** time 18 ms, 118993 occupied, 380992 recovered, 381007 free
+*** Garbage collection starting
+*** GC 14:  6-Feb-2004 11:50:22 (~ 4855 ms cpu time, gc : 4 %)
+*** time 19 ms, 123355 occupied, 376630 recovered, 376645 free
+*** Garbage collection starting
+*** GC 15:  6-Feb-2004 11:50:22 (~ 5075 ms cpu time, gc : 5 %)
+*** time 19 ms, 120998 occupied, 378988 recovered, 379002 free
+*** Garbage collection starting
+*** GC 16:  6-Feb-2004 11:50:22 (~ 5234 ms cpu time, gc : 5 %)
+*** time 19 ms, 121278 occupied, 378708 recovered, 378722 free
+ *** free or special functions found when dividing by 
+
+    2
+3*mu  - 2*mu + 11
+
+ *** free or special functions found when dividing by 
+
+  2
+mu  + 2*mu + 17
+
+*** Garbage collection starting
+*** GC 17:  6-Feb-2004 11:50:22 (~ 5618 ms cpu time, gc : 5 %)
+*** time 18 ms, 117206 occupied, 382780 recovered, 382794 free
+ *** free or special functions found when dividing by 
+
+3*mu + 1
+
+ *** free or special functions found when dividing by 
+
+mu + 3
+
+*** Garbage collection starting
+*** GC 18:  6-Feb-2004 11:50:23 (~ 6284 ms cpu time, gc : 4 %)
+*** time 17 ms, 109544 occupied, 390442 recovered, 390456 free
+ *** free or special functions found when dividing by 
+
+mu + 2
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (1183)
+
+showdets();
+
+There are 1 determining equations remaining, which are...
+
+deteqn(1)=2*df(c(14),x(1))*a*mu + df(c(5),x(2),2)*mu - df(c(5),x(2),2)
+
+                              2   2                    2
+           + df(c(5),x(1),2)*a *mu  + df(c(5),x(1),2)*a *mu
+
+                                2
+           - 2*df(c(5),x(1),2)*a
+
+The remaining dependencies are ...
+
+(c 14) depends on ((x 1))
+(c 5) depends on ((x 1) (x 2))
+
+The dunkns in the remaining equations are: ((c 5) (c 14))
+
+The leading derivatives are: ((df (c 5) (x 2) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (c 5) (x 1) 2) (df (c 14) (x 1)))
+
+
+verify();
+
+
+t
+
+mkgens();
+
+
+There are 3 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @
+          x(1)
+
+Gen(2) = @
+          x(2)
+
+The generators for the remaining equations are:
+
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+                                                             3  3
+Gen (3) = ( - 24*@    *c(14)*a*h - 2*@    *df(c(14),x(1),4)*a *h
+                  u(4)                u(4)
+
+                                          3                                  3
+            - @    *df(c(5),x(2),3,x(1))*h *mu - @    *df(c(5),x(2),3,x(1))*h
+               u(4)                               u(4)
+
+                                              2  3
+            - 2*@    *df(c(5),x(2),2,x(1),3)*a *h *mu
+                 u(4)
+
+                                              2  3
+            - 2*@    *df(c(5),x(2),2,x(1),3)*a *h
+                 u(4)
+
+                                     4  3                             4  3
+            - @    *df(c(5),x(1),5)*a *h *mu - @    *df(c(5),x(1),5)*a *h
+               u(4)                             u(4)
+
+                                           2                             2
+            + 24*@    *df(c(5),x(1))*u(2)*a *h - 12*@    *df(c(5),x(1))*a *h*mu
+                  u(4)                               u(4)
+
+                                      2                     3   2
+            - 12*@    *df(c(5),x(1))*a *h + 24*@    *c(14)*a *mu
+                  u(4)                          u(3)
+
+                              3                           4   3
+            - 24*@    *c(14)*a  + 12*@    *df(c(5),x(1))*a *mu
+                  u(3)                u(3)
+
+                                      4   2                           4
+            + 12*@    *df(c(5),x(1))*a *mu  - 12*@    *df(c(5),x(1))*a *mu
+                  u(3)                            u(3)
+
+                                      4                  3   2
+            - 12*@    *df(c(5),x(1))*a  + 24*@    *c(5)*a *mu
+                  u(3)                        u(1)
+
+                             3       3    2
+            - 24*@    *c(5)*a )/(24*a *(mu  - 1))
+                  u(1)
+*** Garbage collection starting
+*** GC 19:  6-Feb-2004 11:50:23 (~ 6614 ms cpu time, gc : 4 %)
+*** time 17 ms, 107074 occupied, 392912 recovered, 392926 free
+*** Garbage collection starting
+*** GC 20:  6-Feb-2004 11:50:24 (~ 6957 ms cpu time, gc : 4 %)
+*** time 18 ms, 118230 occupied, 381756 recovered, 381770 free
+
+gen(3) has the condition(s) that the following expressions be zero:
+
+
+{2*df(c(14),x(1))*a*mu + df(c(5),x(2),2)*mu - df(c(5),x(2),2)
+
+                     2   2                    2                         2
+  + df(c(5),x(1),2)*a *mu  + df(c(5),x(1),2)*a *mu - 2*df(c(5),x(1),2)*a }
+
+(c 14) depends on ((x 1))
+(c 5) depends on ((x 1) (x 2))
+
+stats();
+
+
+Time: 6707 ms  plus GC time: 343 ms
+
+Total of 1184 equations used, with 14 new arbitrary functions made.
+
+successful operations were :((op*slvall 2) (op*simpeq 481) (op*intslv 1) (
+op*slvspl 2) (op*findfr 1) (op*shr1tm 29) (op*slvtwo 2) (op*exp1tm 5) (op*get1tm
+10) (op*splitec 380) (op*proexp 3))
+
+Variables used to split determining equations were ((u 2) (u 3 2 2 2 1) (u 3 2 2
+1 1) (u 3 2 2 2) (u 2 2 2 2 1) (u 2 2 2 1 1) (u 3 2 1 1) (u 1 2 2 2) (u 2 2 1 1)
+(u 2 2 2 2) (u 2 1 1 1) (u 2 2 2 1) (u 3 1 1 1) (u 3 2 2 1) (u 3 1 1) (u 3 2 1)
+(u 4 2 1) (u 3 2 2) (u 4 2 2) (u 2 1 1) (u 1 2 2) (u 2 2 1) (u 2 2 2) (u 4 1) (u
+1 1) (u 3 1) (u 1 2) (u 3 2) (u 2 1) (u 2 2) (u 4 2))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

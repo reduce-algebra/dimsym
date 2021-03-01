@@ -1,0 +1,37 @@
+% Hilbert-Cartan equation
+
+% See Anderson et al,
+% Advances in Mathematics 100 (1993) pp 53-100
+
+%load packages
+load dimsym23$
+
+xi 1:=0;
+depend phi 1, x 1, u 1, u(1,1), u(2,1), u(2);
+depend phi 2, x 1, u 1, u(1,1), u(2,1), u(2);
+
+freeunknown a; % a=+-1 !
+let a**2=1;
+
+loaddeq( u(1,1,1) = a*sqrt u(2,1) );
+
+mkdets custom1;
+solvedets std;
+showdets();
+mkgens();
+let a=1;
+v!+:=gen 8;
+let a=-1;
+v!-:=gen 8;
+clear a;
+
+v1:=v!+ - v!-;
+v2:=v!+ + v!-;
+
+check v1;
+check v2;
+
+stats();
+
+
+end;

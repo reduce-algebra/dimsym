@@ -1,0 +1,42 @@
+% karpman
+% Received from Alan Head 19/8/92
+
+% B. Champagne, W. Hereman and P. Winternitz
+%
+% The Computer Calculation of Lie Point Symmetries
+% of Large Differential Equations.
+%
+% Computer Physics Communications 66 (1991) pp 319-340
+
+%load packages
+load dimsym23$
+
+freeunknown w1,w2,s1,s2,a1,a2;
+
+loaddeq( u(1,4)= -(
+  W1*U(1,3) + 1/2*(
+  S1*(2*U(1,1)*U(2,1)+2*U(1,2)*U(2,2)+U(1)*U(2,1,1)+U(1)*U(2,2,2))+
+  S2*(2*U(1,3)*U(2,3)+U(1)*U(2,3,3) ) ) 
+                    ) )$
+
+ 
+loaddeq( u(2,4)= -(
+  W1*U(2,3) - 1/2*(
+  S1*(U(1,1,1)/U(1)+U(1,2,2)/U(1)-U(2,1)^2-U(2,2)^2) +
+  S2*(U(1,3,3)/U(1)-U(2,3)^2) ) + A1*U(3) 
+                    ) )$
+
+loaddeq( u(3,4,4)= -(
+  - W2^2*(U(3,1,1)+U(3,2,2)+U(3,3,3))
+  -2*A2*U(1)*(U(1,1,1)+U(1,2,2)+U(1,3,3))
+  -2*A2*(U(1,1)^2+U(1,2)^2+U(1,3)^2) 
+                    ) )$
+
+mkdets point;
+solvedets std;
+showdets();
+showdets();
+mkgens();
+stats();
+
+end;

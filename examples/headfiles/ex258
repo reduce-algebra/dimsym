@@ -1,0 +1,21 @@
+%out "output.ex258"$
+
+%ex258
+% example 2.58 from Olver
+
+
+%load packages
+load dimsym23$
+
+loaddeq( u(1,1,1) = ((u 1)*u(1,1) - (x 1)*u(1,1)**2)/(x 1)**2);
+               
+
+mkdets(point);  
+solvedets std;
+showdets();
+mkgens();
+stats();
+
+%shut "output.ex258"$
+
+end;

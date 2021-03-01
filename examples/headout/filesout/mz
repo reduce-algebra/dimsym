@@ -1,0 +1,359 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:54:14 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: %out "output.mz";
+%mz
+
+%load packages
+load dimsym23;
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+% for all x let (cos x)**2 = 1 - (sin x)**2;                      % already done in dimsym
+for all x let int(1/((sin x)*cos(x)),x)=log(sin x/cos x)$
+
+
+for all x let int(1/((sin x)**2),x)=-cos x/sin x$
+
+
+for all x let int(1/((sin x)**2-1),x)=-sin x/cos x$
+
+
+for all x let int(1/((sin x)**4-(sin x)**2),x)=2*(1-2*sin(x)**2)/(2*sin x*cos x)$
+
+
+%df(int(1/((sin x)*cos(x)),x),x)-1/((sin x)*cos(x));      % Each of these expressions should 
+%df(int(1/((sin x)**2),x),x)-1/((sin x)**2);              % evaluate to zero- but from experience, 
+%df(int(1/((sin x)**2-1),x),x)-1/((sin x)**2-1);          % it is worthwhile checking for typo's.
+%df(int(1/((sin x)**4-(sin x)**2),x),x)-1/((sin x)**4-(sin x)**2);
+
+loaddeq( u(1,1,1) = u(2,1)**2*u 1 + (u(3,1)**2)*(sin(u 2)**2)*u 1 );
+
+
+1
+
+
+loaddeq( u(2,1,1) = - 2*u(1,1)*u(2,1)/u(1) + (u(3,1)**2)*sin(u 2)*cos(u 2) );
+
+
+2
+
+
+loaddeq( u(3,1,1) = - 2*u(1,1)*u(3,1)/u(1)
+                    -2*u(2,1)*u(3,1)*cos(u 2)/sin(u 2));
+
+
+3
+
+                                
+mkdets(point);
+
+ While making eqngrp 1, found special function:
+
+sin(u(2))
+
+ While making eqngrp 1, found special function:
+
+cos(u(2))
+
+
+%vv:=sin(u(3))*sin(u(2))*@u(1);
+%check(vv);
+solvedets(std);
+
+Solving equations using std algorithm.
+
+ While making eqngrp 333, found special function:
+
+cos(u(3))
+
+ While making eqngrp 333, found special function:
+
+sin(u(3))
+
+
+Must have all of
+
+cos(u(2))
+
+sin(u(2))
+
+linearly independent in (u 2)
+
+
+Must have all of
+
+cos(u(2))*sin(u(2))
+
+         2
+sin(u(2))
+
+1
+
+linearly independent in (u 2)
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (485)
+
+solvedets(inttbt);
+
+Solving equations using inttbt algorithm.
+
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (489)
+
+solvedets(std);
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+
+solvedets(inttbt);
+
+Solving equations using inttbt algorithm.
+
+
+There are 0 equations remaining.
+
+
+solvedets(std);
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+
+showdets();
+
+There are no determining equations remaining.
+
+The remaining dependencies are ...
+
+
+
+%verify();
+mkgens();
+
+
+There are 24 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @    *cos(u(3))*sin(u(2))*u(1)
+          x(1)
+
+Gen(2) = @    *sin(u(3))*sin(u(2))*u(1)
+          x(1)
+
+Gen(3) = cos(u(3))*sin(u(2))*u(1)*(@    *u(1) + @    *x(1))
+                                    u(1)         x(1)
+
+Gen(4) = sin(u(3))*sin(u(2))*u(1)*(@    *u(1) + @    *x(1))
+                                    u(1)         x(1)
+
+                                  2
+          @    *u(1)*( - sin(u(2))  + 1)
+           x(1)
+Gen(5) = --------------------------------
+                    cos(u(2))
+
+                                  2                                    2
+Gen(6) = (u(1)*( - @    *sin(u(2)) *u(1) + @    *u(1) - @    *sin(u(2)) *x(1)
+                    u(1)                    u(1)         x(1)
+
+                 + @    *x(1)))/cos(u(2))
+                    x(1)
+
+Gen(7) = x(1)*(@    *u(1) + @    *x(1))
+                u(1)         x(1)
+
+Gen(8) = @    *x(1)
+          x(1)
+
+Gen(9) = @
+          x(1)
+
+                                       2
+Gen(10) = ( - @    *cos(u(3))*sin(u(2))  + @    *cos(u(3))
+               u(3)                         u(3)
+
+            + @    *cos(u(2))*sin(u(3))*sin(u(2)))/(cos(u(2))*sin(u(2)))
+               u(2)
+
+                                       2
+Gen(11) = ( - @    *sin(u(3))*sin(u(2))  + @    *sin(u(3))
+               u(3)                         u(3)
+
+            - @    *cos(u(3))*cos(u(2))*sin(u(2)))/(cos(u(2))*sin(u(2)))
+               u(2)
+
+Gen(12) =  - @
+              u(3)
+
+                                                                         3
+Gen(13) = (x(1)*( - @    *cos(u(2))*sin(u(3)) - @    *cos(u(3))*sin(u(2))
+                     u(3)                        u(2)
+
+                  + @    *cos(u(3))*sin(u(2))
+                     u(2)
+
+                                                       2
+                  + @    *cos(u(3))*cos(u(2))*sin(u(2)) *u(1)))/(cos(u(2))
+                     u(1)
+
+             *sin(u(2))*u(1))
+
+                                                                         3
+Gen(14) = (x(1)*( - @    *cos(u(3))*cos(u(2)) + @    *sin(u(3))*sin(u(2))
+                     u(3)                        u(2)
+
+                  - @    *sin(u(3))*sin(u(2))
+                     u(2)
+
+                                                       2
+                  - @    *cos(u(2))*sin(u(3))*sin(u(2)) *u(1)))/(cos(u(2))
+                     u(1)
+
+             *sin(u(2))*u(1))
+
+                                                            2
+Gen(15) = (x(1)*(@    *cos(u(2))*sin(u(2)) + @    *sin(u(2)) *u(1) - @    *u(1))
+                  u(2)                        u(1)                    u(1)
+
+           )/(cos(u(2))*u(1))
+
+                                                      2
+           @    *cos(u(2))*sin(u(2)) + @    *sin(u(2)) *u(1) - @    *u(1)
+            u(2)                        u(1)                    u(1)
+Gen(16) = ----------------------------------------------------------------
+                                   cos(u(2))*u(1)
+
+Gen(17) = (sin(u(3))*sin(u(2))
+
+                                                           2
+           *( - @    *cos(u(2))*sin(u(2)) - @    *sin(u(2)) *u(1) + @    *u(1)))
+                 u(2)                        u(1)                    u(1)
+
+          /cos(u(2))
+
+Gen(18) = (cos(u(3))*sin(u(2))
+
+                                                           2
+           *( - @    *cos(u(2))*sin(u(2)) - @    *sin(u(2)) *u(1) + @    *u(1)))
+                 u(2)                        u(1)                    u(1)
+
+          /cos(u(2))
+
+                             3
+Gen(19) = (2*(@    *sin(u(2))  - @    *sin(u(2))
+               u(2)               u(2)
+
+                                          2
+               - @    *cos(u(2))*sin(u(2)) *u(1) + @    *cos(u(2))*u(1)))/cos(
+                  u(1)                              u(1)
+
+             u(2))
+
+                                     2
+Gen(20) = (sin(u(2))*(@    *sin(u(2))  - @     - @    *cos(u(2))*sin(u(2))*u(1))
+                       u(2)               u(2)    u(1)
+
+           )/cos(u(2))
+
+                                                                3
+Gen(21) = (@    *cos(u(3))*cos(u(2)) - @    *sin(u(3))*sin(u(2))
+            u(3)                        u(2)
+
+            + @    *sin(u(3))*sin(u(2))
+               u(2)
+
+                                                 2
+            + @    *cos(u(2))*sin(u(3))*sin(u(2)) *u(1))/(cos(u(2))*sin(u(2))
+               u(1)
+
+             *u(1))
+
+                                                                   3
+Gen(22) = ( - @    *cos(u(2))*sin(u(3)) - @    *cos(u(3))*sin(u(2))
+               u(3)                        u(2)
+
+            + @    *cos(u(3))*sin(u(2))
+               u(2)
+
+                                                 2
+            + @    *cos(u(3))*cos(u(2))*sin(u(2)) *u(1))/(cos(u(2))*sin(u(2))
+               u(1)
+
+             *u(1))
+
+                                                                    3
+Gen(23) = (@    *cos(u(2))*sin(2*u(3)) + @    *cos(2*u(3))*sin(u(2))
+            u(3)                          u(2)
+
+            - @    *cos(2*u(3))*sin(u(2))
+               u(2)
+
+                                                   2
+            - @    *cos(2*u(3))*cos(u(2))*sin(u(2)) *u(1))/cos(u(2))
+               u(1)
+
+                                                                    3
+Gen(24) = (@    *cos(2*u(3))*cos(u(2)) - @    *sin(2*u(3))*sin(u(2))
+            u(3)                          u(2)
+
+            + @    *sin(2*u(3))*sin(u(2))
+               u(2)
+
+                                                   2
+            + @    *cos(u(2))*sin(2*u(3))*sin(u(2)) *u(1))/cos(u(2))
+               u(1)
+
+
+stats();
+
+
+Time: 2047 ms  plus GC time: 89 ms
+
+Total of 489 equations used, with 58 new arbitrary functions made.
+
+successful operations were :((op*trgexp 10) (op*inttbta 1) (op*simpeq 327) (
+op*slvall 1) (op*intslv 2) (op*splitec 63) (op*intfac 10) (op*shr1tm 8) (
+op*slvspl 2) (op*slvtwo 2) (op*exp1tm 9) (op*get1tm 15) (op*proexp 3))
+successful operations on op!*intfac eqns were :((op*intfac 1) (op*slvall 7) (
+op*intslv 3))
+
+Variables used to split determining equations were ((u 2) (x 1) (u 1) (u 2 1) (u
+1 1) (u 3 1))
+
+%shut "output.mz";
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

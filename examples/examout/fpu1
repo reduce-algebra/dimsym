@@ -1,0 +1,1995 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Tue Feb 10 11:00:21 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: 1: % fpu
+
+% The Fermi-Pasta_Ulam equation.
+
+% Date: Tue, 24 Nov 92 08:37:31 +1100
+% From: fackerell_e@maths.su.oz.au (Ted Fackerell)
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+symbolic (!*liesublimit:=60);
+
+
+60
+
+
+
+on gc;
+
+
+tracecute();
+
+
+t
+
+
+freeunknown k;
+
+
+
+depend k,u 2;
+
+
+
+loaddeq( u(1,1) =      u(2)  );
+
+
+1
+
+loaddeq( u(1,2) =      u(3)  );
+
+
+2
+
+loaddeq( u(3,1) =     u(2,2) );
+
+
+3
+   % This is an integrability condition!
+loaddeq( u(3,2) = k^2*u(2,1) );
+
+
+4
+
+                                  % But there is still another integrability condition
+                                  % which needs to be satisfied!!!
+                                  % We look later to see if it makes any difference...
+
+%loaddeq( u(2,2,2) = k^2*u(2,1,1) + 2*k*df(k,u(2))*u(2,1)^2 );
+
+
+mkdets(point);
+
+|||||<1 0>B$3%7(0)|<2 1>B$2%2(0)|<3 2>B$2%2(0)|<4 3>B$2%2(0)
+
+solvedets stdform1;
+
+Solving equations using stdform1 algorithm.
+
+Solving equations (2 3 4 1) by (op*shr1tm op*simpeq op*splitec op*splited 
+op*proexp op*slvtwo op*get1tm op*slvspl op*hidefr op*hidelg op*sub2sf addintcons
+op*findlg op*findfr)
+op*shr1tm op*simpeq op*splitec op*splited op*proexp ?+1=30/0 
+
+::((symvec (5 5) (4 0) (3 0) (2 0) (1 0) (0 0)) (eqns (5 2) (4 0) (3 0) (2 0) (1
+0) (0 6))):: 
+
+?+1=31/0 
+
+::((symvec (5 5) (4 0) (3 0) (2 0) (1 0) (0 0)) (eqns (5 2) (4 0) (3 0) (2 0) (1
+0) (0 6))):: 
+
+S<4 4>D[4]<5 4>B$16%43(0)<6 4>B$2%2(0)<7 5>B$6%8(0)<8 6>B$12%29(0)<8 7>D[7]<9 6>
+B$2%4~1~<9 6>*** free or special functions found when dividing by 
+
+k
+
+(1)2<9 6>D[6]<10 6>B$6%11(0)<11 7>B$4%6(0)<11 8>D[8]?+1=31/0 
+
+::((symvec (5 5) (4 0) (3 0) (2 0) (1 0) (0 0)) (eqns (5 4) (4 0) (3 0) (2 0) (1
+0) (0 4))):: 
+
+S<11 7>D[7]<12 7>B$13%32(0)<13 7>B$3%8~1~(1)5<14 8>B$10%21(0)<14 9>D[9]<15 8>B$3
+%5(0)<16 9>B$7%13(0)<16 10>D[10]?+1=28/0 
+
+::((symvec (5 5) (4 0) (3 0) (2 0) (1 0) (0 0)) (eqns (5 5) (4 0) (3 0) (2 0) (1
+0) (0 3))):: 
+
+S<16 9>D[9]<17 9>B$13%29(0)<18 9>B$3%5(0)<18 9>D[9]<19 9>B$10%21(0)<19 10>D[10]
+<20 9>B$3%5(0)<20 9>D[9]<21 9>B$7%13(0)<21 10>D[10]?+1=27/0 
+
+::((symvec (5 5) (4 0) (3 0) (2 0) (1 0) (0 0)) (eqns (5 5) (4 0) (3 0) (2 0) (1
+0) (0 2))):: 
+
+?+1=33/0 
+
+::((symvec (5 5) (4 0) (3 0) (2 0) (1 0) (0 0)) (eqns (5 5) (4 0) (3 0) (2 0) (1
+0) (0 2))):: 
+
+S<21 9>D[9]<22 9>B$17%56(0)<23 9>B$2%4~1~(1)3<24 10>B$7%17(1)16<25 11>B$12%30(0)
+<25 12>D[12]<26 11>B$2%3(0)<26 11>D[11]<27 11>B$6%11(0)<28 12>B$4%8(0)<28 13>D[
+13]op*slvtwo op*get1tm op*slvspl op*hidefr <28 7>Hiding eqngrps (23 28 10 27 24)
+because they have freeunknowns in them.
+But don't worry, I'll find them again later :-)
+op*hidelg op*sub2sf |&?|&??]?[$8%18(0)+(0)<28 7>D[12]<29 6>B$8%18(0)&_2
+Got equation for (df (xi 1) (x 2))<29 7>!*canonlist= (29) holdlis= (11 21 7 15 
+13 6)
+!*canonlist is now 
+   ((df (xi 1) (x 2)))
+?|&#?|&???|&????]?[$8%15(0)+(0)<29 7>D[12]<30 6>B$8%15(0)&<30 7>!*canonlist= (29
+11 21 15 30) holdlis= (13 6)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (xi 1) (u 2)) (df
+(phi 3) (u 3)))
+?????|&??????]?[$3%5(0)+(0)<30 7>D[12]<31 6>B$3%5(0)&_1Got equation for (df (xi
+2) (u 3))<31 7>!*canonlist= (29 11 21 15 30 31) holdlis= (13)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (xi 1) (u 2)) (df
+(phi 3) (u 3)) (df (xi 2) (u 3)))
+?#####]?[$2%4(1)2+(0)<31 7>D[12]<32 6>B$2%2(0)&<32 7>!*canonlist= (29 11 21 15 
+30 31 32)!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (xi 1) (u 2)) (df
+(phi 3) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)))
+<32 7>!*canonlist= (29 11 21 15 30 31 32)!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (xi 1) (u 2)) (df
+(phi 3) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)))
+addintcons <33 7>B$4%6(0)
+made eqn 33 from integrability conditions on eqns 32 and 15 for (df (xi 1) (u 3)
+(u 2))
+<34 7>B$9%16(0)
+made eqn 34 from integrability conditions on eqns 32 and 21 for (df (xi 1) (u 3)
+(u 1))
+<35 7>B$13%26(0)
+made eqn 35 from integrability conditions on eqns 32 and 29 for (df (xi 1) (u 3)
+(x 2))
+<36 7>B$8%12(0)
+made eqn 36 from integrability conditions on eqns 15 and 21 for (df (xi 1) (u 2)
+(u 1))
+<37 7>B$10%19(0)
+made eqn 37 from integrability conditions on eqns 15 and 29 for (df (xi 1) (u 2)
+(x 2))
+<38 7>B$9%17(0)
+made eqn 38 from integrability conditions on eqns 21 and 29 for (df (xi 1) (u 1)
+(x 2))
+???????]?[$10%23(0)+(1)]?[$4%9(1)6+(1)]?[0<38 13>D[18]???????]?[$7%12(0)+(1)]?[$
+9%21(0)+(0)<38 12>D[17]<39 11>B$9%21(0)&_4Got equation for (df (phi 2) (u 2))
+<39 12>!*canonlist= (29 11 21 39) holdlis= (15 30 31 32 35 34 36 33)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 2) (u 2)))
+?###|&#?###]?[$11%27(0)+(0)<39 12>D[17]<40 11>B$11%27(0)&<40 12>!*canonlist= (29
+11 21 39 15 40) holdlis= (35 34 36 33 31 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 2) (u 2)) (
+df (xi 1) (u 2)) (df (phi 3) (u 3)))
+?#?###|&#?#?###|&????????]?[$5%7(0)+(1)]?[$11%27(0)+(0)]?[$6%15(1)10+(0)<40 12>D
+[17]<41 11>B$6%10(0)&_5Got equation for (df (phi 3) (u 2))<41 12>!*canonlist= (
+29 11 21 41) holdlis= (39 15 40 31 32 35 34 33)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)))
+?###]?[$7%18(1)13+(0)<41 12>D[17]<42 11>B$7%13(0)&<42 12>!*canonlist= (29 11 21
+41 42) holdlis= (35 40 34 33 31 15 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (
+df (phi 2) (u 2)))
+??###|&#??###]?[$7%18(1)13+(0)<42 12>D[17]<43 11>B$7%13(0)&<43 12>!*canonlist= (
+29 11 21 41 42 15 43) holdlis= (35 34 33 31 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (
+df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)))
+?#??###|&#?#??###|&?????????]?[$10%19(0)+(1)]?[$10%19(0)+(1)]?[$7%12(0)+(1)]?[$3
+%7(1)4+(0)<43 12>D[17]<44 11>B$3%4(0)&_2Got equation for (df (phi 2) (u 3))
+<44 12>!*canonlist= (29 11 21 41 42 15 43 44) holdlis= (31 32 34 33)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (
+df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)))
+?#######|&#?#######|&??????????]?[$6%9(0)+(1)]?[$6%9(0)+(1)]?[$3%4(0)+(1)]?[0
+<44 12>D[17]??????????]?[0<44 11>D[16]<44 10>!*canonlist= (29 11 21 41 42 15 43
+44 31 32)!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (
+df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (
+xi 2) (u 3)) (df (xi 1) (u 3)))
+<44 10>!*canonlist= (29 11 21 41 42 15 43 44 31 32)!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (
+df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (
+xi 2) (u 3)) (df (xi 1) (u 3)))
+<45 10>B$6%10(0)
+made eqn 45 from integrability conditions on eqns 44 and 11 for (df (phi 2) (u 3
+) (u 1))
+<46 10>B$10%18(0)
+made eqn 46 from integrability conditions on eqns 44 and 42 for (df (phi 2) (u 3
+) (u 2))
+<47 10>B$10%23(0)
+made eqn 47 from integrability conditions on eqns 11 and 42 for (df (phi 2) (u 2
+) (u 1))
+<48 10>B$15%24(0)
+made eqn 48 from integrability conditions on eqns 41 and 43 for (df (phi 3) (u 3
+) (u 2))
+??????????]?[$9%20(0)+(1)]?[
+*** Garbage collection starting
+*** GC 1: 10-Feb-2004 11:00:48 (~ 328 ms cpu time, gc : 3 %)
+*** time 13 ms, 74413 occupied, 425576 recovered, 425587 free
+$10%19(0)+(1)]?[$10%18(0)+(1)]?[$11%25(0)+(1)]?[$4%9(1)6+(1)]?[0<48 14>D[19]????
+??????]?[$6%9(0)+(1)]?[$5%7(0)+(1)]?[$7%13(0)+(1)]?[0<48 13>D[18]??????????]?[$
+12%17(0)+(1)]?[$9%12(0)+(1)]?[$6%7(0)+(1)]?[$7%13(0)+(0)]?[0<48 12>D[17]????????
+??]?[$7%11(0)+(1)]?[$6%9(0)9+(1)]?[$3%4(0)+(1)]?[0<48 11>D[16]<48 10>
+!*canonlist= (29 11 21 41 42 15 43 44 31 32)!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (
+df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (
+xi 2) (u 3)) (df (xi 1) (u 3)))
+<48 10>!*canonlist= (29 11 21 41 42 15 43 44 31 32)!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (
+df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (
+xi 2) (u 3)) (df (xi 1) (u 3)))
+op*findlg op*findfr <48 10>finding eqngrps (23 28 10 27 24)
+And now I've found all the lost sheep :-)
+??????????]?[$5%15(0)+(0)<48 15>D[15]<49 14>B$5%15(0)&_9Got equation for (df (
+phi 3) (u 1))<49 15>!*canonlist= (29 49) holdlis= (11 21 41 42 15 43 44 31 32 24
+10 27 23)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)))
+?#]?[~2~<49 15>*** free or special functions found when dividing by 
+
+u(3) + u(2)*k
+
+<49 15>*** free or special functions found when dividing by 
+
+u(3) - u(2)*k
+
+$5%16(1)13+(0)<49 15>D[15]<50 14>B$5%13(0)&<50 15>!*canonlist= (29 49 50)
+ holdlis= (24 43 42 21 10 27 41 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)))
+??#|&#??#|&##??#|&###??#|&???????]?[$8%25(0)+(0)]?[$8%25(0)+(0)<50 15>D[15]
+<51 14>B$8%25(0)&<51 15>!*canonlist= (29 49 50 21 41 42 15 51) holdlis= (43 10 
+27 31 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (xi 1) (u 1)) (
+df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)))
+?####??#]?[~1~$6%19(0)19+(0)<51 15>D[15]<52 14>B$6%19(0)&_5Got equation for (df
+(xi 2) (u 1))<52 15>!*canonlist= (29 49 50 52) holdlis= (21 41 42 15 51 10 27 31
+44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (xi 2) (u 1)))
+?###]?[~1~$7%21(0)+(0)<52 15>D[15]<53 14>B$7%21(0)&<53 15>!*canonlist= (29 49 50
+52 53) holdlis= (51 42 10 27 41 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (xi 2) (u 1)) (
+df (xi 1) (u 1)))
+??###]?[~1~$8%29(0)+(0)<53 15>D[15]<54 14>B$8%29(0)&<54 15>!*canonlist= (29 49 
+50 52 53 54) holdlis= (51 42 10 27 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (xi 2) (u 1)) (
+df (xi 1) (u 1)) (df (phi 3) (u 2)))
+???###]?[~1~$7%21(0)+(0)<54 15>D[15]<55 14>B$7%21(0)&<55 15>!*canonlist= (29 49
+50 52 53 54 55) holdlis= (51 10 27 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (xi 2) (u 1)) (
+df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)))
+????###|&#????###]?[~1~$7%21(0)+(0)<55 15>D[15]<56 14>B$7%21(0)&<56 15>
+!*canonlist= (29 49 50 52 53 54 55 15 56) holdlis= (10 27 31 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (xi 2) (u 1)) (
+df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (
+phi 3) (u 3)))
+?????????]?[~1~$11%41(0)+(0)]?[~1~$10%34~1~(1)26+(0)]?[~1~$10%40(0)+(0)]?[$6%23~
+1~(2)18+(0)<56 15>D[15]<57 14>B$6%18(0)&<57 15>!*canonlist= (29 49 50 52 53 54 
+55 15 56 57) holdlis= (27 31 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (xi 2) (u 1)) (
+df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (
+phi 3) (u 3)) (df (phi 2) (u 3)))
+??????????]?[~1~$9%26(0)+(0)]?[~1~$10%53(0)+(0)]?[~1~$10%44(1)39+(0)]?[~1~$9%35(
+0)35+(0)]?[$7%41(0)+(0)<57 15>D[15]<58 14>B$7%41(0)&_7Got equation for (df (phi
+1) (u 1))<58 15>!*canonlist= (29 49 50 58) holdlis= (52 53 54 55 15 56 57 31 44
+23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)))
+?###]?[~2~$6%30(1)26+(0)<58 15>D[15]<59 14>B$6%26(0)&<59 15>!*canonlist= (29 49
+50 58 59) holdlis= (54 56 55 53 57 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)))
+??###]?[~2~$8%41~1~(1)33+(0)<59 15>D[15]<60 14>B$8%33(0)&<60 15>!*canonlist= (29
+49 50 58 59 60) holdlis= (54 56 55 57 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)))
+???###]?[~2~$5%24~1~(2)20+(0)<60 15>D[15]<61 14>B$5%20(0)&<61 15>!*canonlist= (
+29 49 50 58 59 60 61) holdlis= (56 55 57 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)))
+????###]?[~2~$8%45~1~(1)37+(0)<61 15>D[15]<62 14>B$8%37(0)&<62 15>!*canonlist= (
+29 49 50 58 59 60 61 62) holdlis= (56 57 31 15 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)))
+?????###|&#?????###]?[~2~$8%45(0)45+(0)<62 15>D[15]<63 14>B$8%45(0)&<63 15>
+!*canonlist= (29 49 50 58 59 60 61 62 15 63) holdlis= (57 31 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi
+1) (u 2)) (df (phi 3) (u 3)))
+?#?????###]?[~2~$5%23(1)20+(0)<63 15>D[15]<64 14>B$5%20(0)&<64 15>!*canonlist= (
+29 49 50 58 59 60 61 62 15 63 64) holdlis= (31 44 23 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi
+1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)))
+??#???????#]?[~2~$6%26(0)+(0)]?[~2~0<64 15>D[15]??#???????#|&????????????]?[$3%7
+(0)+(0)]?[$3%9(0)+(0)<64 14>D[14]<65 13>B$3%9(0)&_1Got equation for (df (phi 1)
+(u 3))<65 14>!*canonlist= (29 49 50 58 59 60 61 62 15 63 64 65) holdlis= (31 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi
+1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1) (u 3)))
+?###########]?[~1~$3%8(1)6+(0)<65 14>D[14]<66 13>B$3%6(0)&<66 14>!*canonlist= (
+29 49 50 58 59 60 61 62 15 63 64 65 66) holdlis= (32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi
+1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1) (u 3)) (df (xi 2) (u
+3)))
+????#???????#|&<66 14>!*canonlist= (29 49 50 58 59 60 61 62 15 63 64 65 66 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi
+1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1) (u 3)) (df (xi 2) (u
+3)) (df (xi 1) (u 3)))
+<66 14>!*canonlist= (29 49 50 58 59 60 61 62 15 63 64 65 66 32)
+!*canonlist is now 
+   ((df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (
+df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi
+1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1) (u 3)) (df (xi 2) (u
+3)) (df (xi 1) (u 3)))
+<67 14>B$16%54(0)
+made eqn 67 from integrability conditions on eqns 32 and 60 for (df (xi 1) (u 3)
+(u 1))
+<68 14>B$16%82(0)
+made eqn 68 from integrability conditions on eqns 15 and 60 for (df (xi 1) (u 2)
+(u 1))
+<69 14>B$11%44(0)
+made eqn 69 from integrability conditions on eqns 66 and 59 for (df (xi 2) (u 3)
+(u 1))
+<70 14>B$15%77(0)
+made eqn 70 from integrability conditions on eqns 65 and 58 for (df (phi 1) (u 3
+) (u 1))
+<71 14>B$10%31(0)
+made eqn 71 from integrability conditions on eqns 50 and 64 for (df (phi 2) (u 3
+) (u 1))
+*** Garbage collection starting
+*** GC 2: 10-Feb-2004 11:00:48 (~ 602 ms cpu time, gc : 4 %)
+*** time 12 ms, 77731 occupied, 422255 recovered, 422269 free
+<72 14>B$13%51(0)
+made eqn 72 from integrability conditions on eqns 50 and 62 for (df (phi 2) (u 2
+) (u 1))
+<73 14>B$11%44(0)
+made eqn 73 from integrability conditions on eqns 49 and 61 for (df (phi 3) (u 2
+) (u 1))
+<74 14>B$13%59(0)
+made eqn 74 from integrability conditions on eqns 49 and 63 for (df (phi 3) (u 3
+) (u 1))
+<75 14>B$14%65(0)
+made eqn 75 from integrability conditions on eqns 29 and 60 for (df (xi 1) (u 1)
+(x 2))
+<76 14>B$18%122(0)
+made eqn 76 from integrability conditions on eqns 61 and 63 for (df (phi 3) (u 3
+) (u 2))
+<77 14>B$18%92(0)
+made eqn 77 from integrability conditions on eqns 64 and 62 for (df (phi 2) (u 3
+) (u 2))
+??????????????]?[~2~$13%74(0)+(1)]?[~2~$9%53~2~(4)17+(1)]?[~2~$13%66(0)+(1)]?[~2
+~$12%74(0)+(1)]?[~2~$10%63~2~(4)23+(1)]?[$4%9(1)6+(1)]?[~2~$5%18(1)15+(0)]?[~2~0
+<77 25>D[25]??????????????]?[~2~$18%122(0)+(1)]?[~2~$17%113(0)+(1)]?[~2~$20%135
+(0)+(1)]?[~2~$19%129(0)+(1)]?[~2~$18%137(0)+(1)]?[~2~$15%110(1)100+(1)]?[~2~$14%
+105(0)+(1)]?[~2~$13%111
+*** Garbage collection starting
+*** GC 3: 10-Feb-2004 11:00:48 (~ 879 ms cpu time, gc : 4 %)
+*** time 13 ms, 80379 occupied, 419606 recovered, 419621 free
+(0)+(1)]?[~2~$12%93~2~(4)42+(1)]?[$6%25(1)22+(1)]?[~2~$5%40(1)37+(0)]?[~2~$4%29~
+1~(2)22+(0)<77 24>D[24]<78 23>B$4%22(0)&_14Got equation for (df (phi 2) (x 2))
+<78 24>!*canonlist= (78) holdlis= (29 49 50 58 59 60 61 62 15 63 64 65 66 32 76
+77 68 70 74 67 69 73 71)
+!*canonlist is now 
+   ((df (phi 2) (x 2)))
+?|&#?]?[~2~<78 24>*** free or special functions found when dividing by 
+
+df(k,u(2))*u(2) + 2*k
+
+$3%27~2~(3)12+(0)<78 24>D[24]<79 23>B$3%12(0)&<79 24>!*canonlist= (78 29 79)
+ holdlis= (76 77 68 70 74 67 69 73 63 58 62 71 60 59 64 61 50 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)))
+?#?]?[~2~$2%15~2~(3)6+(0)<79 24>D[24]<80 23>B$2%6(0)&<80 24>!*canonlist= (78 29
+79 80) holdlis= (76 77 68 70 74 67 69 73 63 58 62 71 60 59 64 61 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)))
+??#?|&#??#?|&##??#?|&###??#?|&####??#?|&#####??#?|&######??#?|&#######??#?|&####
+####??#?|&#########??#?|&##########??#?|&???????????????]?[~3~$10%144(0)+(1)]?[~
+2~$11%143(0)+(1)]?[~2~$14%185(0)+(1)]?[~2~$14%303(0)+(1)]?[~2~$13%299(0)+(1)]?[$
+12%272(0)+(0)]?[~2~$11%257
+*** Garbage collection starting
+*** GC 4: 10-Feb-2004 11:00:49 (~ 1096 ms cpu time, gc : 4 %)
+*** time 13 ms, 82021 occupied, 417964 recovered, 417979 free
+(0)+(0)]?[~2~$10%225(1)216+(0)<80 24>D[24]<81 23>B$10%216(0)&<81 24>
+!*canonlist= (78 29 79 80 58 59 60 61 62 15 63 64 65 66 32 81) holdlis= (76 77 
+68 70 74 67 69 71)
+!*canonlist is now 
+   ((df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (
+df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (
+phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1
+) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 2) (x 2) 2))
+????????????????]?[~3~$16%187(0)+(1)]?[~3~$12%143~1~(2)127+(1)]?[$9%104(0)+(1)
+]?[~2~$8%97~3~<81 24>*** free or special functions found when dividing by 
+
+               3         2         2  2
+df(k,u(2))*u(2) *k - u(3)  + 2*u(2) *k
+
+(6)33+(0)]?[~2~0<81 24>D[24]????????????????]?[~2~$11%125(0)+(1)]?[~2~$16%183(0)
++(1)]?[~2~$17%185(0)+(1)]?[~2~$16%177(0)+(1)]?[~2~$15%247(0)+(1)]?[~2~$16%297
+*** Garbage collection starting
+*** GC 5: 10-Feb-2004 11:00:49 (~ 1359 ms cpu time, gc : 4 %)
+*** time 13 ms, 82845 occupied, 417142 recovered, 417155 free
+(0)+(1)]?[~2~$15%285(0)+(1)]?[~2~$14%254(0)+(1)]?[~4~$13%410(0)+(0)]?[$12%308(1)
+305+(1)]?[$11%277(0)+(0)]?[~2~$10%256(0)+(0)]?[~2~
+*** Garbage collection starting
+*** GC 6: 10-Feb-2004 11:00:49 (~ 1603 ms cpu time, gc : 4 %)
+*** time 13 ms, 82441 occupied, 417544 recovered, 417559 free
+$9%227~2~(4)141+(0)<81 23>D[23]<82 22>B$9%141(0)&_1Got equation for (df (phi 1)
+(x 2) 2)<82 23>!*canonlist= (78 29 79 80 58 59 60 61 62 15 63 64 65 66 32 82)
+ holdlis= (81 76 77 70 67 69 71)
+!*canonlist is now 
+   ((df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (
+df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (
+phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1
+) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (phi 1) (x 2) 2))
+?###############]?[~3~$9%186~2~(3)111+(0)<82 23>D[23]<83 22>B$9%111(0)&<83 23>
+!*canonlist= (78 29 79 80 58 59 60 61 62 15 63 64 65 66 32 82 83) holdlis= (76 
+77 70 67 69 71)
+!*canonlist is now 
+   ((df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (
+df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (
+phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1
+) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (phi 1) (x 2) 2) (df (xi 2) (x
+2) 2))
+?????????????????]?[~2~$9%66(0)+(1)]?[~2~$10%71(0)+(1)]?[~2~$12%158(0)+(1)]?[~2~
+$12%162(0)+(1)]?[~3~$12%255(0)+(0)]?[~3~$6%163(3)114+(0)]?[$5%96(0)+(0)]?[~2~$4%
+76(1)71+(0)]?[~2~
+*** Garbage collection starting
+*** GC 7: 10-Feb-2004 11:00:49 (~ 1838 ms cpu time, gc : 4 %)
+*** time 13 ms, 81637 occupied, 418348 recovered, 418363 free
+$3%61~4~(15)9+(0)<83 23>D[23]<84 22>B$3%9(0)&_17Got equation for (df (phi 3) (x
+2))<84 23>!*canonlist= (84) holdlis= (78 29 79 80 58 59 60 61 62 15 63 64 65 66
+32 82 83 76 77 70 67 69)
+!*canonlist is now 
+   ((df (phi 3) (x 2)))
+?]?[$3%12(1)9+(0)<84 23>D[23]<85 22>B$3%9(0)&<85 23>!*canonlist= (84 85)
+ holdlis= (82 76 83 77 70 67 69 63 58 62 60 59 64 61 29 79 65 80 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)))
+??|&#??]?[$2%9(1)6+(0)<85 23>D[23]<86 22>B$2%6(0)&<86 23>!*canonlist= (84 85 29
+86) holdlis= (82 76 83 77 70 67 69 63 58 62 60 59 64 61 65 80 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)))
+?#??|&#?#??|&##?#??|&###?#??|&####?#??|&#####?#??|&######?#??|&#######?#??|&####
+####?#??|&#########?#??|&##########?#??|&###########?#??|&############?#??]?[$8%
+106~1~(1)101+(0)<86 23>D[23]<87 22>B$8%101(0)&<87 23>!*canonlist= (84 85 29 86 
+80 58 59 60 61 62 15 63 64 65 66 32 87) holdlis= (76 83 77 70 67 69)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (
+df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (
+phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2
+) (u 3)) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (phi 1) (x 2
+) 2))
+?############?#??]?[$8%82~1~(2)69+(0)<87 23>D[23]<88 22>B$8%69(0)&<88 23>
+!*canonlist= (84 85 29 86 80 58 59 60 61 62 15 63 64 65 66 32 87 88) holdlis= (
+76 77 70 67 69)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (
+df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (
+phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2
+) (u 3)) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (phi 1) (x 2
+) 2) (df (xi 2) (x 2) 2))
+??????????????????]?[~1~$15%109(0)+(1)]?[~1~$14%105(0)+(1)]?[$11%88(0)+(1)]?[~2~
+$10%144(0)+(0)]?[~2~$9%99(0)+(0)]?[~2~$8%112(1)106+(0)]?[~2~$7%100(0)+(0)<88 23>
+D[23]<89 22>B$7%100(0)&_16Got equation for (df (xi 2) (x 2))<89 23>!*canonlist= 
+(84 85 89) holdlis= (29 86 80 58 59 60 61 62 15 63 64 65 66 32 87 88 77 70 67 69
+)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)))
+?##]?[~3~$6%72(1)69+(0)<89 23>D[23]<90 22>B$6%69(0)&<90 23>!*canonlist= (84 85 
+89 90) holdlis= (87 77 70 88 67 69 63 58 62 60 59 64 61 65 86 80 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)))
+??##|&#??##|&##??##]?[~3~$7%94~2~(4)45+(0)<90 23>D[23]<91 22>B$7%45(0)&<91 23>
+!*canonlist= (84 85 89 90 86 80 91) holdlis= (87 77 70 88 67 69 63 62 60 59 64 
+61 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (
+df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)))
+?##??##|&#?##??##]?[~3~$6%71(1)68+(0)<91 23>D[23]<92 22>B$6%68(0)&<92 23>
+!*canonlist= (84 85 89 90 86 80 91 59 92) holdlis= (87 77 70 88 67 69 63 62 64 
+61 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (
+df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (
+xi 1) (u 1)))
+?#?##??##|&#?#?##??##]?[~3~$6%67(0)+(0)<92 23>D[23]<93 22>B$6%67(0)&<93 23>
+!*canonlist= (84 85 89 90 86 80 91 59 92 61 93) holdlis= (87 77 70 88 67 69 63 
+64 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (
+df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (
+xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)))
+?#?#?##??##|&#?#?#?##??##]?[~3~$6%70(0)+(0)<93 23>D[23]<94 22>B$6%70(0)&<94 23>
+!*canonlist= (84 85 89 90 86 80 91 59 92 61 93 15 94) holdlis= (87 77 70 88 67 
+69 64 65 66 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (
+df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (
+xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3)
+(u 3)))
+?#?#?#?##??##|&#?#?#?#?##??##|&##?#?#?#?##??##|&###?#?#?#?##??##|&####?#?#?#?##?
+?##]?[~3~$6%91(0)+(1)<94 23>D[23]<95 22>B$6%91(0)&<95 23>!*canonlist= (84 85 89
+90 86 80 91 59 92 61 93 15 94 64 65 66 32 95) holdlis= (77 70 88 67 69)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (
+df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (
+xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3)
+(u 3)) (df (phi 2) (u 3)) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3))
+(df (phi 1) (x 2) 2))
+?####?#?#?#?##??##]?[~3~$11%214(0)+(1)]?[~3~
+*** Garbage collection starting
+*** GC 8: 10-Feb-2004 11:00:50 (~ 2084 ms cpu time, gc : 4 %)
+*** time 14 ms, 80995 occupied, 418990 recovered, 419005 free
+$10%230(0)+(0)]?[~3~$9%204(0)+(1)]?[~3~$7%181(1)171+(1)]?[$6%124(1)121+(0)]?[$5%
+99~2~(3)63+(0)<95 23>D[23]<96 22>B$5%63(0)&_1Got equation for (df (xi 1) (x 1) 2
+)<96 23>!*canonlist= (84 85 89 90 86 80 91 59 92 61 93 15 94 64 65 66 32 96)
+ holdlis= (95 77 70 67 69)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (
+df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (
+xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3)
+(u 3)) (df (phi 2) (u 3)) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3))
+(df (xi 1) (x 1) 2))
+?#################|&???????????????????]?[~1~$12%47(0)+(1)]?[~1~$13%60(0)+(1)]?[
+~1~$11%50(1)42+(1)]?[~3~$15%153(0)+(1)]?[~3~$15%505(0)+(1)]?[
+*** Garbage collection starting
+*** GC 9: 10-Feb-2004 11:00:50 (~ 2326 ms cpu time, gc : 5 %)
+*** time 14 ms, 88203 occupied, 411782 recovered, 411797 free
+~5~$10%247~3~(11)92+(1)]?[~2~$9%81(0)+(0)]?[~3~$8%133(0)+(0)]?[~3~$7%120(3)74+(0
+)]?[~2~$6%59(1)56+(0)]?[~2~$5%64~2~(3)34+(0)<96 23>D[23]<97 22>B$5%34(0)&_17
+Got equation for (df (phi 1) (x 2))<97 23>!*canonlist= (84 85 97) holdlis= (89 
+90 86 80 91 59 92 61 93 15 94 64 65 66 32 96 95 77 70 67)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)))
+?##]?[~2~$5%65~2~(5)25+(0)<97 23>D[23]<98 22>B$5%25(0)&<98 23>!*canonlist= (84 
+85 97 98) holdlis= (77 95 70 94 90 92 93 96 67 91 59 64 61 65 86 80 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)))
+??##]?[~2~$4%51~2~(3)27+(0)<98 23>D[23]<99 22>B$4%27(0)&<99 23>!*canonlist= (84
+85 97 98 99) holdlis= (77 95 70 94 92 93 96 67 91 59 64 61 65 86 80 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)))
+???##|&#???##|&##???##]?[~2~$5%44(1)34+(0)<99 23>D[23]<100 22>B$5%34(0)&<100 23>
+!*canonlist= (84 85 97 98 99 86 80 100) holdlis= (77 95 70 94 92 93 96 67 59 64
+61 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)))
+?##???##]?[~2~$2%19~2~(5)6+(0)<100 23>D[23]<101 22>B$2%6(0)&<101 23>
+!*canonlist= (84 85 97 98 99 86 80 100 101) holdlis= (77 95 70 94 92 93 96 67 64
+61 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (
+xi 2) (u 1)))
+??##???##]?[~2~$4%48~2~(4)21+(0)<101 23>D[23]<102 22>B$4%21(0)&<102 23>
+!*canonlist= (84 85 97 98 99 86 80 100 101 102) holdlis= (77 95 70 94 93 96 67 
+64 61 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (
+xi 2) (u 1)) (df (xi 1) (u 1)))
+???##???##]?[~2~$2%15~2~(3)6+(0)<102 23>D[23]<103 22>B$2%6(0)&<103 23>
+!*canonlist= (84 85 97 98 99 86 80 100 101 102 103) holdlis= (77 95 70 94 93 96
+67 64 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (
+xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)))
+????##???##]?[~2~$4%45~2~(4)18+(0)<103 23>D[23]<104 22>B$4%18(0)&<104 23>
+!*canonlist= (84 85 97 98 99 86 80 100 101 102 103 104) holdlis= (77 95 70 94 96
+67 64 65 66 15 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (
+xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)))
+?????##???##|&#?????##???##]?[~2~$4%52~2~(4)21+(0)<104 23>D[23]<105 22>B$4%21(0)
+&<105 23>!*canonlist= (84 85 97 98 99 86 80 100 101 102 103 104 15 105)
+ holdlis= (77 95 70 96 67 64 65 66 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (
+xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1)
+(u 2)) (df (phi 3) (u 3)))
+?#?????##???##]?[~2~$2%16~2~(4)6+(0)<105 23>D[23]<106 22>B$2%6(0)&<106 23>
+!*canonlist= (84 85 97 98 99 86 80 100 101 102 103 104 15 105 106) holdlis= (77
+95 70 96 67 65 66 32)
+!*canonlist is now 
+   ((df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2)) (df (xi 2) (x 2)) (
+df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (phi 1) (u 1)) (df (
+xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2) (u 2)) (df (xi 1)
+(u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)))
+??#?????##???##|&#??#?????##???##|&##??#?????##???##|&###??#?????##???##|&####??
+#?????##???##]?[~2~$8%122(0)+(1)]?[~2~$8%129(0)+(1)]?[~2~$7%106(1)96+(1)]?[
+*** Garbage collection starting
+*** GC 10: 10-Feb-2004 11:00:50 (~ 2543 ms cpu time, gc : 5 %)
+*** time 13 ms, 79293 occupied, 420692 recovered, 420707 free
+~3~$4%56(1)53+(0)]?[$3%36~1~(2)28+(0)]?[$2%14~2~<106 23>
+*** free or special functions found when dividing by 
+
+                               2
+2*df(k,u(2),2)*k - 3*df(k,u(2))
+
+(5)4+(0)<106 23>D[23]<107 22>B$2%4(0)&_19Got equation for (df (phi 2) (x 1))
+<107 23>!*canonlist= (107) holdlis= (84 85 97 98 99 86 80 100 101 102 103 104 15
+105 106 65 66 32 96 77 70 67)
+!*canonlist is now 
+   ((df (phi 2) (x 1)))
+?]?[$2%11(0)+(0)<107 23>D[23]<108 22>B$2%11(0)&<108 23>!*canonlist= (107 108)
+ holdlis= (77 70 96 67 100 97 99 98 105 102 104 85 65 106 103 101 86 80 66 15 32
+)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (phi 3) (x 2)))
+??]?[$2%8(3)2+(0)<108 23>D[23]<109 22>B$2%2(0)&<109 23>!*canonlist= (107 108 109
+) holdlis= (77 70 96 67 100 97 99 98 105 102 104 65 106 103 101 86 80 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)))
+???|&#???|&##???|&###???|&####???]?[$2%9(0)+(0)<109 23>D[23]<110 22>B$2%9(0)&
+<110 23>!*canonlist= (107 108 109 97 98 99 86 110) holdlis= (77 70 96 67 100 105
+102 104 65 106 103 101 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2))
+(df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)))
+?####???|&#?####???|&##?####???|&###?####???|&####?####???|&#####?####???|&#####
+#?####???|&#######?####???|&########?####???|&#########?####???|&##########?####
+???|&###########?####???]?[$4%63~2~(3)33+(0)<110 23>D[23]<111 22>B$4%33(0)&
+<111 23>!*canonlist= (107 108 109 97 98 99 86 110 100 101 102 103 104 15 105 106
+65 66 32 111) holdlis= (77 70 67)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (df (phi 1) (x 2))
+(df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (phi 2) (u 1)) (df (
+phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3) (u 2)) (df (phi 2)
+(u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)) (df (phi 1) (u 3)
+) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2))
+????????????????????]?[~2~$16%144(0)+(1)]?[~2~$14%128(0)+(1)]?[~1~$14%130(0)+(1)
+]?[~1~$13%127(1)123+(1)]?[~3~$9%147(0)+(1)]?[$8%104(3)68+(0)]?[~2~$7%58(1)54+(0)
+]?[~2~$5%39~1~<111 23>*** free or special functions found when dividing by 
+
+df(k,u(2))
+
+(1)34+(0)]?[~2~0<111 23>D[23]????????????????????]?[~2~$15%157(0)+(1)]?[~2~$11%
+126(0)+(1)]?[$11%126(0)+(1)]?[~1~$11%134(0)+(1)]?[~1~$10%110(1)104+(1)]?[~3~$8%
+123(0)+(1)]?[~3~
+*** Garbage collection starting
+*** GC 11: 10-Feb-2004 11:00:50 (~ 2769 ms cpu time, gc : 5 %)
+*** time 13 ms, 79157 occupied, 420828 recovered, 420843 free
+$12%302(0)+(1)]?[$9%239(0)+(1)]?[$8%210(0)+(0)]?[~2~$7%137~1~(2)129+(0)]?[~2~$7%
+140(0)+(0)]?[~2~$5%119(0)+(0)]?[~2~$3%79~2~(4)33+(0)<111 22>D[22]<112 21>B$3%33
+(0)&_19Got equation for (df (xi 2) (x 1))<112 22>!*canonlist= (107 112)
+ holdlis= (108 109 97 98 99 86 110 100 101 102 103 104 15 105 106 65 66 32 111 
+67)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)))
+?#|&#?#|&##?#]?[~2~$4%95(1)86+(0)<112 22>D[22]<113 21>B$4%86(0)&<113 22>
+!*canonlist= (107 112 108 109 113) holdlis= (67 111 100 99 98 105 102 104 110 65
+106 103 101 86 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)))
+?##?#]?[~2~$4%52(0)+(0)<113 22>D[22]<114 21>B$4%52(0)&<114 22>!*canonlist= (107
+112 108 109 113 114) holdlis= (67 111 100 99 105 102 104 110 65 106 103 101 86 
+66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)))
+??##?#]?[~2~$3%69(1)60+(0)<114 22>D[22]<115 21>B$3%60(0)&<115 22>!*canonlist= (
+107 112 108 109 113 114 115) holdlis= (67 111 100 105 102 104 110 65 106 103 101
+86 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)))
+???##?#|&#???##?#|&##???##?#]?[~2~$4%62(1)53+(0)<115 22>D[22]<116 21>B$4%53(0)&
+<116 22>!*canonlist= (107 112 108 109 113 114 115 86 110 116) holdlis= (67 111 
+105 102 104 65 106 103 101 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)))
+?##???##?#]?[~2~$3%45(0)+(0)<116 22>D[22]<117 21>B$3%45(0)&<117 22>!*canonlist= 
+(107 112 108 109 113 114 115 86 110 116 117) holdlis= (67 111 105 102 104 65 106
+103 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)))
+??##???##?#]?[~2~$2%33~2~(4)13+(0)<117 22>D[22]<118 21>B$2%13(0)&<118 22>
+!*canonlist= (107 112 108 109 113 114 115 86 110 116 117 118) holdlis= (67 111 
+105 104 65 106 103 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)))
+???##???##?#]?[~2~$3%42(0)+(0)<118 22>D[22]<119 21>B$3%42(0)&<119 22>
+!*canonlist= (107 112 108 109 113 114 115 86 110 116 117 118 119) holdlis= (67 
+111 105 104 65 106 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)))
+????##???##?#]?[~2~$2%32~2~(4)12+(0)<119 22>D[22]<120 21>B$2%12(0)&<120 22>
+!*canonlist= (107 112 108 109 113 114 115 86 110 116 117 118 119 120) holdlis= (
+67 111 105 65 106 66 15 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)))
+?????##???##?#|&#?????##???##?#]?[~2~$2%32~2~(4)12+(0)<120 22>D[22]<121 21>B$2%
+12(0)&<121 22>!*canonlist= (107 112 108 109 113 114 115 86 110 116 117 118 119 
+120 15 121) holdlis= (67 111 65 106 66 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)))
+?#?????##???##?#]?[~2~$3%40(0)+(0)<121 22>D[22]<122 21>B$3%40(0)&<122 22>
+!*canonlist= (107 112 108 109 113 114 115 86 110 116 117 118 119 120 15 121 122)
+ holdlis= (67 111 65 66 32)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)
+))
+??#?????##???##?#|&#??#?????##???##?#|&##??#?????##???##?#|&###??#?????##???##?#
+]?[~2~$3%83(0)+(1)]?[$2%43(0)+(0)<122 22>D[22]<123 21>B$2%43(0)&<123 22>
+!*canonlist= (107 112 108 109 113 114 115 86 110 116 117 118 119 120 15 121 122
+65 66 32 123) holdlis= (67)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)
+) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2))
+?????????????????????]?[~3~$14%293
+*** Garbage collection starting
+*** GC 12: 10-Feb-2004 11:00:51 (~ 2987 ms cpu time, gc : 5 %)
+*** time 12 ms, 78911 occupied, 421074 recovered, 421089 free
+(0)+(1)]?[~3~$12%345(0)+(1)]?[~2~$10%265(0)+(1)]?[~5~$11%809(0)+(1)]?[~3~
+*** Garbage collection starting
+*** GC 13: 10-Feb-2004 11:00:51 (~ 3174 ms cpu time, gc : 5 %)
+*** time 13 ms, 83513 occupied, 416472 recovered, 416487 free
+$10%740(0)+(0)]?[~2~$9%622(1)618+(0)]?[~2~
+*** Garbage collection starting
+*** GC 14: 10-Feb-2004 11:00:51 (~ 3335 ms cpu time, gc : 5 %)
+*** time 13 ms, 83125 occupied, 416860 recovered, 416875 free
+$8%574(0)+(0)]?[~3~$6%498(0)+(0)]?[~3~$4%432(0)+(0)]?[~2~
+*** Garbage collection starting
+*** GC 15: 10-Feb-2004 11:00:51 (~ 3494 ms cpu time, gc : 5 %)
+*** time 13 ms, 84401 occupied, 415584 recovered, 415599 free
+$3%298~1~(5)135+(0)<123 22>D[22]<124 21>B$3%135(0)&<124 22>!*canonlist= (107 112
+108 109 113 114 115 86 110 116 117 118 119 120 15 121 122 65 66 32 123 124)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)
+) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2) (df
+(phi 1) (u 2) (x 1)))
+<124 22>!*canonlist= (107 112 108 109 113 114 115 86 110 116 117 118 119 120 15
+121 122 65 66 32 123 124)!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)
+) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2) (df
+(phi 1) (u 2) (x 1)))
+<125 22>B$2%13(0)
+made eqn 125 from integrability conditions on eqns 32 and 118 for (df (xi 1) (u
+3) (u 1))
+<126 22>B$3%54(0)
+made eqn 126 from integrability conditions on eqns 32 and 123 for (df (xi 1) (u
+3) (x 1) 2)
+<127 22>B$5%94(0)
+made eqn 127 from integrability conditions on eqns 32 and 115 for (df (xi 1) (u
+3) (x 2))
+<128 22>B$2%4(0)
+made eqn 128 from integrability conditions on eqns 109 and 107 for (df (phi 2) (
+x 2) (x 1))
+<129 22>B$2%9(0)
+made eqn 129 from integrability conditions on eqns 109 and 110 for (df (phi 2) (
+u 1) (x 2))
+<130 22>B$2%12(0)
+made eqn 130 from integrability conditions on eqns 109 and 120 for (df (phi 2) (
+u 2) (x 2))
+<131 22>B$3%40(0)
+made eqn 131 from integrability conditions on eqns 109 and 122 for (df (phi 2) (
+u 3) (x 2))
+<132 22>B$2%8(1)6
+made eqn 132 from integrability conditions on eqns 107 and 110 for (df (phi 2) (
+u 1) (x 1))
+<133 22>B$3%22(0)
+made eqn 133 from integrability conditions on eqns 107 and 120 for (df (phi 2) (
+u 2) (x 1))
+<134 22>B$3%38(0)
+made eqn 134 from integrability conditions on eqns 107 and 122 for (df (phi 2) (
+u 3) (x 1))
+<135 22>B$5%44(0)
+made eqn 135 from integrability conditions on eqns 15 and 118 for (df (xi 1) (u
+2) (u 1))
+<136 22>B$5%136(0)
+made eqn 136 from integrability conditions on eqns 15 and 123 for (df (xi 1) (u
+2) (x 1) 2)
+<137 22>B$7%192(0)
+made eqn 137 from integrability conditions on eqns 15 and 115 for (df (xi 1) (u
+2) (x 2))
+<138 22>B$5%51(0)
+made eqn 138 from integrability conditions on eqns 66 and 112 for (df (xi 2) (u
+3) (x 1))
+<139 22>B$5%77(0)
+made eqn 139 from integrability conditions on eqns 66 and 117 for (df (xi 2) (u
+3) (u 1))
+<140 22>B$5%72(0)
+made eqn 140 from integrability conditions on eqns 66 and 114 for (df (xi 2) (u
+3) (x 2))
+<141 22>B$2%8(0)
+made eqn 141 from integrability conditions on eqns 86 and 108 for (df (phi 3) (u
+1) (x 2))
+<142 22>B$2%22(0)
+made eqn 142 from integrability conditions on eqns 86 and 121 for (df (phi 3) (u
+3) (u 1))
+<143 22>B$5%56(0)
+made eqn 143 from integrability conditions on eqns 86 and 119 for (df (phi 3) (u
+2) (u 1))
+<144 22>B$5%86(0)
+made eqn 144 from integrability conditions on eqns 65 and 116 for (df (phi 1) (u
+3) (u 1))
+*** Garbage collection starting
+*** GC 16: 10-Feb-2004 11:00:51 (~ 3732 ms cpu time, gc : 5 %)
+*** time 14 ms, 89303 occupied, 410682 recovered, 410697 free
+<145 22>B$9%185(0)
+made eqn 145 from integrability conditions on eqns 65 and 113 for (df (phi 1) (u
+3) (x 2))
+<146 22>B$5%222(0)
+made eqn 146 from integrability conditions on eqns 65 and 124 for (df (phi 1) (u
+3) (u 2) (x 1))
+<147 22>B$3%46(0)
+made eqn 147 from integrability conditions on eqns 110 and 120 for (df (phi 2) (
+u 2) (u 1))
+<148 22>B$3%33(0)
+made eqn 148 from integrability conditions on eqns 110 and 122 for (df (phi 2) (
+u 3) (u 1))
+<149 22>B$4%54(0)
+made eqn 149 from integrability conditions on eqns 108 and 121 for (df (phi 3) (
+u 3) (x 2))
+<150 22>B$5%70(0)
+made eqn 150 from integrability conditions on eqns 108 and 119 for (df (phi 3) (
+u 2) (x 2))
+<151 22>B$5%89(0)
+made eqn 151 from integrability conditions on eqns 120 and 122 for (df (phi 2) (
+u 3) (u 2))
+<152 22>B$6%113(0)
+made eqn 152 from integrability conditions on eqns 121 and 119 for (df (phi 3) (
+u 3) (u 2))
+<153 22>B$2%51(0)
+made eqn 153 from integrability conditions on eqns 118 and 123 for (df (xi 1) (u
+1) (x 1) 2)
+<154 22>B$3%68(0)
+made eqn 154 from integrability conditions on eqns 118 and 115 for (df (xi 1) (u
+1) (x 2))
+<155 22>B$4%74(0)
+made eqn 155 from integrability conditions on eqns 112 and 117 for (df (xi 2) (u
+1) (x 1))
+<156 22>B$5%99(0)
+made eqn 156 from integrability conditions on eqns 112 and 114 for (df (xi 2) (x
+2) (x 1))
+<157 22>B$5%85(0)
+made eqn 157 from integrability conditions on eqns 117 and 114 for (df (xi 2) (u
+1) (x 2))
+<158 22>B$3%73(0)
+made eqn 158 from integrability conditions on eqns 123 and 115 for (df (xi 1) (x
+2) (x 1) 2)
+<159 22>B$6%128(0)
+made eqn 159 from integrability conditions on eqns 116 and 113 for (df (phi 1) (
+u 1) (x 2))
+<160 22>B$8%302(0)
+*** Garbage collection starting
+*** GC 17: 10-Feb-2004 11:00:51 (~ 3960 ms cpu time, gc : 5 %)
+*** time 15 ms, 96807 occupied, 403178 recovered, 403193 free
+
+made eqn 160 from integrability conditions on eqns 116 and 124 for (df (phi 1) (
+u 2) (u 1) (x 1))
+<161 22>B$8%466(0)
+made eqn 161 from integrability conditions on eqns 113 and 124 for (df (phi 1) (
+u 2) (x 2) (x 1))
+??????????????????????]?[~2~$1%5~2~(4)1+(1)<161 59>D[59]<162 58>B$1%1(0)&_2
+Got equation for (df (phi 3) (x 1) 2)<162 59>!*canonlist= (107 112 108 109 113 
+114 115 86 110 116 117 118 119 120 15 121 122 65 66 32 162) holdlis= (123 124 
+161 160 146 137 145 136 159 152 156 127 151 144 157 139 158 155 140 150 154 126
+143 149 138 153 147 135 131 134 148 133 142 125 130 129 141 132)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)
+) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (phi 3) (x 1) 2))
+?####################|&??????????????????????]?[~3~$5%136(0)+(1)]?[~3~$4%148(0)
++(0)]?[$3%101(0)101+(0)]?[$2%50(0)+(0)<162 59>D[59]<163 58>B$2%50(0)&_1
+Got equation for (df (phi 1) (x 1) 2)<163 59>!*canonlist= (107 112 108 109 113 
+114 115 86 110 116 117 118 119 120 15 121 122 65 66 32 162 163) holdlis= (123 
+161 160 146 137 145 136 124 159 152 127 151 144 157 139 158 155 140 150 154 126
+143 149 138 153 147 135 131 134 148 133 142 125 130 129 141 132)
+!*canonlist is now 
+   ((df (phi 2) (x 1)) (df (xi 2) (x 1)) (df (phi 3) (x 2)) (df (phi 2) (x 2)) (
+df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (xi 1) (x 2)) (df (phi 3) (u 1)) (df (
+phi 2) (u 1)) (df (phi 1) (u 1)) (df (xi 2) (u 1)) (df (xi 1) (u 1)) (df (phi 3)
+(u 2)) (df (phi 2) (u 2)) (df (xi 1) (u 2)) (df (phi 3) (u 3)) (df (phi 2) (u 3)
+) (df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (phi 3) (x 1) 2) (
+df (phi 1) (x 1) 2))
+?#####################|&???????????????????????]?[$2%64(0)+(1)]?[$1%16~4~
+<163 59>*** free or special functions found when dividing by 
+
+df(k,u(2))*u(2) + k
+
+(15)1+(1)]?[0<163 59>D[59]???????????????????????]?[$2%4(0)+(1)]?[~2~$1%5~2~(4)1
++(1)]?[0<163 58>D[58]???????????????????????]?[$2%11(0)+(1)]?[~2~0<163 57>D[57]?
+??????????????????????]?[0<163 56>D[56]???????????????????????]?[~3~$8%274(0)+(1
+)]?[~3~$7%251(0)+(1)]?[~3~$7%254(3)152+(1)]?[~3~
+*** Garbage collection starting
+*** GC 18: 10-Feb-2004 11:00:52 (~ 4232 ms cpu time, gc : 5 %)
+*** time 16 ms, 99263 occupied, 400722 recovered, 400737 free
+$6%302(0)+(0)]?[~2~$5%289(0)+(0)]?[~2~$4%215(0)+(0)]?[$3%192(0)+(0)]?[$2%142(0)
+142+(0)]?[$1%17~3~(16)1+(0)<163 55>D[55]<164 54>B$1%1(0)&_23Got equation for (df
+(phi 3) (x 1))<164 55>!*canonlist= (164) holdlis= (107 112 108 109 113 114 115 
+86 110 116 117 118 119 120 15 121 122 65 66 32 162 163 123 161 160 146 137 145 
+136 124 152 127 151 144 157 139 158 155 140 150 154 126 143 149 138 147 135 131
+134 148 133 142 125 130)
+!*canonlist is now 
+   ((df (phi 3) (x 1)))
+!
+
+::((symvec (5 4) (4 1) (3 0) (2 0) (1 0) (0 0)) (eqns (5 4) (4 1) (3 0) (2 0) (1
+0) (0 0))):: 
+
+<164 55>D[55]S<164 54>D[54]<165 54>B$1%1(0)1!
+
+::((symvec (5 3) (4 2) (3 0) (2 0) (1 0) (0 0)) (eqns (5 3) (4 2) (3 0) (2 0) (1
+0) (0 0))):: 
+
+<165 54>D[54]S<165 53>D[53]S<165 52>D[52]<166 52>B$1%2(1)1!
+
+::((symvec (5 3) (4 1) (3 1) (2 0) (1 0) (0 0)) (eqns (5 3) (4 1) (3 1) (2 0) (1
+0) (0 0))):: 
+
+<166 52>D[52]S<166 51>D[51]<167 51>B$1%4(3)1!
+
+::((symvec (5 3) (4 0) (3 2) (2 0) (1 0) (0 0)) (eqns (5 3) (4 0) (3 2) (2 0) (1
+0) (0 0))):: 
+
+<167 51>D[51]S<167 50>D[50]<168 50>B$1%6~2~(5)1!
+
+::((symvec (5 3) (4 0) (3 1) (2 1) (1 0) (0 0)) (eqns (5 3) (4 0) (3 1) (2 1) (1
+0) (0 0))):: 
+
+<168 50>D[50]S<168 49>D[49]<169 49>B$1%6~2~(5)1!
+
+::((symvec (5 3) (4 0) (3 0) (2 2) (1 0) (0 0)) (eqns (5 3) (4 0) (3 0) (2 2) (1
+0) (0 0))):: 
+
+<169 49>D[49]S<169 48>D[48]<170 48>B$2%12(0)S<170 48>D[48]<171 48>B$2%12(0)S
+<171 48>D[48]<172 48>B$2%13(0)S<172 48>D[48]S<172 47>D[47]<173 47>B$2%13(0)S
+<173 47>D[47]S<173 46>D[46]S<173 45>D[45]<174 45>B$3%33(0)S<174 45>D[45]<175 45>
+B$1%5~2~(4)1S<175 45>D[45]<176 45>B$3%40(0)S<176 45>D[45]<177 45>B$1%5~2~(4)1S
+<177 45>D[45]<178 45>B$3%42(0)S<178 45>D[45]<179 45>B$1%5~2~(4)1S<179 45>D[45]
+<180 45>B$3%45(0)S<180 45>D[45]<181 45>B$1%15~3~(14)1S<181 45>D[45]<182 45>B$5%
+44(0)S<182 45>D[45]S<182 44>D[44]<183 44>B$4%52(0)S<183 44>D[44]<184 44>B$1%7~2~
+(6)1<184 44>D[44]S<184 43>D[43]<185 43>B$4%53(0)S<185 43>D[43]<186 43>B$5%51(0)S
+<186 43>D[43]S<186 42>D[42]<187 42>B$1%5~2~(4)1<187 42>D[42]S<187 41>D[41]
+<188 41>B$2%26~3~(10)3S<188 41>D[41]<189 41>B$3%60(0)S<189 41>D[41]<190 41>B$1%5
+~2~(4)1<190 41>D[41]S<190 40>D[40]<191 40>B$1%5~2~(4)1<191 40>D[40]S<191 39>D[39
+]<192 39>B$5%72(0)S<192 39>D[39]<193 39>B$2%17~2~(4)6S<193 39>D[39]<194 39>B$1%5
+~2~(4)1S<194 39>D[39]<195 39>B$5%77(0)S<195 39>D[39]<196 39>B$4%86(0)S<196 39>D[
+39]<197 39>B$3%29~2~(4)11S<197 39>D[39]<198 39>B$5%86(0)S<198 39>D[39]<199 39>B$
+5%89(0)S
+*** Garbage collection starting
+*** GC 19: 10-Feb-2004 11:00:52 (~ 4506 ms cpu time, gc : 5 %)
+*** time 14 ms, 89099 occupied, 410887 recovered, 410901 free
+<199 39>D[39]<200 39>B$5%94(0)S<200 39>D[39]<201 39>B$6%113(0)S<201 39>D[39]
+<202 39>B$3%135(0)S<202 39>D[39]<203 39>B$3%59(1)48S<203 39>D[39]<204 39>B$9%185
+(0)S<204 39>D[39]<205 39>B$7%192(0)S<205 39>D[39]<206 39>B$5%222(0)S<206 39>D[39
+]<207 39>B$5%104~2~(3)65S<207 39>D[39]<208 39>B$3%103~2~(3)64|&?|&??|&???|&????|
+&?????|&??????|&???????|&????????|&?????????|&??????????|&???????????|&??#??????
+???|&#??#?????????|&##??#?????????|&???????????????|&????????????????|&?????????
+????????]?[~2~$1%5~2~<208 39>
+*** free or special functions found when dividing by 
+
+               2           3
+df(k,u(2))*u(3)  + 2*u(2)*k
+
+(4)1+(1)]?[0<208 39>D[39]?????????????????]?[$1%4(3)1+(1)]?[0<208 38>D[38]??????
+???????????]?[$2%6(0)+(1)]?[$1%2~1~(1)1+(0)]?[0<208 37>D[37]?????????????????]?[
+$2%5(1)3+(1)]?[$3%13(0)+(1)]?[~2~$2%9(0)+(1)]?[$1%3~1~(2)1+(0)]?[0<208 36>D[36]?
+????????????????|&??????????????????]?[~4~$4%226(0)+(0)]?[~3~$2%130~6~<208 35>
+*** free or special functions found when dividing by 
+
+                            2                          2
+df(k,u(2),3)*df(k,u(2))*u(2) *k + 2*df(k,u(2),3)*u(2)*k
+
+                 2     2                            2     2
+ - 2*df(k,u(2),2) *u(2) *k + df(k,u(2),2)*df(k,u(2)) *u(2)
+
+                                                      2               3
+ - 8*df(k,u(2),2)*df(k,u(2))*u(2)*k + 4*df(k,u(2),2)*k  + 6*df(k,u(2)) *u(2)
+
+               2
+ - 6*df(k,u(2)) *k
+
+(32)12+(0)]?[~2~0<208 35>D[35]??????????????????]?[~5~
+*** Garbage collection starting
+*** GC 20: 10-Feb-2004 11:00:52 (~ 4758 ms cpu time, gc : 5 %)
+*** time 14 ms, 88449 occupied, 411537 recovered, 411551 free
+$7%530(0)+(1)]?[~5~$6%478(0)+(1)]?[$7%535(0)+(1)]?[
+*** Garbage collection starting
+*** GC 21: 10-Feb-2004 11:00:52 (~ 4928 ms cpu time, gc : 5 %)
+*** time 14 ms, 90907 occupied, 409078 recovered, 409093 free
+~3~$5%384(0)+(1)]?[~2~$4%321(1)312+(0)]?[~3~$3%270~5~<208 34>
+*** free or special functions found when dividing by 
+
+                                2                   3                 2       2
+2*df(k,u(2),3)*df(k,u(2))*u(2)*k  + 4*df(k,u(2),3)*k  + 2*df(k,u(2),2) *u(2)*k
+
+                            2                                     2
+ - 5*df(k,u(2),2)*df(k,u(2)) *u(2)*k + 2*df(k,u(2),2)*df(k,u(2))*k
+
+               4                     3
+ - 3*df(k,u(2)) *u(2) - 15*df(k,u(2)) *k
+
+(21)60+(0)]?[~3~0<208 34>D[34]??????????????????]?[~5~$6%212(0)+(1)]?[
+*** Garbage collection starting
+*** GC 22: 10-Feb-2004 11:00:53 (~ 5107 ms cpu time, gc : 5 %)
+*** time 14 ms, 92153 occupied, 407832 recovered, 407847 free
+~5~$4%228~3~(6)96+(1)]?[$5%120(0)+(1)]?[~3~$3%56(0)+(1)]?[~2~$2%38~3~<208 33>
+*** free or special functions found when dividing by 
+
+                2                                             3
+2*df(k,u(2),3)*k  - 2*df(k,u(2),2)*df(k,u(2))*k - 3*df(k,u(2))
+
+(9)13+(0)]?[~2~0<208 33>D[33]??????????????????]?[~5~$5%251(0)+(1)]?[~4~$4%224~3
+~(9)96+(0)]?[~3~$2%97~5~(23)12+(0)]?[~2~0<208 32>D[32]??????????????????]?[
+*** Garbage collection starting
+*** GC 23: 10-Feb-2004 11:00:53 (~ 5319 ms cpu time, gc : 5 %)
+*** time 14 ms, 88139 occupied, 411847 recovered, 411861 free
+~1~$10%208(0)+(1)]?[~5~$11%827(0)+(1)]?[~5~
+*** Garbage collection starting
+*** GC 24: 10-Feb-2004 11:00:53 (~ 5504 ms cpu time, gc : 5 %)
+*** time 15 ms, 94685 occupied, 405300 recovered, 405315 free
+$11%871(3)614+(1)]?[$10%615(0)+(1)]?[~3~
+*** Garbage collection starting
+*** GC 25: 10-Feb-2004 11:00:53 (~ 5683 ms cpu time, gc : 5 %)
+*** time 15 ms, 95793 occupied, 404192 recovered, 404207 free
+$9%549(0)+(1)]?[~4~$8%730(3)473+(0)]?[~3~$7%584(3)429+(0)]?[~2~$6%403
+*** Garbage collection starting
+*** GC 26: 10-Feb-2004 11:00:53 (~ 5843 ms cpu time, gc : 6 %)
+*** time 15 ms, 92637 occupied, 407348 recovered, 407363 free
+(0)+(0)]?[~2~$5%195~2~(6)115+(0)]?[~3~$4%95(1)86+(0)]?[~3~0<208 31>D[31]????????
+??????????]?[~1~$7%140(0)+(1)]?[~3~$6%314(0)+(1)]?[~4~$6%443(0)+(0)]?[~3~$5%367
+*** Garbage collection starting
+*** GC 27: 10-Feb-2004 11:00:53 (~ 6035 ms cpu time, gc : 6 %)
+*** time 15 ms, 93033 occupied, 406953 recovered, 406967 free
+(3)256+(0)]?[~2~$4%222(0)+(0)]?[~2~$3%79~2~(6)42+(0)]?[~3~0<208 30>D[30]????????
+??????????]?[~1~$6%119(0)+(1)]?[~5~$8%470(0)+(1)]?[$7%442(1)413+(1)]?[~3~
+*** Garbage collection starting
+*** GC 28: 10-Feb-2004 11:00:54 (~ 6224 ms cpu time, gc : 6 %)
+*** time 15 ms, 94043 occupied, 405943 recovered, 405957 free
+$6%534(0)+(1)]?[~4~$5%491(3)319+(0)]?[~3~$4%348(3)244+(0)]?[~2~$3%100~2~(4)60+(0
+)]?[~3~0<208 29>D[29]??????????????????]?[~1~$6%87(0)+(1)]?[~5~
+*** Garbage collection starting
+*** GC 29: 10-Feb-2004 11:00:54 (~ 6407 ms cpu time, gc : 6 %)
+*** time 15 ms, 90087 occupied, 409899 recovered, 409913 free
+$8%414(0)+(1)]?[~5~$7%411(3)285+(1)]?[$6%297(0)+(1)]?[~3~$5%296(0)+(1)]?[~4~
+*** Garbage collection starting
+*** GC 30: 10-Feb-2004 11:00:54 (~ 6603 ms cpu time, gc : 6 %)
+*** time 14 ms, 91805 occupied, 408180 recovered, 408195 free
+$5%394(3)260+(0)]?[~3~$4%314(3)232+(0)]?[~2~$3%83~2~(6)45+(0)]?[~3~0<208 28>D[28
+]??????????????????]?[~1~$3%39~1~(2)33+(1)]?[~3~$5%185(0)+(1)]?[~4~$5%258(3)168
++(0)]?[~3~$4%182(3)125+(0)]?[~2~$3%58~2~(4)33+(0)]?[~2~0<208 27>D[27]???????????
+???????]?[$5%86(0)+(1)]?[~1~$5%84(0)+(1)]?[
+*** Garbage collection starting
+*** GC 31: 10-Feb-2004 11:00:54 (~ 6799 ms cpu time, gc : 6 %)
+*** time 13 ms, 88703 occupied, 411282 recovered, 411297 free
+~5~$7%547(0)+(1)]?[~5~$7%554(0)+(1)]?[
+*** Garbage collection starting
+*** GC 32: 10-Feb-2004 11:00:54 (~ 6998 ms cpu time, gc : 6 %)
+*** time 15 ms, 97445 occupied, 402540 recovered, 402555 free
+$6%552(0)+(1)]?[~3~$5%436(0)+(1)]?[~4~$4%408(3)262+(0)]?[~3~$2%277~7
+*** Garbage collection starting
+*** GC 33: 10-Feb-2004 11:00:55 (~ 7235 ms cpu time, gc : 6 %)
+*** time 14 ms, 93374 occupied, 406611 recovered, 406626 free
+~<208 26>*** free or special functions found when dividing by 
+
+                       2     5  3                                 4  4
+df(k,u(2),3)*df(k,u(2)) *u(2) *k  + 4*df(k,u(2),3)*df(k,u(2))*u(2) *k
+
+                      3  5                 2                5  3
+ + 4*df(k,u(2),3)*u(2) *k  - 2*df(k,u(2),2) *df(k,u(2))*u(2) *k
+
+                 2     2     2  2                 2     4  4
+ + 4*df(k,u(2),2) *u(3) *u(2) *k  - 4*df(k,u(2),2) *u(2) *k
+
+                          3     5  2                             2     2     2
+ + df(k,u(2),2)*df(k,u(2)) *u(2) *k  - 10*df(k,u(2),2)*df(k,u(2)) *u(3) *u(2) *k
+
+                            2     4  3                                 2       2
+ - 6*df(k,u(2),2)*df(k,u(2)) *u(2) *k  + 8*df(k,u(2),2)*df(k,u(2))*u(3) *u(2)*k
+
+                                  3  4                      2  3
+ - 12*df(k,u(2),2)*df(k,u(2))*u(2) *k  + 8*df(k,u(2),2)*u(3) *k
+
+                      2  5               4     2     2               4     4  2
+ + 8*df(k,u(2),2)*u(2) *k  + 6*df(k,u(2)) *u(3) *u(2)  + 6*df(k,u(2)) *u(2) *k
+
+                3     2                      3     3  3
+ - 12*df(k,u(2)) *u(3) *u(2)*k + 6*df(k,u(2)) *u(2) *k
+
+                2     2  2                2     2  4
+ - 12*df(k,u(2)) *u(3) *k  - 12*df(k,u(2)) *u(2) *k
+
+(70)12+(0)]?[~2~0<208 26>D[26]??????????????????]?[$5%72(0)+(1)]?[~1~$5%74(0)+(1
+)]?[~5~$8%418(0)+(1)]?[~5~$8%610
+*** Garbage collection starting
+*** GC 34: 10-Feb-2004 11:00:55 (~ 7430 ms cpu time, gc : 6 %)
+*** time 15 ms, 93978 occupied, 406008 recovered, 406022 free
+(0)+(1)]?[$7%615(0)+(1)]?[~3~$6%467(0)+(1)]?[~4~$5%437(3)286+(0)]?[~3~
+*** Garbage collection starting
+*** GC 35: 10-Feb-2004 11:00:55 (~ 7620 ms cpu time, gc : 6 %)
+*** time 14 ms, 93452 occupied, 406534 recovered, 406548 free
+$4%326(3)243+(0)]?[~2~$3%79~2~(6)42+(0)]?[~3~0<208 25>D[25]??????????????????]?[
+0<208 24>D[24]??????????????????]?[$2%51(0)+(1)]?[~2~$1%46~6~<208 23>
+*** free or special functions found when dividing by 
+
+                       2     2                                        2  2
+df(k,u(2),3)*df(k,u(2)) *u(3) *u(2)*k + 2*df(k,u(2),3)*df(k,u(2))*u(3) *k
+
+                                 2  4                        5
+ + 2*df(k,u(2),3)*df(k,u(2))*u(2) *k  + 4*df(k,u(2),3)*u(2)*k
+
+                 2                2                        2     2  2
+ - 2*df(k,u(2),2) *df(k,u(2))*u(3) *u(2)*k + 4*df(k,u(2),2) *u(3) *k
+
+                 2     2  4                          3     2
+ - 8*df(k,u(2),2) *u(2) *k  + df(k,u(2),2)*df(k,u(2)) *u(3) *u(2)
+
+                             2     2                               2     2  3
+ - 22*df(k,u(2),2)*df(k,u(2)) *u(3) *k + 20*df(k,u(2),2)*df(k,u(2)) *u(2) *k
+
+                                   4                   5                4     2
+ - 4*df(k,u(2),2)*df(k,u(2))*u(2)*k  + 8*df(k,u(2),2)*k  + 18*df(k,u(2)) *u(3)
+
+                4     2  2               3       3                2  4
+ - 18*df(k,u(2)) *u(2) *k  - 6*df(k,u(2)) *u(2)*k  - 12*df(k,u(2)) *k
+
+(45)1+(1)]?[0<208 23>D[23]??????????????????]?[$1%22~5~(21)1+(2)]?[0<208 22>D[22
+]??????????????????]?[$2%2(0)+(2)]?[$1%1(0)+(1)]?[0<208 21>D[21]????????????????
+??]?[$5%78(0)+(2)]?[$4%66(1)54+(2)]?[$3%48(0)+(1)]?[$2%49(1)45+(1)]?[$1%18~4~
+<208 20>*** free or special functions found when dividing by 
+
+                       2                                     2
+df(k,u(2),3)*df(k,u(2)) *u(2)*k + 2*df(k,u(2),3)*df(k,u(2))*k
+
+                 2                                   2  2
+ - 2*df(k,u(2),2) *df(k,u(2))*u(2)*k + 4*df(k,u(2),2) *k
+
+                          3                                  2
+ + df(k,u(2),2)*df(k,u(2)) *u(2) - 22*df(k,u(2),2)*df(k,u(2)) *k
+
+                4
+ + 18*df(k,u(2))
+
+(17)1+(0)]?[0<208 20>D[20]??????????????????]?[~4~
+*** Garbage collection starting
+*** GC 36: 10-Feb-2004 11:00:55 (~ 7835 ms cpu time, gc : 6 %)
+*** time 15 ms, 93486 occupied, 406500 recovered, 406514 free
+$7%1233(0)+(2)]?[~6
+*** Garbage collection starting
+*** GC 37: 10-Feb-2004 11:00:55 (~ 8010 ms cpu time, gc : 6 %)
+*** time 16 ms, 100338 occupied, 399648 recovered, 399662 free
+~$8%1708
+*** Garbage collection starting
+*** GC 38: 10-Feb-2004 11:00:56 (~ 8198 ms cpu time, gc : 6 %)
+*** time 17 ms, 107054 occupied, 392932 recovered, 392946 free
+(0)+(1)]?[~1~$7%1824
+*** Garbage collection starting
+*** GC 39: 10-Feb-2004 11:00:56 (~ 8493 ms cpu time, gc : 6 %)
+*** time 18 ms, 109529 occupied, 390456 recovered, 390471 free
+(0)+(1)]?[~3~
+*** Garbage collection starting
+*** GC 40: 10-Feb-2004 11:00:56 (~ 8770 ms cpu time, gc : 6 %)
+*** time 16 ms, 109813 occupied, 390173 recovered, 390187 free
+$6%1677(0)+(1)]?[~3~
+*** Garbage collection starting
+*** GC 41: 10-Feb-2004 11:00:57 (~ 9181 ms cpu time, gc : 6 %)
+*** time 16 ms, 103231 occupied, 396754 recovered, 396769 free
+$5%1395(0)+(1)]?[~4~
+*** Garbage collection starting
+*** GC 42: 10-Feb-2004 11:00:57 (~ 9335 ms cpu time, gc : 6 %)
+*** time 16 ms, 101831 occupied, 398154 recovered, 398169 free
+$4%1379(0)+(0)]?[~3~
+*** Garbage collection starting
+*** GC 43: 10-Feb-2004 11:00:57 (~ 9513 ms cpu time, gc : 6 %)
+*** time 16 ms, 106365 occupied, 393620 recovered, 393635 free
+$2%982
+*** Garbage collection starting
+*** GC 44: 10-Feb-2004 11:00:57 (~ 9750 ms cpu time, gc : 6 %)
+*** time 17 ms, 110135 occupied, 389850 recovered, 389865 free
+(3)768+(0)]?[~2~$1%231~8~<208 19>
+*** free or special functions found when dividing by 
+
+                           2  4                                          2  3
+4*df(k,u(2),5)*df(k,u(2),2) *k  - 12*df(k,u(2),5)*df(k,u(2),2)*df(k,u(2)) *k
+
+                            4  2                                              4
+ + 9*df(k,u(2),5)*df(k,u(2)) *k  - 16*df(k,u(2),4)*df(k,u(2),3)*df(k,u(2),2)*k
+
+                                          2  3
+ + 24*df(k,u(2),4)*df(k,u(2),3)*df(k,u(2)) *k
+
+                               2             3
+ + 36*df(k,u(2),4)*df(k,u(2),2) *df(k,u(2))*k
+
+                                          3  2                            5
+ - 60*df(k,u(2),4)*df(k,u(2),2)*df(k,u(2)) *k  + 9*df(k,u(2),4)*df(k,u(2)) *k
+
+                  3  4                  2                          3
+ + 12*df(k,u(2),3) *k  - 56*df(k,u(2),3) *df(k,u(2),2)*df(k,u(2))*k
+
+                  2           3  2                              3  3
+ - 24*df(k,u(2),3) *df(k,u(2)) *k  + 8*df(k,u(2),3)*df(k,u(2),2) *k
+
+                                2           2  2
+ + 120*df(k,u(2),3)*df(k,u(2),2) *df(k,u(2)) *k
+
+                                          4                               6
+ + 42*df(k,u(2),3)*df(k,u(2),2)*df(k,u(2)) *k - 36*df(k,u(2),3)*df(k,u(2))
+
+                  4             2                  3           3
+ - 48*df(k,u(2),2) *df(k,u(2))*k  - 48*df(k,u(2),2) *df(k,u(2)) *k
+
+                  2           5
+ + 36*df(k,u(2),2) *df(k,u(2))
+
+(230)1+(0)<208 19>D[19]<209 18>B$1%1(0)&_18Got equation for (phi 2)<209 19>
+!*canonlist= (209) holdlis= (174 196 183 189 185 180 172 178 170 15 171 176 65 
+66 32 177 181 202)
+!*canonlist is now 
+   ((phi 2))
+=0/0 
+
+::((symvec (5 3) (4 0) (3 0) (2 1) (1 0) (0 0)) (eqns (5 3) (4 0) (3 0) (2 1) (1
+0) (0 1))):: 
+
+<209 19>D[19]S<209 18>D[18]S<209 17>D[17]<210 17>B$1%5~2~(4)1!
+
+::((symvec (5 3) (4 0) (3 0) (2 0) (1 1) (0 0)) (eqns (5 3) (4 0) (3 0) (2 0) (1
+1) (0 1))):: 
+
+<210 17>D[17]S<210 16>D[16]<211 16>B$1%5~2~(4)1!
+
+::((symvec (5 2) (4 1) (3 0) (2 0) (1 1) (0 0)) (eqns (5 2) (4 1) (3 0) (2 0) (1
+1) (0 1))):: 
+
+<211 16>D[16]S<211 15>D[15]<212 15>B$2%2(0)S<212 15>D[15]<213 15>B$1%1(0)S
+<213 15>D[15]<214 15>B$3%5(0)S<214 15>D[15]<215 15>B$2%12~2~(4)3S<215 15>D[15]
+<216 15>B$1%5~2~(4)1!
+
+::((symvec (5 1) (4 2) (3 0) (2 0) (1 1) (0 0)) (eqns (5 1) (4 2) (3 0) (2 0) (1
+1) (0 1))):: 
+
+<216 15>D[15]S<216 14>D[14]<217 14>B$1%2(1)1!
+
+::((symvec (4 3) (3 0) (2 0) (1 1) (0 0)) (eqns (4 3) (3 0) (2 0) (1 1) (0 1)))
+:: 
+
+<217 14>D[14]S<217 13>D[13]<218 13>B$2%2(0)S<218 13>D[13]S<218 12>D[12]<219 12>B
+$3%5(0)S<219 12>D[12]<220 12>B$3%6(0)S<220 12>D[12]<221 12>B$3%9(0)S<221 12>D[12
+]<222 12>B$1%14~3~(13)1!
+
+::((symvec (4 3) (3 0) (2 0) (1 0) (0 1)) (eqns (4 3) (3 0) (2 0) (1 0) (0 2)))
+:: 
+
+<222 12>D[12]S<222 11>D[11]<223 11>B$1%15~3~(14)1!
+
+::((symvec (4 2) (3 1) (2 0) (1 0) (0 1)) (eqns (4 2) (3 1) (2 0) (1 0) (0 2)))
+:: 
+
+<223 11>D[11]S<223 10>D[10]<224 10>B$2%2(0)S<224 10>D[10]<225 10>B$3%5(0)S
+<225 10>D[10]<226 10>B$3%6(0)S<226 10>D[10]<227 10>B$3%9(0)S<227 10>D[10]
+<228 10>B$2%22~3~(10)2S<228 10>D[10]<229 10>B$2%22~3~(10)2S<229 10>D[10]<230 10>
+B$1%15~3~(14)1!
+
+::((symvec (4 1) (3 2) (2 0) (1 0) (0 1)) (eqns (4 1) (3 2) (2 0) (1 0) (0 2)))
+:: 
+
+<230 10>D[10]S<230 9>D[9]<231 9>B$2%2(0)S<231 9>D[9]<232 9>B$2%2(0)S<232 9>D[9]
+<233 9>B$2%2(0)S<233 9>D[9]<234 9>B$1%1(0)S<234 9>D[9]<235 9>B$3%5(0)S<235 9>D[9
+]<236 9>B$2%30~3~(14)2S<236 9>D[9]<237 8>B$1%1(0)<238 9>B$1%1(0)|&?|&??|&???|&??
+??|&?????|&??????|&???????|&????????]?[0<238 10>D[10]????????]?[0<238 9>D[9]
+<238 8>!*canonlist= (236 232 233 235 227 226 231 234)!*canonlist is now 
+   ((df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (phi 1) (u 1)) (df (xi 1) (u 2)) (
+df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2))
+<238 8>!*canonlist= (236 232 233 235 227 226 231 234)!*canonlist is now 
+   ((df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (phi 1) (u 1)) (df (xi 1) (u 2)) (
+df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2))
+<239 8>B$1%1(0)made eqn 239 by differentiating eqn 226 by (u 1)
+<240 8>B$1%1(0)made eqn 240 by differentiating eqn 235 by (u 1)
+<241 8>B$2%3(0)made eqn 241 by differentiating eqn 235 by (x 2)
+<242 8>B$1%1(0)1made eqn 242 by differentiating eqn 233 by (x 1)
+<243 8>B$1%1(0)1made eqn 243 by differentiating eqn 232 by (x 1)
+<244 8>B$1%1(0)made eqn 244 by differentiating eqn 231 by (x 2)
+<244 9>D[9]<244 9>D[9]<244 11>D[11]<245 11>B$4%6(0)
+made eqn 245 from integrability conditions on eqns 231 and 235 for (df (xi 1) (u
+3) (u 2))
+<246 11>B$3%6(0)
+made eqn 246 from integrability conditions on eqns 232 and 226 for (df (xi 2) (u
+3) (x 2))
+<247 11>B$2%5(0)
+made eqn 247 from integrability conditions on eqns 233 and 227 for (df (phi 1) (
+u 3) (u 1))
+<248 11>B$2%6(0)
+made eqn 248 from integrability conditions on eqns 236 and 227 for (df (phi 1) (
+u 3) (x 2))
+????????]?[$2%6(0)+(1)]?[$1%4~2~(3)1+(1)]?[0<248 15>D[15]????????]?[$2%3(0)+(1)
+]?[$1%2(1)1+(1)]?[0<248 14>D[14]????????]?[$1%1(0)+(1)]?[0<248 13>D[13]????????
+]?[$1%1(0)+(1)]?[0<248 12>D[12]????????]?[$2%3(0)+(1)]?[$2%3(0)+(1)]?[$1%2(1)1+(
+1)]?[0<248 11>D[11]????????]?[$1%2(1)1+(1)]?[$1%1(0)+(1)]?[0<248 10>D[10]???????
+?]?[~1~$5%27(0)+(1)]?[~1~0<248 9>D[9]<248 8>!*canonlist= (236 232 233 235 227 
+226 231 234)!*canonlist is now 
+   ((df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (phi 1) (u 1)) (df (xi 1) (u 2)) (
+df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2))
+<248 8>!*canonlist= (236 232 233 235 227 226 231 234)!*canonlist is now 
+   ((df (phi 1) (x 2)) (df (xi 2) (x 2)) (df (phi 1) (u 1)) (df (xi 1) (u 2)) (
+df (phi 1) (u 3)) (df (xi 2) (u 3)) (df (xi 1) (u 3)) (df (xi 1) (x 1) 2))
+
+There are 8 equations remaining.
+The equationgroup numbers of equations remaining are (231 232 233 236 234 235 
+226 227)
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+Solving equations (231 232 233 236 234 235 226 227) by (op*shr1tm op*splitec 
+op*simpeq op*proexp op*slvtwo op*get1tm op*hidefr op*hidelg op*exp1tm op*slvspl
+op*trgexp op*intfac op*intslv op*xdpxpd op*slvall op*splited op*sub2sf 
+addintcons op*findlg op*findfr op*slvalldfs)
+op*shr1tm op*splitec op*simpeq op*proexp op*slvtwo op*get1tm op*hidefr <248 6>
+Hiding eqngrps (226 227)
+because they have freeunknowns in them.
+But don't worry, I'll find them again later :-)
+op*hidelg op*exp1tm ^1<248 6>D[8]=3/0 
+
+::((symvec (4 1) (3 1) (2 2) (1 0) (0 1)) (eqns (4 1) (3 2) (2 0) (1 0) (0 1)))
+:: 
+
+S<248 5>D[7]<249 5>B$3%4(0)<250 5>B$1%1(0)<251 6>B$2%2(0)<251 7>D[9]!
+
+::((symvec (4 1) (3 1) (2 1) (1 1) (0 1)) (eqns (4 1) (3 2) (2 1) (1 1) (0 1)))
+:: 
+
+<251 6>D[8]S<251 5>D[7]<252 5>B$2%2(0)S<252 5>D[7]<253 5>B$2%2(0)S<253 5>D[7]
+<254 5>B$4%8(0)<255 5>B$1%2(1)1<256 6>B$3%5(0)<256 7>D[9]!
+
+::((symvec (4 1) (3 1) (2 1) (1 0) (0 2)) (eqns (4 1) (3 1) (2 1) (1 0) (0 2)))
+:: 
+
+<256 6>D[8]S<256 5>D[7]<257 5>B$2%2(0)S<257 5>D[7]<258 5>B$2%2(0)op*slvspl 
+op*trgexp op*intfac op*intslv I1/0<258 5>D[7]=3/0 
+
+::((symvec (3 2) (2 1) (1 0) (0 2)) (eqns (4 1) (3 1) (2 1) (1 0) (0 2))):: 
+
+S<258 4>D[6]<259 4>B$2%2(0)S<259 4>D[6]<260 4>B$3%5(0)I1/0<260 4>D[6]=3/0 
+
+::((symvec (3 1) (2 2) (1 0) (0 2)) (eqns (4 1) (3 2) (2 1) (1 0) (0 1))):: 
+
+S<260 3>D[5]<261 3>B$2%2(0)S<261 3>D[5]<262 3>B$3%5(0)I1/0<262 3>D[5]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (4 1) (3 2) (2 2) (1 0) (0 1))):: 
+
+S<262 2>D[4]<263 2>B$3%5(0)op*xdpxpd op*slvall op*splited op*sub2sf |&?|&<263 2>
+!*canonlist= (263 261)!*canonlist is now 
+   ((df (c 1) (u 2)) (df (c 1) (u 3)))
+<263 2>!*canonlist= (263 261)!*canonlist is now 
+   ((df (c 1) (u 2)) (df (c 1) (u 3)))
+addintcons <264 2>B$4%6(0)
+made eqn 264 from integrability conditions on eqns 261 and 263 for (df (c 1) (u
+3) (u 2))
+I0/1I3/0<265 3>B$4%6(0)<265 3>D[5]??|&<265 3>!*canonlist= (263 261 264)
+!*canonlist is now 
+   ((df (c 1) (u 2)) (df (c 1) (u 3)) (df (c 4) (u 3) (u 2)))
+<265 3>!*canonlist= (263 261 264)!*canonlist is now 
+   ((df (c 1) (u 2)) (df (c 1) (u 3)) (df (c 4) (u 3) (u 2)))
+op*findlg op*findfr <265 3>finding eqngrps (226 227)
+And now I've found all the lost sheep :-)
+S<265 5>D[5]<266 5>B$3%6(0)S<266 5>D[5]<267 5>B$3%9(0)???|&_2Got equation for (
+df (c 5) (u 3))??|&??#|&#??#]?[~1~$5%27(0)+(1)]?[~1~0<267 5>D[5]<267 4>
+!*canonlist= (263 267 266 261)!*canonlist is now 
+   ((df (c 1) (u 2)) (df (c 5) (u 3)) (df (c 4) (u 3)) (df (c 1) (u 3)))
+<267 4>!*canonlist= (263 267 266 261)!*canonlist is now 
+   ((df (c 1) (u 2)) (df (c 5) (u 3)) (df (c 4) (u 3)) (df (c 1) (u 3)))
+op*slvalldfs 
+There are 4 equations remaining.
+The equationgroup numbers of equations remaining are (261 263 266 267)
+
+showdets();
+
+There are 4 determining equations remaining, which are...
+
+                              2                                          2
+deteqn(1)=df(c(5),u(3))*u(2)*k  - df(c(5),u(2))*u(3) + df(c(4),u(2))*u(3)
+
+                               2  2
+           - df(c(4),u(2))*u(2) *k
+
+*** Garbage collection starting
+*** GC 45: 10-Feb-2004 11:00:57 (~ 9971 ms cpu time, gc : 6 %)
+*** time 13 ms, 79481 occupied, 420504 recovered, 420519 free
+                                              2
+deteqn(2)=df(c(5),u(2)) - df(c(4),u(3))*u(2)*k  - df(c(4),u(2))*u(3)
+
+deteqn(3)=df(c(5),u(2)) - df(c(4),u(2))*u(3) - df(c(1),u(2))*u(2)
+
+deteqn(4)=df(c(4),u(2)) - df(c(1),u(3))
+
+The remaining dependencies are ...
+
+(c 5) depends on ((u 3) (u 2))
+(c 4) depends on ((u 2) (u 3))
+(c 1) depends on ((u 2) (u 3))
+
+The dunkns in the remaining equations are: ((c 5) (c 1) (c 4))
+
+The leading derivatives are: ((df (c 1) (u 3)) (df (c 1) (u 2)) (df (c 4) (u 3))
+(df (c 5) (u 3)))
+
+The parametric derviatives in the remaining equations are:
+((df (c 4) (u 2)) (df (c 5) (u 2)))
+
+
+mkgens();
+
+dunkns in eqns are ((c 5) (c 1) (c 4))
+
+There are 3 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @    *u(1) + @    *x(2) + @    *x(1)
+          u(1)         x(2)         x(1)
+
+Gen(2) = @     + @    *x(2)
+          u(3)    u(1)
+
+The generators for the remaining equations are:
+
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+Gen (3) = @    *c(5) + @    *c(4) + @    *c(1)
+           u(1)         x(2)         x(1)
+
+(c 5) depends on ((u 3) (u 2))
+(c 4) depends on ((u 2) (u 3))
+(c 1) depends on ((u 2) (u 3))
+
+stats();
+
+
+Time: 9327 ms  plus GC time: 645 ms
+
+Total of 267 equations used, with 6 new arbitrary functions made.
+
+successful operations were :((op*sub2sf 87) (op*simpeq 97) (op*findfr 2) (
+addintcons 6) (op*intslv 3) (op*shr1tm 16) (op*splitec 10) (op*exp1tm 1) (
+op*get1tm 2) (op*proexp 4))
+
+Variables used to split determining equations were ((x 1) (u 2 1) (u 2 2))
+
+
+for i:=1:3 do q i:=newarb x 1,x 2,u 1,u 2,u 3,u(2,1),u(2,2);
+
+
+*** q declared operator 
+
+deteqn 1:=liesub( phi 1 - Q 1 - u(1,1)*xi 1 - u(1,2)*xi 2 );
+
+?+1
+deteqn(1) :=  - c(7) + c(5) - c(4)*u(3) - c(2)*u(3)*x(2) - c(2)*u(2)*x(1)
+
+              + c(2)*u(1) - c(1)*u(2) + phi(3)*x(2)
+
+deteqn 2:=liesub( phi 2 - Q 2 - u(2,1)*xi 1 - u(2,2)*xi 2 );
+
+|
+deteqn(2) := 
+
+ - (c(8) + c(4)*u(2,2) + c(2)*u(2,2)*x(2) + c(2)*u(2,1)*x(1) + c(1)*u(2,1))
+
+deteqn 3:=liesub( phi 3 - Q 3 - u(3,1)*xi 1 - u(2,2)*xi 2 );
+
+?+1
+deteqn(3) :=  - c(9) - c(4)*u(2,2) - c(2)*u(2,2)*x(2) - c(2)*u(2,2)*x(1)
+
+              - c(1)*u(2,2) + phi(3)
+
+adddets();
+
+<268 4>B$2%2(0)<268 4>D[4]<269 4>B$6%14(0)<270 5>B$4%10(0)<271 6>B$5%10(0)
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+Solving equations (261 263 266 270 271 267 269) by (op*shr1tm op*splitec 
+op*simpeq op*proexp op*slvtwo op*get1tm op*hidefr op*hidelg op*exp1tm op*slvspl
+op*trgexp op*intfac op*intslv op*xdpxpd op*slvall op*splited op*sub2sf 
+addintcons op*findlg op*findfr op*slvalldfs)
+op*shr1tm op*splitec op*simpeq op*proexp op*slvtwo op*get1tm op*hidefr <271 5>
+Hiding eqngrps (266 267)
+because they have freeunknowns in them.
+But don't worry, I'll find them again later :-)
+op*hidelg op*exp1tm op*slvspl ;;{3/0}<272 5>B$4%8(0)<273 6>B$2%3(0)<273 7>D[9]=3
+/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 3) (6 0) (5 1) (4 0) (3 0) (2 3) (1 1) (0
+2))):: 
+
+{2/0}<273 6>D[8]=2/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 2) (6 0) (5 1) (4 0) (3 0) (2 3) (1 1) (0
+2))):: 
+
+;{3/0}<274 5>B$3%6(0)<274 6>D[8]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 2) (6 0) (5 1) (4 1) (3 0) (2 3) (1 0) (0
+2))):: 
+
+;;{3/0}<275 5>B$2%3(0)<276 6>B$2%3(0)<276 7>D[9]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 2) (6 0) (5 0) (4 1) (3 1) (2 3) (1 1) (0
+2))):: 
+
+{2/0}<276 6>D[8]=2/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 2) (6 0) (5 0) (4 0) (3 1) (2 3) (1 1) (0
+2))):: 
+
+{2/0}<276 5>D[7]=2/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 2) (6 0) (5 0) (4 0) (3 0) (2 3) (1 1) (0
+2))):: 
+
+;;{3/0}<277 4>B$5%9(0)<278 5>B$2%3(0)<278 6>D[8]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 2) (6 0) (5 0) (4 1) (3 0) (2 3) (1 1) (0
+2))):: 
+
+{2/0}<278 5>D[7]=2/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 1) (6 0) (5 0) (4 1) (3 0) (2 3) (1 1) (0
+2))):: 
+
+;;{3/0}<279 4>B$4%6(0)<280 5>B$2%3(0)<280 6>D[8]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 1) (6 0) (5 0) (4 1) (3 1) (2 3) (1 1) (0
+2))):: 
+
+{2/0}<280 5>D[7]=2/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 1) (6 0) (5 0) (4 0) (3 1) (2 3) (1 1) (0
+2))):: 
+
+;{3/0}<281 4>B$3%3(0)<281 5>D[7]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 1) (6 0) (5 0) (4 0) (3 1) (2 4) (1 0) (0
+2))):: 
+
+;;{3/0}<282 4>B$6%12(0)<283 5>B$2%3(0)<283 6>D[8]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (7 1) (6 0) (5 0) (4 1) (3 0) (2 4) (1 1) (0
+2))):: 
+
+{2/0}<283 5>D[7]=2/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (4 1) (3 0) (2 4) (1 1) (0 2))):: 
+
+;{3/0}<284 4>B$6%11(0)<284 5>D[7]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (4 1) (3 1) (2 4) (1 0) (0 2))):: 
+
+;;{3/0}<285 4>B$4%6(0)<286 5>B$3%4(0)<286 6>D[8]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (3 1) (2 5) (1 1) (0 2))):: 
+
+{3/0}<286 5>D[7]=3/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (2 5) (1 1) (0 2))):: 
+
+op*trgexp op*intfac op*intslv op*xdpxpd op*slvall <286 4>D[6]=2/0 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (2 5) (1 0) (0 0))):: 
+
+S<286 3>D[5]<287 3>B$3%3(0)S<287 3>D[5]<288 3>B$4%7(0)S<288 3>D[5]<289 3>B$3%6
+(0)<289 3>D[5]=4/2 
+
+::((symvec (2 3) (1 0) (0 2)) (eqns (2 4) (1 0) (0 0))):: 
+
+S<289 2>D[4]<290 2>B$7%9(0)S<290 2>D[4]<291 2>B$4%7(0)<291 2>P6/0<291 2>D[4]=6/0
+ 
+
+::((symvec (2 2) (1 0) (0 2)) (eqns (2 4) (1 0) (0 0))):: 
+
+S<291 1>D[3]<292 1>B$3%9(2)3I2/0<292 1>D[3]=3/0 
+
+::((symvec (2 1) (1 1) (0 2)) (eqns (2 4) (1 0) (0 0))):: 
+
+op*splited op*sub2sf addintcons op*findlg op*findfr <292 0>finding eqngrps (266
+267)
+And now I've found all the lost sheep :-)
+S<292 2>D[2]<293 2>B$3%8(1)5S<293 2>D[2]<294 2>B$4%14(1)10|&?]?[~1~$1%2~1~(1)1+(
+0)<294 2>D[2]<295 1>B$1%1(0)&_1Got equation for (c 25)<295 2>!*canonlist= (295)
+ holdlis= (294)
+!*canonlist is now 
+   ((c 25))
+=0/0 
+
+::((symvec (2 1) (1 0) (0 2)) (eqns (2 1) (1 0) (0 1))):: 
+
+<295 2>D[2]S<295 1>D[1]<296 1>B$2%5(1)3op*slvalldfs 
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (296)
+
+showdets mkgens();
+***** rlisp 
+
+
+Cont? (Y or N) y
+
+pause;
+
+Cont? (Y or N) y
+
+
+sv:=prolong(2,symvec)$
+
+?+1?+1?+1?+1?+1?+1<296 1>Forming prolongation of equation for (u 1 2)
+ to get equation for (u 1 2 1)
+?+2*** I got equation for (u 1 2 1) by differentiating equation for (u 1 2),
+but I could also differentiate equation for (u 1 1) !!!
+I think this means integrability conditions exist,
+ which _should_ be included by _you_ if they are nontrivial!
+<296 1>Forming prolongation of equation for (u 1 1) to get equation for (u 1 1 1
+)
++3?+4?+1<296 1>Forming prolongation of equation for (u 3 2) to get equation for 
+(u 3 2 1)
+|*** I got equation for (u 3 2 1) by differentiating equation for (u 3 2),
+but I could also differentiate equation for (u 3 1) !!!
+I think this means integrability conditions exist,
+ which _should_ be included by _you_ if they are nontrivial!
+<296 1>Forming prolongation of equation for (u 3 1) to get equation for (u 3 1 1
+)
+|?+3?+1?+1?+1<296 1>Forming prolongation of equation for (u 1 2)
+ to get equation for (u 1 2 2)
+?+2?+3?+1<296 1>Forming prolongation of equation for (u 3 2)
+ to get equation for (u 3 2 2)
+|?+2
+inteqn := u(2,2,2) - k^2*u(2,1,1) - 2*k*df(k,u(2))*u(2,1)^2;
+
+
+                                2                          2
+inteqn :=  - 2*df(k,u(2))*u(2,1) *k + u(2,2,2) - u(2,1,1)*k
+ 
+tst:=vecder(sv,inteqn);
+
+
+                               2                                        2
+tst := 4*c(2)*df(k,u(2))*u(2,1) *k - 2*c(2)*u(2,2,2) + 2*c(2)*u(2,1,1)*k
+
+                                      3
+        + df(c(24),u(3),u(2),2)*u(2,2)
+
+                                             2  2
+        - df(c(24),u(3),u(2),2)*u(2,2)*u(2,1) *k
+
+                                                        2
+        - 6*df(c(24),u(3),u(2))*df(k,u(2))*u(2,2)*u(2,1) *k
+
+        + 3*df(c(24),u(3),u(2))*u(2,2,2)*u(2,2)
+
+                                                 2                          3  2
+        - 3*df(c(24),u(3),u(2))*u(2,2)*u(2,1,1)*k  - df(c(24),u(3),3)*u(2,2) *k
+
+                                        2  4
+        + df(c(24),u(3),3)*u(2,2)*u(2,1) *k
+
+                                      2         2
+        - df(c(24),u(3),2,u(2))*u(2,2) *u(2,1)*k
+
+                                      3  4
+        + df(c(24),u(3),2,u(2))*u(2,1) *k
+
+                                              2
+        - 2*df(c(24),u(3),2)*df(k,u(2))*u(2,2) *u(2,1)*k
+
+                                              2
+        + 2*df(c(24),u(3),2)*u(2,2,2)*u(2,1)*k
+
+                                              2
+        - 2*df(c(24),u(3),2)*u(2,2,1)*u(2,2)*k
+
+                                 2                                 3  2
+        + df(c(24),u(2),3)*u(2,2) *u(2,1) - df(c(24),u(2),3)*u(2,1) *k
+
+                                              3
+        - 4*df(c(24),u(2),2)*df(k,u(2))*u(2,1) *k
+
+        + df(c(24),u(2),2)*u(2,2,2)*u(2,1) + 2*df(c(24),u(2),2)*u(2,2,1)*u(2,2)
+
+                                              2
+        - 3*df(c(24),u(2),2)*u(2,1,1)*u(2,1)*k
+
+tst:=liesub tst;
+
+|
+                               2                                        2
+tst := 4*c(2)*df(k,u(2))*u(2,1) *k - 2*c(2)*u(2,2,2) + 2*c(2)*u(2,1,1)*k
+
+                                      3
+        + df(c(24),u(3),u(2),2)*u(2,2)
+
+                                             2  2
+        - df(c(24),u(3),u(2),2)*u(2,2)*u(2,1) *k
+
+                                                        2
+        - 6*df(c(24),u(3),u(2))*df(k,u(2))*u(2,2)*u(2,1) *k
+
+        + 3*df(c(24),u(3),u(2))*u(2,2,2)*u(2,2)
+
+                                                 2                          3  2
+        - 3*df(c(24),u(3),u(2))*u(2,2)*u(2,1,1)*k  - df(c(24),u(3),3)*u(2,2) *k
+
+                                        2  4
+        + df(c(24),u(3),3)*u(2,2)*u(2,1) *k
+
+                                      2         2
+        - df(c(24),u(3),2,u(2))*u(2,2) *u(2,1)*k
+
+                                      3  4
+        + df(c(24),u(3),2,u(2))*u(2,1) *k
+
+                                              2
+        - 2*df(c(24),u(3),2)*df(k,u(2))*u(2,2) *u(2,1)*k
+
+                                              2
+        + 2*df(c(24),u(3),2)*u(2,2,2)*u(2,1)*k
+
+                                              2
+        - 2*df(c(24),u(3),2)*u(2,2,1)*u(2,2)*k
+
+                                 2                                 3  2
+        + df(c(24),u(2),3)*u(2,2) *u(2,1) - df(c(24),u(2),3)*u(2,1) *k
+
+                                              3
+        - 4*df(c(24),u(2),2)*df(k,u(2))*u(2,1) *k
+
+        + df(c(24),u(2),2)*u(2,2,2)*u(2,1) + 2*df(c(24),u(2),2)*u(2,2,1)*u(2,2)
+
+                                              2
+        - 3*df(c(24),u(2),2)*u(2,1,1)*u(2,1)*k
+
+let u(2,2,2) = k^2*u(2,1,1) + 2*k*df(k,u(2))*u(2,1)^2;
+
+
+tst:=tst;
+
+
+                                   3                                      2  2
+tst := df(c(24),u(3),u(2),2)*u(2,2)  - df(c(24),u(3),u(2),2)*u(2,2)*u(2,1) *k
+
+                                 3  2                                 2  4
+        - df(c(24),u(3),3)*u(2,2) *k  + df(c(24),u(3),3)*u(2,2)*u(2,1) *k
+
+                                      2         2
+        - df(c(24),u(3),2,u(2))*u(2,2) *u(2,1)*k
+
+                                      3  4
+        + df(c(24),u(3),2,u(2))*u(2,1) *k
+
+                                              2
+        - 2*df(c(24),u(3),2)*df(k,u(2))*u(2,2) *u(2,1)*k
+
+                                              3  3
+        + 4*df(c(24),u(3),2)*df(k,u(2))*u(2,1) *k
+
+                                              2
+        - 2*df(c(24),u(3),2)*u(2,2,1)*u(2,2)*k
+
+                                              4
+        + 2*df(c(24),u(3),2)*u(2,1,1)*u(2,1)*k
+
+                                 2                                 3  2
+        + df(c(24),u(2),3)*u(2,2) *u(2,1) - df(c(24),u(2),3)*u(2,1) *k
+
+                                              3
+        - 2*df(c(24),u(2),2)*df(k,u(2))*u(2,1) *k
+
+        + 2*df(c(24),u(2),2)*u(2,2,1)*u(2,2)
+
+                                              2
+        - 2*df(c(24),u(2),2)*u(2,1,1)*u(2,1)*k
+
+deteqn 1:=tst;
+
+
+                                         3
+deteqn(1) := df(c(24),u(3),u(2),2)*u(2,2)
+
+                                                   2  2
+              - df(c(24),u(3),u(2),2)*u(2,2)*u(2,1) *k
+
+*** Garbage collection starting
+*** GC 46: 10-Feb-2004 11:01:04 (~ 10223 ms cpu time, gc : 6 %)
+*** time 15 ms, 85045 occupied, 414940 recovered, 414955 free
+                                       3  2                                 2  4
+              - df(c(24),u(3),3)*u(2,2) *k  + df(c(24),u(3),3)*u(2,2)*u(2,1) *k
+
+                                            2         2
+              - df(c(24),u(3),2,u(2))*u(2,2) *u(2,1)*k
+
+                                            3  4
+              + df(c(24),u(3),2,u(2))*u(2,1) *k
+
+                                                    2
+              - 2*df(c(24),u(3),2)*df(k,u(2))*u(2,2) *u(2,1)*k
+
+                                                    3  3
+              + 4*df(c(24),u(3),2)*df(k,u(2))*u(2,1) *k
+
+                                                    2
+              - 2*df(c(24),u(3),2)*u(2,2,1)*u(2,2)*k
+
+                                                    4
+              + 2*df(c(24),u(3),2)*u(2,1,1)*u(2,1)*k
+
+                                       2                                 3  2
+              + df(c(24),u(2),3)*u(2,2) *u(2,1) - df(c(24),u(2),3)*u(2,1) *k
+
+                                                    3
+              - 2*df(c(24),u(2),2)*df(k,u(2))*u(2,1) *k
+
+              + 2*df(c(24),u(2),2)*u(2,2,1)*u(2,2)
+
+                                                    2
+              - 2*df(c(24),u(2),2)*u(2,1,1)*u(2,1)*k
+
+adddets();
+
+<297 1>B$6%44(0)
+solvedets std;
+
+Solving equations using std algorithm.
+
+Solving equations (296 297) by (op*shr1tm op*splitec op*simpeq op*proexp 
+op*slvtwo op*get1tm op*hidefr op*hidelg op*exp1tm op*slvspl op*trgexp op*intfac
+op*intslv op*xdpxpd op*slvall op*splited op*sub2sf addintcons op*findlg 
+op*findfr op*slvalldfs)
+op*shr1tm op*splitec <298 2>B$2%3(0)<299 3>B$3%9(1)6<300 4>B$4%11(0)<301 5>B$4%
+20~1~(2)17<301 6>D[6]<302 5>B$2%4~1~(1)3<302 5>D[5]<303 5>B$2%5(1)3<303 5>D[5]
+<303 5>D[5]<304 4>B$4%9(0)<305 5>B$2%6~1~(2)3<305 5>D[5]<305 5>D[5]op*simpeq 
+op*proexp op*slvtwo op*get1tm op*hidefr <305 0>Hiding eqngrps (296 298 299 304)
+because they have freeunknowns in them.
+But don't worry, I'll find them again later :-)
+op*hidelg op*exp1tm op*slvspl op*trgexp op*intfac op*intslv op*xdpxpd op*slvall 
+op*splited op*sub2sf addintcons op*findlg op*findfr <305 0>finding eqngrps (296
+298 299 304)
+And now I've found all the lost sheep :-)
+?]?[~1~$2%5~1~(1)3+(1)]?[~1~0<305 4>D[4]?]?[~1~$2%5~1~(1)3+(1)]?[~1~0<305 3>D[3]
+?]?[~1~0<305 2>D[2]<305 1>!*canonlist= (296)!*canonlist is now 
+   ((df (c 24) (u 3) 2))
+op*slvalldfs 
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (296)
+
+showdets();
+
+There are 1 determining equations remaining, which are...
+
+                            2
+deteqn(1)=df(c(24),u(3),2)*k  - df(c(24),u(2),2)
+
+The remaining dependencies are ...
+
+(c 24) depends on ((u 3) (u 2))
+
+The dunkns in the remaining equations are: ((c 24))
+
+The leading derivatives are: ((df (c 24) (u 3) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (c 24) (u 2) 2))
+
+
+mkgens();
+
+dunkns in eqns are ((c 24))
+
+There are 3 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @    *u(1) + @    *x(2) + @    *x(1)
+          u(1)         x(2)         x(1)
+
+Gen(2) = @     + @    *x(2)
+          u(3)    u(1)
+
+The generators for the remaining equations are:
+
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+Gen (3) = @    *c(24) - @    *df(c(24),u(3))*u(3) - @    *df(c(24),u(2))*u(2)
+           u(1)          u(1)                        u(1)
+
+           - @    *df(c(24),u(3)) - @    *df(c(24),u(2))
+              x(2)                   x(1)
+
+(c 24) depends on ((u 3) (u 2))
+
+stats();
+
+
+Time: 262 ms  plus GC time: 15 ms
+
+Total of 38 equations used, with 19 new arbitrary functions made.
+
+successful operations were :((op*sub2sf 2) (op*findfr 2) (op*splitec 3) (
+op*simpeq 9) (op*shr1tm 1) (op*intslv 1) (op*slvall 3) (op*slvspl 16))
+
+Variables used to split determining equations were ((x 1) (u 2 1) (u 2 2))
+
+
+end;
+
+2: 
+Quitting

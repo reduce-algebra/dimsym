@@ -1,0 +1,277 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % Hilbert-Cartan equation
+
+% See Anderson et al,
+% Advances in Mathematics 100 (1993) pp 53-100
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+xi 1:=0;
+
+
+xi(1) := 0
+
+depend phi 1, x 1, u 1, u(1,1), u(2,1), u(2);
+
+
+depend phi 2, x 1, u 1, u(1,1), u(2,1), u(2);
+
+
+
+freeunknown a;
+
+ % a=+-1 !
+let a**2=1;
+
+
+
+loaddeq( u(1,1,1) = a*sqrt u(2,1) );
+
+
+1
+
+
+mkdets custom1;
+
+ While making eqngrp 1, found special function:
+
+      1/2
+u(2,1)
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+ *** free or special functions found when dividing by 
+
+a
+
+
+Must have all of
+
+                   2
+sqrt(u(2,1))*u(2,1)
+
+sqrt(u(2,1))*u(2,1)
+
+sqrt(u(2,1))
+
+      2
+u(2,1)
+
+u(2,1)
+
+1
+
+linearly independent in (u 2 1)
+
+
+There are 0 equations remaining.
+
+
+showdets();
+
+There are no determining equations remaining.
+
+The remaining dependencies are ...
+
+
+
+mkgens();
+
+
+There are 14 symmetries found.
+
+The generators of the finite algebra are:
+
+                                    2
+Gen(1) = 4*@    *u(1,1) + @    *x(1)
+            u(2)           u(1)
+
+Gen(2) = @    *x(1)
+          u(1)
+
+Gen(3) = @
+          u(1)
+
+                                                             3
+Gen(4) =  - 12*@    *u(1,1)*x(1) + 12*@    *u(1) - @    *x(1)
+                u(2)                   u(2)         u(1)
+
+                          2                 2                    2
+Gen(5) = @    *u(2,1)*x(1)  - 4*@    *u(1,1)  + @    *u(1,1)*x(1)
+          u(2)                   u(2)            u(1)
+
+          - 3*@    *u(1)*x(1)
+               u(1)
+
+Gen(6) = 2*@    *u(2,1)*x(1) + 2*@    *u(1,1)*x(1) - 3*@    *u(1)
+            u(2)                  u(1)                  u(1)
+
+Gen(7) = @    *u(2,1) + @    *u(1,1)
+          u(2)           u(1)
+
+Gen(8) = (4*sqrt(u(2,1))*@    *u(2,1)*x(1) - 8*@    *u(2,1)*u(1,1)*a
+                          u(2)                  u(2)
+
+                                                 2
+           + 3*@    *u(2)*x(1)*a - 4*@    *u(1,1) *a)/(3*a)
+                u(1)                  u(1)
+
+          4*sqrt(u(2,1))*@    *u(2,1) + 3*@    *u(2)*a
+                          u(2)             u(1)
+Gen(9) = ----------------------------------------------
+                              3*a
+
+                                              3                              2
+Gen(10) = (5*(4*sqrt(u(2,1))*@    *u(2,1)*x(1)  - 24*@    *u(2,1)*u(1,1)*x(1) *a
+                              u(2)                    u(2)
+
+               + 36*@    *u(2,1)*u(1)*x(1)*a + 36*@    *u(2)*u(1,1)*x(1)*a
+                     u(2)                          u(2)
+
+                                                       3
+               - 36*@    *u(2)*u(1)*a - 16*@    *u(1,1) *a
+                     u(2)                   u(2)
+
+                                  3                    2     2
+               + 3*@    *u(2)*x(1) *a - 12*@    *u(1,1) *x(1) *a
+                    u(1)                    u(1)
+
+                                                            2
+               + 36*@    *u(1,1)*u(1)*x(1)*a - 36*@    *u(1) *a))/(36*a)
+                     u(1)                          u(1)
+
+                                              2
+Gen(11) = (5*(4*sqrt(u(2,1))*@    *u(2,1)*x(1)  - 16*@    *u(2,1)*u(1,1)*x(1)*a
+                              u(2)                    u(2)
+
+               + 12*@    *u(2,1)*u(1)*a + 12*@    *u(2)*u(1,1)*a
+                     u(2)                     u(2)
+
+                                  2                   2
+               + 3*@    *u(2)*x(1) *a - 8*@    *u(1,1) *x(1)*a
+                    u(1)                   u(1)
+
+               + 12*@    *u(1,1)*u(1)*a))/(12*a)
+                     u(1)
+
+Gen(12) = 2*@    *u(2) + @    *u(1)
+             u(2)         u(1)
+
+                                                                     2
+Gen(13) = (12*sqrt(u(2,1))*@    *u(2,1)*u(1) - 12*@    *u(2,1)*u(1,1) *a
+                            u(2)                   u(2)
+
+                          2                                         3
+            + 9*@    *u(2) *a + 9*@    *u(2)*u(1)*a - 4*@    *u(1,1) *a)/(9*a)
+                 u(2)              u(1)                  u(1)
+
+Gen(14) = @
+           u(2)
+
+
+let a=1;
+
+
+v!+:=gen 8;
+
+
+v+ := (4*sqrt(u(2,1))*@    *u(2,1)*x(1) - 8*@    *u(2,1)*u(1,1)
+                       u(2)                  u(2)
+
+                                            2
+        + 3*@    *u(2)*x(1) - 4*@    *u(1,1) )/3
+             u(1)                u(1)
+
+let a=-1;
+
+
+v!-:=gen 8;
+
+
+v- := ( - 4*sqrt(u(2,1))*@    *u(2,1)*x(1) - 8*@    *u(2,1)*u(1,1)
+                          u(2)                  u(2)
+
+                                            2
+        + 3*@    *u(2)*x(1) - 4*@    *u(1,1) )/3
+             u(1)                u(1)
+
+clear a;
+
+
+
+v1:=v!+ - v!-;
+
+
+       8*sqrt(u(2,1))*@    *u(2,1)*x(1)
+                       u(2)
+v1 := ----------------------------------
+                      3
+
+v2:=v!+ + v!-;
+
+
+                                                                       2
+       2*( - 8*@    *u(2,1)*u(1,1) + 3*@    *u(2)*x(1) - 4*@    *u(1,1) )
+                u(2)                    u(1)                u(1)
+v2 := --------------------------------------------------------------------
+                                       3
+
+
+check v1;
+
+
+{2*u(2,1)*a*(3*u(2,1,1)*x(1) + 2*u(2,1))}
+
+check v2;
+
+
+{2*u(2,1)*( - 3*u(2,1,1)*x(1) - 2*u(2,1))}
+
+
+stats();
+
+
+Time: 425 ms  plus GC time: 15 ms
+
+Total of 65 equations used, with 26 new arbitrary functions made.
+
+successful operations were :((op*intslv 9) (op*simpeq 35) (op*exp1tm 5) (
+op*get1tm 2) (op*shr1tm 4) (op*splitec 10) (op*findfr 1) (op*proexp 1))
+
+Variables used to split determining equations were ((u 1) (u 1 1) (u 2) (u 2 1)
+(u 2 1 1 1) (u 2 1 1))
+
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

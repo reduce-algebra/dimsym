@@ -1,0 +1,17 @@
+%out "output.expu";
+
+%expu
+
+%load packages
+load dimsym23$
+
+loaddeq( u(1,1,1) = (x 1**2)*(e**(u 1)));
+
+mkdets(point);
+solvedets std;
+mkgens();
+stats();
+
+%shut "output.expu";
+
+end;

@@ -1,0 +1,21 @@
+########Examples Read Me File#########
+This directory contains four subdirectories
+
+examples
+	This directory contains the source code for
+	the examples of dimsym
+
+examout
+	This directory contains the output for the
+	above examples
+
+headfiles
+	This directory contains the source code for the
+	examples provided by Allan Head for his program
+	LIE. LIE is contained with in dimsym
+
+headout
+	This directory contains the output from the Allan
+	Head examples
+
+#end file#

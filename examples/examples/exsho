@@ -1,0 +1,97 @@
+load dimsym23$
+
+for all x let sin(2*x)=2*sin(x)*cos(x);
+for all x let cos(2*x)=cos(x)**2-sin(x)**2;
+% The force for the simple harmonic oscillator. 
+f:=-u(1);
+
+% The vectorfield tangential to the flow.
+gam:=@(x 1) + u(1,1)*@(u 1) + f*@u(1,1);
+
+
+xi    := newarb x 1,u 1;
+phi   := newarb x 1,u 1;
+phi1  := newarb x 1,u 1,u(1,1);
+lamb  := newarb x 1,u 1,u(1,1);
+ 
+symvec := xi*@ x(1) + phi*@ u(1) + phi1*@ u(1,1);
+
+% The symmetry condition for symvec to be a symmetry of
+% gam is that its commutator with gam be a multiple of gam,
+% ie that zerovec be the zero vectorfield.
+
+zerovec := comm(symvec,gam) - lamb*gam;
+
+% So we take the components of zerovec as determining equations,
+% and this is ok as they are linear in the detunknowns.
+
+deteqn 1 := vecder(zerovec, x 1);
+deteqn 2 := vecder(zerovec, u 1);
+deteqn 3 := vecder(zerovec, u(1,1));
+
+readdets();
+solvedets std;
+solvedets inttbt;
+solvedets std;
+
+% We can use mkgens() to give us the individual generators,
+% as we have set up the problewm so that all the info is in symvec
+
+mkgens();
+
+%showcomms();
+
+%The following path will depend upon the directory in which reduce is installed
+in "/home/sdnoonan/project/util/lex"$
+
+tvector w j;
+for j:=1:8 do w j:=gen j;
+
+%for j:=1:8 do for k:=j+1:8 do
+%  write "commutator of w",j," and w",k," is ",(w j |_ w k);
+
+%The following path will depend upon the directory in which reduce is installed
+in "/home/sdnoonan/project/util/formint"$
+
+om1:=d u(1) - u(1,1)*d x(1);
+om2:=d u(1,1) - f*d x(1);
+
+om:=om1 ^ om2;
+
+%tvector vv1,vv2;
+
+procedure findfi(vv1,vv2);
+% This just finds two first integrals for commuting symmetries
+begin
+  if (vv1 |_ vv2) NEQ 0 then rederr "These symmetries dont commute.";
+  fac:= vv2 _| ( vv1 _| om);
+  if fac=0 then rederr "These symmetries dont form a basis with gam.";
+  r1:= (vv2 _| om) / fac;
+  r2:= (vv1 _| om) / fac;
+  if (d r1) neq 0 then rederr "d r1 should equal 0 ???";
+  if (d r2) neq 0 then rederr "d r2 should equal 0 ???";
+  write fi1:=formint r1;
+  write fi2:=formint r2;
+  end;
+
+% This gives a complete set of first integrals
+
+findfi(w 5,w 8);
+
+% This gives a different complete set of first integrals
+
+findfi(w 6,w 7);
+
+% This needs some integration rules to proceed
+
+findfi(w 1,w 8);
+
+% This also needs some integration rules to proceed
+
+findfi(w 2,w 8);
+
+%This shows us that w 3, w 4 and gam are not linearly independent
+
+findfi(w 3,w 4);
+
+end;

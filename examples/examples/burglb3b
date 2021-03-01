@@ -1,0 +1,22 @@
+% burglb3
+
+% burgers equation as in bluman & kumei,
+% eqn 5.14a, pg 264
+
+% Find 3rd order lie-backlund symmetries.
+
+load dimsym23$
+
+loaddeq( u(1,2,2) = u(1,1) + u(1)*u(1,2) );
+
+xi(1):=0;
+xi(2):=0;
+depend phi(1), x(1),x(2), u(1), u(1,2),u(1,1), u(1,2,1);
+
+mkdets custom1;
+solvedets std;
+mkgens();
+stats();
+
+end;
+

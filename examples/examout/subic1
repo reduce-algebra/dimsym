@@ -1,0 +1,250 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: %load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+loaddeq( u(1,1)    =  u(2,1)  );
+
+
+1
+
+loaddeq( u(1,2)    = -u(2,2)  );
+
+
+2
+
+loaddeq( u(2,1,1)  = u(2,1,2) );
+
+
+3
+
+loaddeq( u(2,1,2)  =     0    );
+
+
+4
+
+
+mkdets point;
+
+Equation for (u 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 2 1) as leading derivative, 
+which is nominally ordered higher than (u 1 1), although this should be ok.
+
+Equation for (u 1 2) is not strictly in semi-standard form, 
+because it should be solved for (u 2 2) as leading derivative, 
+which is nominally ordered higher than (u 1 2), although this should be ok.
+
+Equation for (u 2 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 2 2 1) as leading derivative, 
+which is nominally ordered higher than (u 2 1 1), although this should be ok.
+
+ Made substitution into given equation for (u 2 1 1)
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 2 equations remaining.
+The equationgroup numbers of equations remaining are (21 122)
+
+showdets();
+
+There are 2 determining equations remaining, which are...
+
+deteqn(1)=c(21) + 2*c(10)*u(2) + 2*c(10)*u(1) - df(c(1),u(2)) - df(c(1),u(1))
+
+deteqn(2)=df(xi(2),u(2)) + df(xi(2),u(1))
+
+The remaining dependencies are ...
+
+(c 1) depends on ((x 2) (u 1) (u 2))
+(xi 2) depends on ((u 2) (u 1) (x 2))
+
+The dunkns in the remaining equations are: ((c 21) (c 10) (c 1) (xi 2))
+
+The leading derivatives are: ((df (xi 2) (u 2)) (df (c 1) (u 2)))
+
+The parametric derviatives in the remaining equations are:
+((df (xi 2) (u 1)) (df (c 1) (u 1)) (c 10) (c 21))
+
+
+mkgens();
+
+
+There are 8 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = x(1)*(@    *u(2) + @    *u(1) + @    *u(2) + @    *u(1) + 2*@    *x(1))
+                u(2)         u(2)         u(1)         u(1)           x(1)
+
+Gen(2) = @    *(u(2) + u(1))
+          x(1)
+
+Gen(3) = @
+          x(1)
+
+Gen(4) = @    *x(1)
+          x(1)
+
+Gen(5) = @
+          u(1)
+
+Gen(6) = x(1)*(@     + @    )
+                u(2)    u(1)
+
+The generators for the remaining equations are:
+
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+                                                                             2
+Gen (7) = @    *c(1) + @    *c(21)*u(2) + @    *c(21)*u(1) + @    *c(10)*u(2)
+           u(2)         u(1)               u(1)               u(1)
+
+                                                       2
+           + 2*@    *c(10)*u(2)*u(1) + @    *c(10)*u(1)  - @    *c(1)
+                u(1)                    u(1)                u(1)
+
+           + @    *c(10)*u(2)*x(1) + @    *c(10)*u(1)*x(1)
+              x(1)                    x(1)
+
+Gen (8) = @    *xi(2)
+           x(2)
+
+(c 1) depends on ((x 2) (u 1) (u 2))
+(xi 2) depends on ((u 2) (u 1) (x 2))
+
+
+c(1):=c(10)*(u(1)**2+u(2)**2)+ (u(1)+u(2))*c(21)/2 + newarb u(1),u(2),x(1);
+
+
+                                                         2               2
+         2*c(23) + c(21)*u(2) + c(21)*u(1) + 2*c(10)*u(2)  + 2*c(10)*u(1)
+c(1) := -------------------------------------------------------------------
+                                         2
+
+
+simpdets();
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 2 equations remaining.
+The equationgroup numbers of equations remaining are (123 124)
+
+showdets();
+
+There are 2 determining equations remaining, which are...
+
+deteqn(1)=df(c(23),u(2)) + df(c(23),u(1))
+
+deteqn(2)=df(xi(2),u(2)) + df(xi(2),u(1))
+
+The remaining dependencies are ...
+
+(c 23) depends on ((x 1) (u 2) (u 1))
+(xi 2) depends on ((u 2) (u 1) (x 2))
+
+The dunkns in the remaining equations are: ((c 23) (xi 2))
+
+The leading derivatives are: ((df (xi 2) (u 2)) (df (c 23) (u 2)))
+
+The parametric derviatives in the remaining equations are:
+((df (xi 2) (u 1)) (df (c 23) (u 1)))
+
+
+mkgens();
+
+
+There are 10 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = x(1)*(@    *u(2) + @    *u(1) + @    *u(2) + @    *u(1) + 2*@    *x(1))
+                u(2)         u(2)         u(1)         u(1)           x(1)
+
+Gen(2) = @    *(u(2) + u(1))
+          x(1)
+
+Gen(3) = @
+          x(1)
+
+                   2             2
+Gen(4) = @    *u(2)  + @    *u(1)  + 2*@    *u(2)*u(1) + @    *u(2)*x(1)
+          u(2)          u(2)            u(1)              x(1)
+
+          + @    *u(1)*x(1)
+             x(1)
+
+Gen(5) = @    *x(1)
+          x(1)
+
+Gen(6) = @
+          u(1)
+
+Gen(7) = @    *u(2) + @    *u(1) + @    *u(2) + @    *u(1)
+          u(2)         u(2)         u(1)         u(1)
+
+Gen(8) = x(1)*(@     + @    )
+                u(2)    u(1)
+
+The generators for the remaining equations are:
+
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+Gen (9) = c(23)*(@     - @    )
+                  u(2)    u(1)
+
+Gen (10) = @    *xi(2)
+            x(2)
+
+(c 23) depends on ((x 1) (u 2) (u 1))
+(xi 2) depends on ((u 2) (u 1) (x 2))
+
+
+stats();
+
+
+Time: 396 ms  plus GC time: 12 ms
+
+Total of 124 equations used, with 23 new arbitrary functions made.
+
+successful operations were :((op*sub2sf 7) (op*simpeq 64) (op*intslv 6) (
+op*splitec 23) (op*slvtwo 3) (op*exp1tm 7) (op*shr1tm 6) (op*proexp 4))
+
+Variables used to split determining equations were ((u 1) (x 1) (u 2 2 2) (u 2 2
+) (u 2 1))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

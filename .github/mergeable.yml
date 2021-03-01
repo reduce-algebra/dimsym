@@ -1,0 +1,11 @@
+version: 2
+mergeable:
+  - when: pull_request.opened
+    name: "Greet a contributor"
+    validate: []
+    pass:
+      - do: comment
+        payload:
+          body: >
+            Thanks for your contribution!  Unfortunately, we don't use GitHub pull requests to manage code contributions to this repository.  Instead, please see the [Dimsym Homepage](https://www.latrobe.edu.au/mathematics-and-statistics/research/geometric-and-algebraic-techniques-for-differential-equations/dimsym).
+      - do: close

@@ -1,0 +1,329 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % Ures Equations
+
+%  x(1) = x
+%  x(2) = phi
+%  u(1) = u
+%  u(2) = v
+%  u(3) = w
+%  u(4) = q/E
+
+% constants a,h,mu
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+on gc;
+
+
+
+freeunknown a,h,mu;
+
+
+
+
+% loaddeq( u(1,1,1) = (mu/a)*u(3,1) - (1-mu)*u(1,2,2)/(2*a**2) - (1+mu)*u(2,1,2)/(2*a)  );
+
+% loaddeq( u(1,1,2) = 2*(u(3,2)/a - a*(1-mu)*u(2,1,1)/2 - u(2,2,2)/a)/(1+mu) );
+
+% loaddeq( u(3,1,1,1,1) = -2*u(3,1,1,2,2)/a**2 - u(3,2,2,2)/a**4
+
+%                       + (12/h**2)*(a*u(2)*u(1,1) + u(2,2) - u(3) + a**2*u(4)*(1-mu**2)/h)/a**2 );
+
+
+% With the following form of the same equations, subbing goes into a loop.
+% This illustrates the need for the original equations to be in standard form.
+
+loaddeq( u(1,1,1) = (mu/a)*u(3,1) - (1-mu)*u(1,2,2)/(2*a**2) - (1+mu)*u(2,1,2)/(2*a)  );
+
+
+1
+
+
+loaddeq( u(2,2,2) = u(3,2) - a*( (1+mu)*u(1,1,2)/2 + a*(1-mu)*u(2,1,1)/2) );
+
+
+2
+
+
+loaddeq( u(3,2,2,2,2) = -2*a**2*u(3,1,1,2,2) - a**4*u(3,1,1,1,1)
+
+                      + (12*a**3/h**2)*(u(2)*u(1,1) + u(2,2)/a - u(3)/a + a*u(4)*(1-mu**2)/h) );
+
+
+3
+
+
+mkdets point;
+
+Equation for (u 1 1 1) is not strictly in semi-standard form, 
+because it should be solved for (u 2 2 1) as leading derivative, 
+which is nominally ordered higher than (u 1 1 1), although this should be ok.
+
+ *** free or special functions found when dividing by 
+
+a
+
+ *** free or special functions found when dividing by 
+
+h
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+*** Garbage collection starting
+*** GC 1:  6-Feb-2004 11:50:24 (~ 522 ms cpu time, gc : 2 %)
+*** time 12 ms, 83497 occupied, 416488 recovered, 416503 free
+*** Garbage collection starting
+*** GC 2:  6-Feb-2004 11:50:25 (~ 857 ms cpu time, gc : 3 %)
+*** time 15 ms, 96033 occupied, 403952 recovered, 403967 free
+ *** free or special functions found when dividing by 
+
+mu + 1
+
+ *** free or special functions found when dividing by 
+
+mu - 1
+
+ *** free or special functions found when dividing by 
+
+  2
+mu  + 2*mu - 7
+
+*** Garbage collection starting
+*** GC 3:  6-Feb-2004 11:50:25 (~ 1119 ms cpu time, gc : 3 %)
+*** time 14 ms, 84761 occupied, 415225 recovered, 415239 free
+*** Garbage collection starting
+*** GC 4:  6-Feb-2004 11:50:25 (~ 1408 ms cpu time, gc : 3 %)
+*** time 13 ms, 83071 occupied, 416914 recovered, 416929 free
+ *** free or special functions found when dividing by 
+
+mu
+
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+*** Garbage collection starting
+*** GC 5:  6-Feb-2004 11:50:26 (~ 1802 ms cpu time, gc : 3 %)
+*** time 15 ms, 90415 occupied, 409570 recovered, 409585 free
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+ Forming prolongation of equation for (u 1 1 1) to get equation for (u 1 2 2 1 1
+)
+ Forming prolongation of equation for (u 2 2 2) to get equation for (u 2 2 2 2 1
+)
+
+***** Substitutions too deep when substituting given differential equation. 
+
+Cont? (Y or N) 

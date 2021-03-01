@@ -1,0 +1,17 @@
+%out "output.heat1";
+
+%heat1
+
+%load packages
+load dimsym23$
+
+loaddeq( u(1,1,1) = u(1,2) ); % 1D heat equation;
+
+mkdets(point);  
+solvedets(std);
+mkgens();
+stats();
+
+%shut "output.heat1";
+
+end;

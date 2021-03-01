@@ -1,0 +1,26 @@
+% fpu
+
+% The Fermi-Pasta_Ulam equation.
+
+% Date: Tue, 24 Nov 92 08:37:31 +1100
+% From: fackerell_e@maths.su.oz.au (Ted Fackerell)
+
+%load packages
+load dimsym23$
+
+on gc;
+tracecute();
+
+freeunknown k;
+depend k,u(1,1);
+
+loaddeq( u(1,2,2) = k**2*u(1,1,1) );
+
+mkdets liebacklund;
+
+solvedets stdform1;
+solvedets std;
+mkgens();
+stats();
+
+end;

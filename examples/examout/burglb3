@@ -1,0 +1,172 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % burglb3
+
+% burgers equation as in bluman & kumei,
+% eqn 5.14a, pg 264
+
+% Find third order lie-backlund symmetries.
+
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+loaddeq( u(1,1) = u(1,2,2) - u(1)*u(1,2) );
+
+
+1
+       % as used by bluman & kumei
+
+mkdets liebacklund 3;
+
+Equation for (u 1 1) is not in semi-standard form, 
+because it should be solved for (u 1 2 2) as leading derivative, 
+which is higher order than (u 1 1).
+
+We have an equation for (u 1 1) so any dependence on (u 1 1 1)
+would be substituted out. So I am removing the dependence of (phi 1) on (u 1 1 1
+).
+We have an equation for (u 1 1) so any dependence on (u 1 2 1)
+would be substituted out. So I am removing the dependence of (phi 1) on (u 1 2 1
+).
+We have an equation for (u 1 1) so any dependence on (u 1 1)
+would be substituted out. So I am removing the dependence of (phi 1) on (u 1 1).
+We have an equation for (u 1 1) so any dependence on (u 1 2 1 1)
+would be substituted out. So I am removing the dependence of (phi 1) on (u 1 2 1
+1).
+We have an equation for (u 1 1) so any dependence on (u 1 1 1 1)
+would be substituted out. So I am removing the dependence of (phi 1) on (u 1 1 1
+1).
+We have an equation for (u 1 1) so any dependence on (u 1 2 2 1)
+would be substituted out. So I am removing the dependence of (phi 1) on (u 1 2 2
+1).
+
+symvec;
+
+
+@    *phi(1)
+ u(1)
+
+showdepsused();
+
+
+(phi 1) depends on ((u 1 2 2) (x 1) (x 2) (u 1) (u 1 2) (u 1 2 2 2))
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+ Forming prolongation of equation for (u 1 1) to get equation for (u 1 2 2 2 1)
+ Forming prolongation of equation for (u 1 1) to get equation for (u 1 2 2 1)
+ Forming prolongation of equation for (u 1 1) to get equation for (u 1 2 1)
+
+There are 0 equations remaining.
+
+
+mkgens();
+
+
+There are 9 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @    *u(1,2)
+          u(1)
+
+                                 2                       2
+Gen(2) = @    *(4*u(1,2,2,2)*x(1)  - 6*u(1,2,2)*u(1)*x(1)
+          u(1)
+
+                                                  2     2                2     2
+                 + 4*u(1,2,2)*x(2)*x(1) - 6*u(1,2) *x(1)  + 3*u(1,2)*u(1) *x(1)
+
+                                                        2
+                 - 4*u(1,2)*u(1)*x(2)*x(1) + u(1,2)*x(2)  + 6*u(1,2)*x(1)
+
+                         2
+                 - 2*u(1) *x(1) + 2*u(1)*x(2))
+
+Gen(3) = @    *(4*u(1,2,2,2)*x(1) - 6*u(1,2,2)*u(1)*x(1) + 2*u(1,2,2)*x(2)
+          u(1)
+
+                           2                     2
+                 - 6*u(1,2) *x(1) + 3*u(1,2)*u(1) *x(1) - 2*u(1,2)*u(1)*x(2)
+
+                       2
+                 - u(1) )
+
+                                                         2                2
+Gen(4) = @    *(4*u(1,2,2,2) - 6*u(1,2,2)*u(1) - 6*u(1,2)  + 3*u(1,2)*u(1) )
+          u(1)
+
+Gen(5) = @    *(u(1,2,2) - u(1,2)*u(1))
+          u(1)
+
+Gen(6) = @    *(2*u(1,2,2)*x(1) - 2*u(1,2)*u(1)*x(1) + u(1,2)*x(2) + u(1))
+          u(1)
+
+Gen(7) = @    *( - u(1,2)*x(1) + 1)
+          u(1)
+
+                                2                   2
+Gen(8) = @    *( - u(1,2,2)*x(1)  + u(1,2)*u(1)*x(1)  - u(1,2)*x(2)*x(1)
+          u(1)
+
+                 - u(1)*x(1) + x(2))
+
+                                    3                       3
+Gen(9) = @    *( - 4*u(1,2,2,2)*x(1)  + 6*u(1,2,2)*u(1)*x(1)
+          u(1)
+
+                                       2           2     3
+                 - 6*u(1,2,2)*x(2)*x(1)  + 6*u(1,2) *x(1)
+
+                                2     3                          2
+                 - 3*u(1,2)*u(1) *x(1)  + 6*u(1,2)*u(1)*x(2)*x(1)
+
+                                2                      2         2     2
+                 - 3*u(1,2)*x(2) *x(1) - 12*u(1,2)*x(1)  + 3*u(1) *x(1)
+
+                                            2
+                 - 6*u(1)*x(2)*x(1) + 3*x(2)  + 6*x(1))
+
+
+stats();
+
+
+Time: 279 ms  plus GC time: 14 ms
+
+Total of 83 equations used, with 26 new arbitrary functions made.
+
+successful operations were :((op*intslv 13) (op*simpeq 40) (op*shr1tm 8) (
+op*splitec 16) (op*slvspl 2) (op*exp1tm 2) (op*proexp 1))
+
+Variables used to split determining equations were ((x 2) (u 1) (u 1 2) (u 1 2 2
+) (u 1 2 2 2) (u 1 2 2 2 2))
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

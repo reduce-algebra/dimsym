@@ -1,0 +1,23 @@
+% blas2
+
+
+load dimsym23$
+load dim2ode$
+
+freeunknown a;
+
+loaddeq(   u(3,1)   = -a*u(1)*u(3)   );
+loaddeq(   u(2,1)   =  u(3)          );
+loaddeq(    u(2)    =  u(1,1)        );
+mkdets point;
+solvedets std;
+mkgens();
+stats();
+
+v:=x(1)*@ x(1) - u(1)*@ u(1)-2*u(1,1)*@ u(2) - 3*u(1,1,1)*@ u(3);
+w:=x(1)*@ x(1) - u(1)*@ u(1)-2*u(2)*@ u(2) - 3*u(3)*@ u(3);
+
+check v;
+check w;
+
+end;

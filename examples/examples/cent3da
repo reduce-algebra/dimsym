@@ -1,0 +1,38 @@
+% cent3d
+
+% 3D central force problem in cartesian coords 
+% with arbitrary potential.
+%
+% r'' + g(r)r = 0
+%
+
+load dimsym23$
+
+symbolic procedure op!*splitEd u;nil;
+
+operator g,g!',g!";
+freeunknown g(r),g!'(r),g!"(r),r;
+
+for all x let df(g(x),x)=g!'(x);
+for all x let df(g!'(x),x)=g!"(x);
+
+depend r,u 1,u 2,u 3;
+%r:=(u(1)**2+u(2)**2+u(3)**2)**(1/2);
+let df(r,u 2)=df(r,u(1))*u(2)/u(1);
+let df(r,u 3)=df(r,u(1))*u(3)/u(1);
+let df(r,u 1)=u(1)/r;
+
+
+loaddeq( u(1,1,1) =  - g(r)*u(1) );
+loaddeq( u(2,1,1) =  - g(r)*u(2) );
+loaddeq( u(3,1,1) =  - g(r)*u(3) );
+
+mkdets point;
+solvedets std;
+mkgens();
+showdivides();
+let u(3)**2=r**2 - u(1)**2 - u(2)**2;
+showsimpdivides();
+stats();
+
+end;

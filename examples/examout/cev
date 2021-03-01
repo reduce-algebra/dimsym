@@ -1,0 +1,284 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb 20 14:55:56 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % Constant Elasticity of Variance equation
+
+% recieved from: fackerell_e@maths.su.oz.au Tue, 30 Mar 1993 13:04:22 +1000
+
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+freeunknown a,b,k;
+
+
+
+
+loaddeq( u(1,2) = a*x(1)*u(1,1,1) + (2*a-b*x(1)-k)*u(1,1) - b*u(1)  );
+
+
+1
+
+
+mkdets(point);
+
+Equation for (u 1 2) is not in semi-standard form, 
+because it should be solved for (u 1 1 1) as leading derivative, 
+which is higher order than (u 1 2).
+
+
+verify();
+
+
+t
+
+solvedets(std);
+
+Solving equations using std algorithm.
+
+ Forming prolongation of equation for (u 1 2) to get equation for (u 1 2 1)
+ *** free or special functions found when dividing by 
+
+a
+
+op!*intfac (primary) integration succeeded ...
+ *** free or special functions found when dividing by 
+
+sqrt(x(1))
+
+ While making eqngrp 28, found special function:
+
+    1/2
+x(1)
+
+op!*intfac integration (secondary assignment) succeeded ...
+op!*intslv integration succeeded...
+
+Must have all of
+
+               2
+sqrt(x(1))*x(1)
+
+sqrt(x(1))*x(1)
+
+    2
+x(1)
+
+1
+
+linearly independent in (x 1)
+
+ *** free or special functions found when dividing by 
+
+3*a - 2*k
+
+ *** free or special functions found when dividing by 
+
+a - 2*k
+
+
+op!*intfac part b: integrals left in 
+
+        (x(2)*b*k)/(2*a - k)
+ 2*int(e                    *df(c(4),x(2)),x(2))*a
+---------------------------------------------------
+                      2*a - k
+op!*intslv integration succeeded...
+
+There are 2 equations remaining.
+The equationgroup numbers of equations remaining are (34 31)
+
+showdets();
+
+There are 2 determining equations remaining, which are...
+
+deteqn(1)=c(1)*b + df(c(1),x(2)) - df(c(1),x(1),2)*x(1)*a + df(c(1),x(1))*x(1)*b
+
+           - 2*df(c(1),x(1))*a + df(c(1),x(1))*k
+
+                                             2
+deteqn(2)=df(xi(2),x(2),3) - df(xi(2),x(2))*b
+
+The remaining dependencies are ...
+
+(c 1) depends on ((x 1) (x 2))
+(xi 2) depends on ((x 2))
+
+The dunkns in the remaining equations are: ((c 1) (xi 2))
+
+The leading derivatives are: ((df (xi 2) (x 2) 3) (df (c 1) (x 1) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (xi 2) (x 2)) (df (c 1) (x 1)) (df (c 1) (x 2)) (c 1))
+
+
+verify();
+
+
+t
+
+solvedets(inttbt);
+
+Solving equations using inttbt algorithm.
+
+op!*inttbta integration succeeded...
+
+There are 2 equations remaining.
+The equationgroup numbers of equations remaining are (38 31)
+
+verify();
+
+
+t
+
+solvedets(std);
+
+Solving equations using std algorithm.
+
+ *** free or special functions found when dividing by 
+
+ x(2)*b
+e
+
+ *** free or special functions found when dividing by 
+
+b
+
+op!*trgexp integration succeded
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (31)
+
+for all x let sign(x**2)=1;
+
+
+for all x let sign(-x)=-sign(x);
+
+
+simpdets();
+
+
+verify();
+
+
+t
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (39)
+
+
+showdets();
+
+There are 1 determining equations remaining, which are...
+
+deteqn(1)=c(1)*b + df(c(1),x(2)) - df(c(1),x(1),2)*x(1)*a + df(c(1),x(1))*x(1)*b
+
+           - 2*df(c(1),x(1))*a + df(c(1),x(1))*k
+
+The remaining dependencies are ...
+
+(c 1) depends on ((x 1) (x 2))
+
+The dunkns in the remaining equations are: ((c 1))
+
+The leading derivatives are: ((df (c 1) (x 1) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (c 1) (x 1)) (df (c 1) (x 2)) (c 1))
+
+
+verify();
+
+
+t
+
+mkgens();
+
+
+There are 5 symmetries found.
+
+The generators of the finite algebra are:
+
+                              2
+Gen(1) = ( - @    *u(1)*x(1)*b  + @    *u(1)*a*b - @    *u(1)*b*k + @    *a
+              u(1)                 u(1)             u(1)             x(2)
+
+                               x(2)*b
+           - @    *x(1)*a*b)/(e      *a)
+              x(1)
+
+          x(2)*b
+Gen(2) = e      *( - @    *u(1)*b + @     + @    *x(1)*b)
+                      u(1)           x(2)    x(1)
+
+Gen(3) = @    *u(1)
+          u(1)
+
+           - @    *u(1)*b*k + 2*@    *a
+              u(1)               x(2)
+Gen(4) = -------------------------------
+                          2
+                     2*a*b
+
+The generators for the remaining equations are:
+
+(The unknowns in these generators satisfy the remaining determining equations.)
+
+Gen (5) = @    *c(1)
+           u(1)
+ Forming prolongation of equation for (u 1 2) to get equation for (u 1 2 2)
+ Forming prolongation of equation for (u 1 2 1) to get equation for (u 1 2 1 1)
+
+gen(5) has the condition(s) that the following expressions be zero:
+
+
+{ - c(1)*b - df(c(1),x(2)) + df(c(1),x(1),2)*x(1)*a - df(c(1),x(1))*x(1)*b
+
+  + 2*df(c(1),x(1))*a - df(c(1),x(1))*k}
+
+(c 1) depends on ((x 1) (x 2))
+
+stats();
+
+
+Time: 380 ms  plus GC time: 14 ms
+
+Total of 39 equations used, with 8 new arbitrary functions made.
+
+successful operations were :((op*findfr 3) (op*simpeq 20) (op*trgexp 1) (
+op*inttbta 1) (op*sub2sf 1) (op*intslv 2) (op*shr1tm 4) (op*splitec 7) (
+op*intfac 1) (op*exp1tm 1) (op*proexp 1))
+successful operations on op!*intfac eqns were :((op*slvall 1))
+
+Variables used to split determining equations were ((x 1) (u 1) (u 1 1 1 1) (u 1
+1) (u 1 1 1))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

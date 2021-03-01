@@ -1,0 +1,355 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+for all x let sin(2*x)=2*sin(x)*cos(x);
+
+
+for all x let cos(2*x)=cos(x)**2-sin(x)**2;
+
+
+% The force for the simple harmonic oscillator. 
+f:=-u(1);
+
+
+f :=  - u(1)
+
+
+% The vectorfield tangential to the flow.
+gam:=@(x 1) + u(1,1)*@(u 1) + f*@u(1,1);
+
+
+gam :=  - @      *u(1) + @    *u(1,1) + @
+           u(1,1)         u(1)           x(1)
+
+
+
+xi    := newarb x 1,u 1;
+
+
+xi := c(1)
+
+phi   := newarb x 1,u 1;
+
+
+phi := c(2)
+
+phi1  := newarb x 1,u 1,u(1,1);
+
+
+phi1 := c(3)
+
+lamb  := newarb x 1,u 1,u(1,1);
+
+
+lamb := c(4)
+
+ 
+symvec := xi*@ x(1) + phi*@ u(1) + phi1*@ u(1,1);
+
+
+symvec := @      *c(3) + @    *c(2) + @    *c(1)
+           u(1,1)         u(1)         x(1)
+
+
+% The symmetry condition for symvec to be a symmetry of
+% gam is that its commutator with gam be a multiple of gam,
+% ie that zerovec be the zero vectorfield.
+
+zerovec := comm(symvec,gam) - lamb*gam;
+
+
+zerovec := @      *c(4)*u(1) - @      *c(2) + @      *df(c(3),u(1,1))*u(1)
+            u(1,1)              u(1,1)         u(1,1)
+
+            - @      *df(c(3),u(1))*u(1,1) - @      *df(c(3),x(1))
+               u(1,1)                         u(1,1)
+
+            - @    *c(4)*u(1,1) + @    *c(3) - @    *df(c(2),u(1))*u(1,1)
+               u(1)                u(1)         u(1)
+
+            - @    *df(c(2),x(1)) - @    *c(4) - @    *df(c(1),u(1))*u(1,1)
+               u(1)                  x(1)         x(1)
+
+            - @    *df(c(1),x(1))
+               x(1)
+
+
+% So we take the components of zerovec as determining equations,
+% and this is ok as they are linear in the detunknowns.
+
+deteqn 1 := vecder(zerovec, x 1);
+
+
+deteqn(1) :=  - (c(4) + df(c(1),u(1))*u(1,1) + df(c(1),x(1)))
+
+deteqn 2 := vecder(zerovec, u 1);
+
+
+deteqn(2) :=  - c(4)*u(1,1) + c(3) - df(c(2),u(1))*u(1,1) - df(c(2),x(1))
+
+deteqn 3 := vecder(zerovec, u(1,1));
+
+
+deteqn(3) := 
+
+c(4)*u(1) - c(2) + df(c(3),u(1,1))*u(1) - df(c(3),u(1))*u(1,1) - df(c(3),x(1))
+
+
+readdets();
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (48)
+
+solvedets inttbt;
+
+Solving equations using inttbt algorithm.
+
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (49)
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+
+
+% We can use mkgens() to give us the individual generators,
+% as we have set up the problewm so that all the info is in symvec
+
+mkgens();
+
+
+There are 8 symmetries found.
+
+The generators of the finite algebra are:
+
+                                                                    2
+Gen(1) =  - 4*@      *cos(x(1))*sin(x(1))*u(1) + 2*@      *sin(x(1)) *u(1,1)
+               u(1,1)                               u(1,1)
+
+                                              2
+          - @      *u(1,1) - 2*@    *sin(x(1)) *u(1) + @    *u(1)
+             u(1,1)             u(1)                    u(1)
+
+          + 2*@    *cos(x(1))*sin(x(1))
+               x(1)
+
+                                                                      2
+Gen(2) =  - 2*@      *cos(x(1))*sin(x(1))*u(1,1) - 4*@      *sin(x(1)) *u(1)
+               u(1,1)                                 u(1,1)
+
+          + 2*@      *u(1) + 2*@    *cos(x(1))*sin(x(1))*u(1)
+               u(1,1)           u(1)
+
+                             2
+          + 2*@    *sin(x(1))  - @
+               x(1)               x(1)
+
+                                 2                         2
+Gen(3) = @      *cos(x(1))*u(1,1)  + @      *cos(x(1))*u(1)
+          u(1,1)                      u(1,1)
+
+                                                                2
+          + @      *sin(x(1))*u(1,1)*u(1) + @    *sin(x(1))*u(1)
+             u(1,1)                          u(1)
+
+          - @    *cos(x(1))*u(1)
+             x(1)
+
+                                                                    2
+Gen(4) =  - @      *cos(x(1))*u(1,1)*u(1) + @      *sin(x(1))*u(1,1)
+             u(1,1)                          u(1,1)
+
+                                  2                       2
+          + @      *sin(x(1))*u(1)  - @    *cos(x(1))*u(1)
+             u(1,1)                    u(1)
+
+          - @    *sin(x(1))*u(1)
+             x(1)
+
+Gen(5) =  - @
+             x(1)
+
+Gen(6) = @      *cos(x(1)) + @    *sin(x(1))
+          u(1,1)              u(1)
+
+Gen(7) =  - @      *sin(x(1)) + @    *cos(x(1))
+             u(1,1)              u(1)
+
+Gen(8) = @      *u(1,1) + @    *u(1)
+          u(1,1)           u(1)
+
+
+
+%showcomms();
+
+%The following path will depend upon the directory in which reduce is installed
+in "/home/sdnoonan/project/util/lex"$
+
+modified excalc
+*** @ redefined 
+
+*** ^ redefined 
+
+egam :=  - @(u(1,1))*u(1) + @(u(1))*u(1,1) + @(x(1))$
+
+*** prgen declared operator 
+
+depends2fdomain
+Converting DEPENDS type dependance into FDOMAIN type
+
+
+
+
+tvector w j;
+
+
+for j:=1:8 do w j:=gen j;
+
+
+
+%for j:=1:8 do for k:=j+1:8 do
+%  write "commutator of w",j," and w",k," is ",(w j |_ w k);
+
+%The following path will depend upon the directory in which reduce is installed
+in "/home/sdnoonan/project/util/formint"$
+
+
+formint
+
+*** nonlocal use of undeclared variable coeff in procedure formint1 
+
+*** nonlocal use of undeclared variable coeff in procedure formint1 
+
+formint1
+
+!*formlistsq2excalc1formsq
+
+!*excalc1formsq2formlistsq
+
+!*excalc1formf2formlistf
+
+addformlistf
+
+addtformlistf
+
+multpformlistf
+*** Function `showsq' has been redefined
+
+showsq
+
+*** local variable dropvar in procedure newcoords not used 
+
+newcoords
+*** Function `intleft' has been redefined
+
+intleft
+
+
+om1:=d u(1) - u(1,1)*d x(1);
+
+
+om1 := d(u(1)) - d(x(1))*u(1,1)$
+
+om2:=d u(1,1) - f*d x(1);
+
+
+om2 := d(u(1,1)) + d(x(1))*u(1)$
+
+
+om:=om1 ^ om2;
+
+
+om := u(1,1)*d(u(1,1))^d(x(1)) + u(1)*d(u(1))^d(x(1)) - d(u(1,1))^d(u(1))$
+
+
+%tvector vv1,vv2;
+
+procedure findfi(vv1,vv2);
+% This just finds two first integrals for commuting symmetries
+begin
+  if (vv1 |_ vv2) NEQ 0 then rederr "These symmetries dont commute.";
+  fac:= vv2 _| ( vv1 _| om);
+  if fac=0 then rederr "These symmetries dont form a basis with gam.";
+  r1:= (vv2 _| om) / fac;
+  r2:= (vv1 _| om) / fac;
+  if (d r1) neq 0 then rederr "d r1 should equal 0 ???";
+  if (d r2) neq 0 then rederr "d r2 should equal 0 ???";
+  write fi1:=formint r1;
+  write fi2:=formint r2;
+  end;
+
+
+findfi$
+
+
+% This gives a complete set of first integrals
+
+findfi(w 5,w 8);
+
+
+fi1 :=  - atan(u(1)/u(1,1)) + x(1)$
+
+fi2 := log(u(1,1)**2 + u(1)**2)/2$
+
+
+% This gives a different complete set of first integrals
+
+findfi(w 6,w 7);
+
+
+fi1 :=  - (cos(x(1))*u(1,1) + sin(x(1))*u(1))$
+
+fi2 := cos(x(1))*u(1) - sin(x(1))*u(1,1)$
+
+
+% This needs some integration rules to proceed
+
+findfi(w 1,w 8);
+
+*** integrals left in 
+( - 2*int(sin(x(1))**2/(cos(x(1))*sin(x(1))*u(1,1)**2 - cos(x(1))*sin(x(1))*u(1)
+**2 + 2*sin(x(1))**2*u(1,1)*u(1) - u(1,1)*u(1)),x(1))*u(1,1)**4 - 4*int(sin(x(1)
+)**2/(cos(x(1))*sin(x(1))*u(1,1)**2 - cos(x(1))*sin(x(1))*u(1)**2 + 2*sin(x(1))
+**2*u(1,1)*u(1) - u(1,1)*u(1)),x(1))*u(1,1)**2*u(1)**2 - 2*int(sin(x(1))**2/(cos
+(x(1))*sin(x(1))*u(1,1)**2 - cos(x(1))*sin(x(1))*u(1)**2 + 2*sin(x(1))**2*u(1,1)
+*u(1) - u(1,1)*u(1)),x(1))*u(1)**4 + 2*log(tan(x(1)/2)**2 + 1)*u(1,1)**2 - 2*log
+(tan(x(1)/2)**2 + 1)*u(1)**2 - log(tan(x(1)/2)**4*u(1,1)*u(1) + 2*tan(x(1)/2)**3
+*u(1,1)**2 - 2*tan(x(1)/2)**3*u(1)**2 - 6*tan(x(1)/2)**2*u(1,1)*u(1) - 2*tan(x(1
+)/2)*u(1,1)**2 + 2*tan(x(1)/2)*u(1)**2 + u(1,1)*u(1))*u(1,1)**2 + log(tan(x(1)/2
+)**4*u(1,1)*u(1) + 2*tan(x(1)/2)**3*u(1,1)**2 - 2*tan(x(1)/2)**3*u(1)**2 - 6*tan
+(x(1)/2)**2*u(1,1)*u(1) - 2*tan(x(1)/2)*u(1,1)**2 + 2*tan(x(1)/2)*u(1)**2 + u(1,
+1)*u(1))*u(1)**2 + 4*u(1,1)*u(1)*x(1))/(2*(u(1,1)**2 + u(1)**2))$
+
+***** cant do this :-) 
+
+Cont? (Y or N) 

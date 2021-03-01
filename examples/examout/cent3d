@@ -1,0 +1,228 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % cent3d
+
+% 3D central force problem in cartesian coords 
+% with arbitrary potential.
+%
+% r'' + g(r)r = 0
+%
+
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+operator g,g!',g!";
+
+
+freeunknown g(r),g!'(r),g!"(r),r;
+
+
+
+let u(3)**2=r**2-u(2)**2-u(1)**2;
+
+
+
+for all x let df(g(x),x)=g!'(x);
+
+
+for all x let df(g!'(x),x)=g!"(x);
+
+
+
+depend r,u 1,u 2,u 3;
+
+
+%r:=(u(1)**2+u(2)**2+u(3)**2)**(1/2);
+let df(r,u 2)=df(r,u(1))*u(2)/u(1);
+
+
+let df(r,u 3)=df(r,u(1))*u(3)/u(1);
+
+
+let df(r,u 1)=u(1)/r;
+
+
+
+
+loaddeq( u(1,1,1) =  - g(r)*u(1) );
+
+
+1
+
+loaddeq( u(2,1,1) =  - g(r)*u(2) );
+
+
+2
+
+loaddeq( u(3,1,1) =  - g(r)*u(3) );
+
+
+3
+
+
+mkdets point;
+
+ *** free or special functions found when dividing by 
+
+r
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+Must have all of
+
+g(r)*u(3)
+
+u(3)
+
+1
+
+linearly independent in (u 3)
+
+
+Must have all of
+
+g(r)
+
+1
+
+linearly independent in (u 3)
+
+
+Must have all of
+
+g(r)*r
+
+g'(r)*u(3)
+
+       2
+g'(r)*r
+
+g'(r)
+
+r
+
+linearly independent in (u 3)
+
+ *** free or special functions found when dividing by 
+
+g'(r)
+
+
+There are 0 equations remaining.
+
+
+mkgens();
+
+
+There are 4 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @
+          x(1)
+
+Gen(2) = @    *u(2) - @    *u(3)
+          u(3)         u(2)
+
+Gen(3) =  - @    *u(1) + @    *u(2)
+             u(2)         u(1)
+
+Gen(4) = @    *u(1) - @    *u(3)
+          u(3)         u(1)
+
+
+showdivides();
+
+Free or special functions found when dividing by 
+
+r
+
+Free or special functions found when dividing by 
+
+g'(r)
+
+
+showindeps();
+
+
+Must have all of
+
+g(r)*r
+
+g'(r)*u(3)
+
+       2
+g'(r)*r
+
+g'(r)
+
+r
+
+linearly independent in (u 3)
+
+
+Must have all of
+
+g(r)
+
+1
+
+linearly independent in (u 3)
+
+
+Must have all of
+
+g(r)*u(3)
+
+u(3)
+
+1
+
+linearly independent in (u 3)
+
+
+stats();
+
+
+Time: 922 ms  plus GC time: 27 ms
+
+Total of 222 equations used, with 39 new arbitrary functions made.
+
+successful operations were :((op*slvtwo 3) (op*simpeq 107) (op*splitec 40) (
+op*shr1tm 22) (op*splited 4) (op*intslv 6) (op*findfr 1) (op*slvall 6) (
+op*exp1tm 15) (op*get1tm 3) (op*proexp 3))
+
+Variables used to split determining equations were ((u 1) (u 2) (u 3) (u 1 1) (u
+2 1) (u 3 1))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

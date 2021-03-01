@@ -1,0 +1,541 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % liouv3
+
+% Received from Alan Head 20/7/92
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+symbolic(!*keepints:=t);
+
+
+t
+
+for all x,y,z such that (x neq 1) and x freeof z let int(x/y,z)=x*int(1/y,z);
+
+
+
+freeunknown p,q;
+
+
+depend p, x(1);
+
+
+depend q, u(1);
+
+
+
+loaddeq( u(1,1,1) = - p*u(1,1) + q*u(1,1)**2 ) ;
+
+
+1
+
+
+mkdets point;
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+ While making eqngrp 7, found special function:
+
+ int(p,x(1))
+e
+
+ *** free or special functions found when dividing by 
+
+ int(p,x(1))
+e
+
+ While making eqngrp 9, found special function:
+
+          1
+int(--------------,x(1))
+      int(p,x(1))
+     e
+
+ While making eqngrp 10, found special function:
+
+ int(q,u(1))
+e
+
+ While making eqngrp 11, found special function:
+
+          1
+int(--------------,u(1))
+      int(q,u(1))
+     e
+
+ *** free or special functions found when dividing by 
+
+ int(q,u(1))
+e
+
+made eqn 13 by differentiating eqn 12 by (x 1)
+made eqn 14 by differentiating eqn 11 by (u 1)
+ *** free or special functions found when dividing by 
+
+          1
+int(--------------,x(1))
+      int(p,x(1))
+     e
+
+ *** free or special functions found when dividing by 
+
+          1
+int(--------------,u(1))
+      int(q,u(1))
+     e
+
+
+op!*intfac part b: integrals left in 
+
+         int(df(p,x(1))/p,x(1))
+        e                      *df(c(3),x(1),2)
+ - int(-----------------------------------------,x(1))
+                           p
+
+op!*intfac part b: integrals left in 
+
+         int(df(q,u(1))/q,u(1))
+        e                      *df(c(1),u(1),2)
+ - int(-----------------------------------------,u(1))
+                           q
+made eqn 21 by differentiating eqn 19 by (x 1)
+made eqn 22 by differentiating eqn 17 by (u 1)
+
+There are 4 equations remaining.
+The equationgroup numbers of equations remaining are (18 20 17 19)
+
+showdets();
+
+There are 4 determining equations remaining, which are...
+
+                      int(q,u(1))
+deteqn(1)=2*c(3)*p + e           *c(2)*df(q,u(1)) - 2*df(c(3),x(1))
+
+              int(q,u(1))                    int(q,u(1))
+           - e           *df(c(2),u(1),2) + e           *df(c(2),u(1))*q
+
+           int(p,x(1))                               int(p,x(1))
+deteqn(2)=e           *c(4)*df(p,x(1)) + 2*c(1)*q - e           *df(c(4),x(1),2)
+
+              int(p,x(1))
+           + e           *df(c(4),x(1))*p - 2*df(c(1),u(1))
+
+deteqn(3)=c(1)*df(q,u(1)) - df(c(1),u(1),2) + df(c(1),u(1))*q
+
+deteqn(4)=c(3)*df(p,x(1)) - df(c(3),x(1),2) + df(c(3),x(1))*p
+
+The remaining dependencies are ...
+
+(c 4) depends on ((x 1))
+(c 3) depends on ((x 1))
+(c 2) depends on ((u 1))
+(c 1) depends on ((u 1))
+
+The dunkns in the remaining equations are: ((c 1) (c 2) (c 4) (c 3))
+
+The leading derivatives are: ((df (c 3) (x 1) 2) (df (c 1) (u 1) 2) (df (c 4) (x
+1) 2) (df (c 2) (u 1) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (c 1) (u 1)) (df (c 4) (x 1)) (c 1) (c 4) (df (c 2) (u 1)) (df (c 3) (x 1))
+(c 2) (c 3))
+
+
+
+temp1:=exp(int(q,u 1))*int(exp(-int(q,u 1)),u 1)*newconst();
+
+
+          int(q,u(1))                1
+temp1 := e           *c(5)*int(--------------,u(1))
+                                 int(q,u(1))
+                                e
+
+temp1:=temp1+exp(int(q,u 1))*newconst();
+
+
+          int(q,u(1))                        1
+temp1 := e           *(c(6) + c(5)*int(--------------,u(1)))
+                                         int(q,u(1))
+                                        e
+
+c(1):=temp1;
+
+
+         int(q,u(1))                        1
+c(1) := e           *(c(6) + c(5)*int(--------------,u(1)))
+                                        int(q,u(1))
+                                       e
+
+
+temp2:=exp(int(p,x 1))*int(exp(-int(p,x 1)),x 1)*newconst();
+
+
+          int(p,x(1))                1
+temp2 := e           *c(7)*int(--------------,x(1))
+                                 int(p,x(1))
+                                e
+
+temp2:=temp2+exp(int(p,x 1))*newconst();
+
+
+          int(p,x(1))                        1
+temp2 := e           *(c(8) + c(7)*int(--------------,x(1)))
+                                         int(p,x(1))
+                                        e
+
+c(3):=temp2;
+
+
+         int(p,x(1))                        1
+c(3) := e           *(c(8) + c(7)*int(--------------,x(1)))
+                                        int(p,x(1))
+                                       e
+
+
+showdets();
+
+There are 4 determining equations remaining, which are...
+
+                       int(q,u(1))
+deteqn(1)= - 2*c(7) + e           *c(2)*df(q,u(1))
+
+              int(q,u(1))                    int(q,u(1))
+           - e           *df(c(2),u(1),2) + e           *df(c(2),u(1))*q
+
+                       int(p,x(1))
+deteqn(2)= - 2*c(5) + e           *c(4)*df(p,x(1))
+
+              int(p,x(1))                    int(p,x(1))
+           - e           *df(c(4),x(1),2) + e           *df(c(4),x(1))*p
+
+deteqn(3)=0
+
+deteqn(4)=0
+
+The remaining dependencies are ...
+
+(c 4) depends on ((x 1))
+(c 3) depends on ((x 1))
+(c 2) depends on ((u 1))
+(c 1) depends on ((u 1))
+
+The dunkns in the remaining equations are: ((c 1) (c 2) (c 4) (c 3))
+
+The leading derivatives are: ((df (c 3) (x 1) 2) (df (c 1) (u 1) 2) (df (c 4) (x
+1) 2) (df (c 2) (u 1) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (c 1) (u 1)) (df (c 4) (x 1)) (c 1) (c 4) (df (c 2) (u 1)) (df (c 3) (x 1))
+(c 2) (c 3))
+
+
+simpdets();
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+op!*intfac part b: integrals left in 
+
+                int(df(q,u(1))/q,u(1))
+               e
+ - 2*c(7)*int(-------------------------,u(1))
+                    int(q,u(1))
+                   e           *q
+
+         int(df(q,u(1))/q,u(1))
+        e                      *df(c(2),u(1),2)
+ - int(-----------------------------------------,u(1))
+                           q
+
+op!*intfac part b: integrals left in 
+
+                int(df(p,x(1))/p,x(1))
+               e
+ - 2*c(5)*int(-------------------------,x(1))
+                    int(p,x(1))
+                   e           *p
+
+         int(df(p,x(1))/p,x(1))
+        e                      *df(c(4),x(1),2)
+ - int(-----------------------------------------,x(1))
+                           p
+
+There are 2 equations remaining.
+The equationgroup numbers of equations remaining are (24 23)
+
+showdets();
+
+There are 2 determining equations remaining, which are...
+
+                    int(p,x(1))                    int(p,x(1))
+deteqn(1)=2*c(5) - e           *c(4)*df(p,x(1)) + e           *df(c(4),x(1),2)
+
+              int(p,x(1))
+           - e           *df(c(4),x(1))*p
+
+                    int(q,u(1))                    int(q,u(1))
+deteqn(2)=2*c(7) - e           *c(2)*df(q,u(1)) + e           *df(c(2),u(1),2)
+
+              int(q,u(1))
+           - e           *df(c(2),u(1))*q
+
+The remaining dependencies are ...
+
+(c 4) depends on ((x 1))
+(c 2) depends on ((u 1))
+
+The dunkns in the remaining equations are: ((c 5) (c 4) (c 2) (c 7))
+
+The leading derivatives are: ((df (c 2) (u 1) 2) (df (c 4) (x 1) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (c 2) (u 1)) (c 2) (c 7) (df (c 4) (x 1)) (c 4) (c 5))
+
+
+
+temp3:=exp(int(q,u 1))*newconst();
+
+
+          int(q,u(1))
+temp3 := e           *c(9)
+
+temp3:=temp3+exp(int(q,u 1))*int(exp(-int(q,u 1)),u 1)*newconst();
+
+
+          int(q,u(1))                  1
+temp3 := e           *(c(10)*int(--------------,u(1)) + c(9))
+                                   int(q,u(1))
+                                  e
+
+temp3:=temp3-2*c(7)*exp(int(q,u 1))*int(exp(-int(q,u 1))*int(exp(-int(q,u 1)),u 1),u 1);
+
+
+          int(q,u(1))                  1
+temp3 := e           *(c(10)*int(--------------,u(1)) + c(9)
+                                   int(q,u(1))
+                                  e
+
+                                     1
+                           int(--------------,u(1))
+                                 int(q,u(1))
+                                e
+             - 2*c(7)*int(--------------------------,u(1)))
+                                  int(q,u(1))
+                                 e
+
+c(2):=temp3;
+
+
+         int(q,u(1))                  1
+c(2) := e           *(c(10)*int(--------------,u(1)) + c(9)
+                                  int(q,u(1))
+                                 e
+
+                                    1
+                          int(--------------,u(1))
+                                int(q,u(1))
+                               e
+            - 2*c(7)*int(--------------------------,u(1)))
+                                 int(q,u(1))
+                                e
+
+
+temp4:=exp(int(p,x 1))*newconst();
+
+
+          int(p,x(1))
+temp4 := e           *c(11)
+
+temp4:=temp4+exp(int(p,x 1))*int(exp(-int(p,x 1)),x 1)*newconst();
+
+
+          int(p,x(1))                  1
+temp4 := e           *(c(12)*int(--------------,x(1)) + c(11))
+                                   int(p,x(1))
+                                  e
+
+temp4:=temp4-2*c(5)*exp(int(p,x 1))*int(exp(-int(p,x 1))*int(exp(-int(p,x 1)),x 1),x 1);
+
+
+          int(p,x(1))                  1
+temp4 := e           *(c(12)*int(--------------,x(1)) + c(11)
+                                   int(p,x(1))
+                                  e
+
+                                     1
+                           int(--------------,x(1))
+                                 int(p,x(1))
+                                e
+             - 2*c(5)*int(--------------------------,x(1)))
+                                  int(p,x(1))
+                                 e
+
+c(4):=temp4;
+
+
+         int(p,x(1))                  1
+c(4) := e           *(c(12)*int(--------------,x(1)) + c(11)
+                                  int(p,x(1))
+                                 e
+
+                                    1
+                          int(--------------,x(1))
+                                int(p,x(1))
+                               e
+            - 2*c(5)*int(--------------------------,x(1)))
+                                 int(p,x(1))
+                                e
+
+
+showdets();
+
+There are 2 determining equations remaining, which are...
+
+deteqn(1)=0
+
+deteqn(2)=0
+
+The remaining dependencies are ...
+
+(c 4) depends on ((x 1))
+(c 2) depends on ((u 1))
+
+The dunkns in the remaining equations are: ((c 5) (c 4) (c 2) (c 7))
+
+The leading derivatives are: ((df (c 2) (u 1) 2) (df (c 4) (x 1) 2))
+
+The parametric derviatives in the remaining equations are:
+((df (c 2) (u 1)) (c 2) (c 7) (df (c 4) (x 1)) (c 4) (c 5))
+
+
+simpdets();
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+
+showdets();
+
+There are no determining equations remaining.
+
+The remaining dependencies are ...
+
+
+
+
+mkgens();
+
+
+There are 8 symmetries found.
+
+The generators of the finite algebra are:
+
+          int(p,x(1))                 1
+Gen(1) = e           *@    *int(--------------,x(1))
+                       x(1)       int(p,x(1))
+                                 e
+
+          int(p,x(1))
+Gen(2) = e           *@
+                       x(1)
+
+             int(p,x(1))                 1
+Gen(3) =  - e           *@    *int(--------------,u(1))
+                          x(1)       int(q,u(1))
+                                    e
+
+                                                1
+                                      int(--------------,u(1))
+                                            int(q,u(1))
+               int(q,u(1))                 e
+Gen(4) =  - 2*e           *@    *int(--------------------------,u(1))
+                            u(1)             int(q,u(1))
+                                            e
+
+             int(p,x(1))                 1                        1
+          - e           *@    *int(--------------,x(1))*int(--------------,u(1))
+                          x(1)       int(p,x(1))              int(q,u(1))
+                                    e                        e
+
+             int(q,u(1))                 1                        1
+Gen(5) =  - e           *@    *int(--------------,x(1))*int(--------------,u(1))
+                          u(1)       int(p,x(1))              int(q,u(1))
+                                    e                        e
+
+                                                1
+                                      int(--------------,x(1))
+                                            int(p,x(1))
+               int(p,x(1))                 e
+          - 2*e           *@    *int(--------------------------,x(1))
+                            x(1)             int(p,x(1))
+                                            e
+
+             int(q,u(1))                 1
+Gen(6) =  - e           *@    *int(--------------,x(1))
+                          u(1)       int(p,x(1))
+                                    e
+
+          int(q,u(1))
+Gen(7) = e           *@
+                       u(1)
+
+          int(q,u(1))                 1
+Gen(8) = e           *@    *int(--------------,u(1))
+                       u(1)       int(q,u(1))
+                                 e
+
+
+stats();
+
+
+Time: 10576 ms  plus GC time: 614 ms
+
+Total of 24 equations used, with 12 new arbitrary functions made.
+
+successful operations were :((op*simpeq 11) (op*sub2sf 8) (op*findfr 2) (
+addintcons 2) (op*intfac 2) (op*splitec 1) (op*proexp 1))
+successful operations on op!*intfac eqns were :((op*intslv 2))
+
+Variables used to split determining equations were ((u 1 1))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

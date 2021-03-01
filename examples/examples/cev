@@ -1,0 +1,31 @@
+% Constant Elasticity of Variance equation
+
+% recieved from: fackerell_e@maths.su.oz.au Tue, 30 Mar 1993 13:04:22 +1000
+
+load dimsym23$
+
+freeunknown a,b,k;
+
+
+loaddeq( u(1,2) = a*x(1)*u(1,1,1) + (2*a-b*x(1)-k)*u(1,1) - b*u(1)  );
+
+mkdets(point);
+verify();
+solvedets(std);
+showdets();
+verify();
+solvedets(inttbt);
+verify();
+solvedets(std);
+for all x let sign(x**2)=1;
+for all x let sign(-x)=-sign(x);
+simpdets();
+verify();
+solvedets std;
+
+showdets();
+verify();
+mkgens();
+stats();
+
+end;

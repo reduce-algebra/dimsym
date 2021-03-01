@@ -1,0 +1,24 @@
+%out "output.transcen";
+
+%transcen
+
+for all x let cos(x)**2 = 1-sin(x)**2;
+for all x let sin(2*x)=2*sin(x)*cos(x);
+for all x let cos(2*x)=1-2*sin(x)**2;
+
+%load packages
+load dimsym23$
+
+loaddeq( u(1,1,1) = u(2,1)**2 - u(1,1)**2 ); 
+loaddeq( u(2,1,1) = -2*u(2,1)*u(1,1)      ); 
+
+mkdets(point);  
+solvedets(std);
+solvedets(inttbt);
+solvedets(std); 
+showdets();
+mkgens();
+stats();
+
+%shut "output.transcen";
+end;

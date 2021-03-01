@@ -1,0 +1,25 @@
+########Read me file for Dimsym##################
+
+What's in the repository?
+
+src:
+This directory contains the source code for the
+dimsym package in dimsym23.red. It also contains
+the source code for the dim2ode package in
+dim3ode.red. This is an additional package dimsym
+utilises in its ode solving duties. Additionally
+there is a make file mkds.
+
+Installation
+
+	To install dimsym you must
+	1. Move the source files dimsym23.red and
+	   dim2ode.red to an appropriate directory.
+	   Extract the make file mkds also
+	2. Start Reduce
+	3. Enter at prompt> load mkds;
+	4. This will compile the dimsym package
+	5. To run dimsym enter the following at the
+	   reduce prompt>load dimsym23;
+
+#end file#

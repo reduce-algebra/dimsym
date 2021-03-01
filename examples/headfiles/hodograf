@@ -1,0 +1,20 @@
+%out "output.hodograf";
+
+%hodograf
+
+%load packages
+load dimsym23$
+
+loaddeq ( u(1,1) = 1/u(2) );
+
+loaddeq ( u(2,2) = -u(1)*u(2,1) - 1 );
+
+mkdets(point);
+solvedets(std);
+showdets();
+mkgens();
+stats();
+
+%shut "output.hodograf";
+
+end;

@@ -1,0 +1,157 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Fri Feb  6 11:44:52 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.3.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: % jm
+
+% Willy Hereman's test,
+% Received from Alan Head 20/7/92
+
+%load packages
+load dimsym23$
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+
+loaddeq( u(1,1,1,1,2) = -3*u(1,1,2)*u(1,1) - 3*u(1,2)*u(1,1,1)
+                        -2*u(1,2,4)        + 3*u(1,1,3)  );
+
+
+1
+
+
+mkdets(point);
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (258)
+
+showdets();
+
+There are 1 determining equations remaining, which are...
+
+deteqn(1)=3*c(14) - 4*df(c(5),x(4)) + 3*df(c(3),x(3))
+
+The remaining dependencies are ...
+
+(c 14) depends on ((x 4))
+(c 12) depends on ((x 3) (x 4))
+(c 5) depends on ((x 3) (x 4))
+(c 3) depends on ((x 3))
+
+The dunkns in the remaining equations are: ((c 3) (c 5) (c 14))
+
+The leading derivatives are: ((df (c 5) (x 4)))
+
+The parametric derviatives in the remaining equations are:
+((df (c 3) (x 3)) (c 14))
+
+
+
+a:=newarb x 4;
+
+
+a := c(15)
+
+c 14:=df(a,x 4);
+
+
+c(14) := df(c(15),x(4))
+
+
+simpdets();
+
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+
+There are 0 equations remaining.
+
+
+mkgens();
+
+
+There are 8 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) =  - @    *u(1) + 3*@    *x(4) + 2*@    *x(3) + @    *x(1)
+             u(1)           x(4)           x(3)         x(1)
+
+Gen(2) = @
+          x(3)
+
+Gen(3) = @
+          x(4)
+
+Gen(4) = @    *x(3) + @    *x(2)
+          x(3)         x(2)
+
+The generators of the infinite algebra are:
+
+Gen (5) =  - @    *df(c(16),x(3))*x(2) + @    *c(16)
+              u(1)                        x(1)
+
+Gen (6) = 2*@    *df(c(15),x(4))*x(1) + 3*@    *c(15)
+             u(1)                          x(1)
+
+Gen (7) =  - 3*@    *df(c(3),x(3),2)*x(4)*x(2) - 2*@    *df(c(3),x(3))*x(1)
+                u(1)                                u(1)
+
+           + 4*@    *c(3) + 3*@    *df(c(3),x(3))*x(4)
+                x(2)           x(1)
+
+Gen (8) = @    *c(12)
+           u(1)
+
+(c 16) depends on ((x 3))
+(c 15) depends on ((x 4))
+(c 12) depends on ((x 3) (x 4))
+(c 3) depends on ((x 3))
+
+stats();
+
+
+Time: 1472 ms  plus GC time: 42 ms
+
+Total of 259 equations used, with 16 new arbitrary functions made.
+
+successful operations were :((op*intslv 5) (op*simpeq 123) (op*shr1tm 17) (
+op*splitec 79) (op*exp1tm 5) (op*get1tm 2) (op*slvspl 1) (op*slvtwo 1) (
+op*proexp 1))
+
+Variables used to split determining equations were ((x 2) (x 1) (u 1 4 2) (u 1 2
+2 1 1) (u 1 3 2) (u 1 2 2 1) (u 1 2 2) (u 1 1 1 1 1) (u 1 4 3) (u 1 4 4) (u 1 2
+1 1) (u 1 3 1 1) (u 1 4 1 1) (u 1 2 1) (u 1 3 1) (u 1 4 1) (u 1 3) (u 1 1 1 1) (
+u 1 4) (u 1 1 1) (u 1 1) (u 1 2))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting

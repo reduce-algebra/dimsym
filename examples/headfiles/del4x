@@ -1,0 +1,23 @@
+%out "output.del4x";
+
+%del4x
+
+%load packages
+load dimsym23$
+
+loaddeq(u(2,3) = -(u(2,1)*u(3) + u(2)*u(3,1)));
+
+loaddeq(u(1,1,2,2) = (u(3) - x(1))/2);
+
+loaddeq(u(1,1,1,1,1) = -(u(1,2,2,2,2) + u(3,1) - 1 - u(2)));
+
+mkdets(point);
+solvedets std;
+showdets();
+mkgens();
+
+stats();
+
+%shut "output.del4x";
+
+end;

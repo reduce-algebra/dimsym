@@ -1,0 +1,170 @@
+%%%%%%%%%%THIS HEADER WILL NOT APPEAR ON ACTUAL RUN%%%%%%%%%%
+% Last tested on:
+% Mon Jul 12 13:03:45 EST 2004
+% With:
+% Dimsym.2.3
+% Running on:
+% Reduce.2.7
+%%%%%%%%%%%%%%%%%%%%%END HEADER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Loading image file: /home/zib/reduce/lisp/psl/alphalinux/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: %simple harmonic osillator
+
+%load packages
+load dimsym23;
+
+Dimsym 2.3, 12-October-1999. 
+Symmetry determination and linear D.E. package
+(c) 1992, 1993 James Sherring; 1997 James Sherring and Geoff Prince
+Any publication resulting from these calculations must reference this program.
+Users are free to modify this program but it is not to be redistributed
+in modified form.
+
+freeunknown w;
+
+
+loaddeq(u(1, 1, 1) = (-w**2)*u(1));
+
+
+1
+
+
+%first we use the standarded algorithm
+mkdets(point);
+
+
+verify();
+
+
+t
+
+solvedets std;
+
+Solving equations using std algorithm.
+
+op!*intslv integration succeeded...
+op!*trgexp integration succededop!*trgexp integration succeded
+op!*intslv integration succeeded...
+
+There are 1 equations remaining.
+The equationgroup numbers of equations remaining are (15)
+
+verify();
+
+
+t
+
+showdets();
+
+There are 1 determining equations remaining, which are...
+
+                                             2
+deteqn(1)=df(c(1),x(1),3) + 4*df(c(1),x(1))*w
+
+The remaining dependencies are ...
+
+(c 1) depends on ((x 1))
+
+The dunkns in the remaining equations are: ((c 1))
+
+The leading derivatives are: ((df (c 1) (x 1) 3))
+
+The parametric derviatives in the remaining equations are:
+((df (c 1) (x 1)))
+
+
+%Now we use odesolve algorithm
+verify();
+
+
+t
+
+solvedets odeslv;
+
+Solving equations using odeslv algorithm.
+
+
+*** op!*odesolve has successfully loaded odesolve
+
+op!*odesolve has solved eqn 15 :
+
+c(1) = c(12) - c(11)*sin(2*x(1)*w) + c(10)*cos(2*x(1)*w)
+
+
+There are 0 equations remaining.
+
+
+verify();
+
+
+t
+
+showdets();
+
+There are no determining equations remaining.
+
+The remaining dependencies are ...
+
+
+
+mkgens();
+
+
+There are 8 symmetries found.
+
+The generators of the finite algebra are:
+
+Gen(1) = @
+          x(1)
+
+Gen(2) =  - (@    *cos(2*x(1)*w)*u(1)*w + @    *sin(2*x(1)*w))
+              u(1)                         x(1)
+
+Gen(3) =  - @    *sin(2*x(1)*w)*u(1)*w + @    *cos(2*x(1)*w)
+             u(1)                         x(1)
+
+Gen(4) = u(1)*( - @    *sin(x(1)*w)*u(1)*w + @    *cos(x(1)*w))
+                   u(1)                       x(1)
+
+Gen(5) = u(1)*(@    *cos(x(1)*w)*u(1)*w + @    *sin(x(1)*w))
+                u(1)                       x(1)
+
+Gen(6) = @    *sin(x(1)*w)
+          u(1)
+
+Gen(7) = @    *cos(x(1)*w)
+          u(1)
+
+Gen(8) = @    *u(1)
+          u(1)
+
+
+
+
+
+
+
+stats();
+
+
+Time: 290 ms  plus GC time: 12 ms
+
+Total of 15 equations used, with 12 new arbitrary functions made.
+
+successful operations were :((op*odesolve 1) (op*findfr 2) (op*simpeq 6) (
+op*intslv 2) (op*trgexp 2) (op*splitec 3) (op*exp1tm 1) (op*proexp 1))
+
+Variables used to split determining equations were ((u 1) (u 1 1))
+
+
+end;
+
+2: 
+3: 
+4: 
+5: 
+6: 
+*** End-of-file read 
+
+Quitting
