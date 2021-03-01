@@ -26,7 +26,7 @@ If you don't have **REDUCE**, or if you work on a stand alone IBM compatible, yo
 
 ## Getting Started
 
-- **Read the**Dimsym**user's manual.**
+- **Read the** ***Dimsym*** **user's manual.**
 
 Given that you want to find symmetries of your differential equation, it is assumed that you know only the basics of **REDUCE**, such as how to run **REDUCE** on your machine, and how to compile and load **Dimsym**, which may vary between different implementations.
 
