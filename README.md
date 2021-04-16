@@ -12,7 +12,7 @@ To use its primary function the user specifies a system of ordinary and/or parti
 
 **Dimsym** then produces the corresponding determining equations - a system of linear partial differential equations for the generator of the generic symmetry. It proceeds to solve these equations, reporting any special conditions required to produce a solution. Finally, **Dimsym** gives the generators of the symmetry group, which may of course be infinite dimensional.
 
-The program allows the user to compute Lie brackets, vector derivatives and so on, and it has an interface with the **REDUCE** package *EXCALC* so that all the machinery of calculus on manifolds can be utilised from within the program. Its use can be interactive or batch, and there are extensive tracing options.
+The program allows the user to compute Lie brackets, vector derivatives and so on, and it has an interface with the **REDUCE** package _EXCALC_ so that all the machinery of calculus on manifolds can be utilised from within the program. Its use can be interactive or batch, and there are extensive tracing options.
 
 If you don't have **REDUCE**, or if you work on a stand alone IBM compatible, you may wish to use [Alan Head's LIE program](http://archives.math.utk.edu/software/msdos/adv.diff.equations/lie/.html).
 
@@ -26,7 +26,7 @@ If you don't have **REDUCE**, or if you work on a stand alone IBM compatible, yo
 
 ## Getting Started
 
-- **Read the** ***Dimsym*** **user's manual.**
+- **Read the** **_Dimsym_** **user's manual.**
 
 Given that you want to find symmetries of your differential equation, it is assumed that you know only the basics of **REDUCE**, such as how to run **REDUCE** on your machine, and how to compile and load **Dimsym**, which may vary between different implementations.
 
@@ -38,7 +38,7 @@ To learn the basics, chapter 2 of the **Dimsym** manual features an example to w
 
 The development of this program was funded in part by the Australian Research Committee, the Department of Mathematics at La Trobe University, the Department of Mathematics at the University of Wollongong, and the CSIRO's Division of Material Science. The author also acknowledges an Australian Postgraduate Research Award.
 
-The authors particularly wish to thank the following beta-testers of the program: Phil Broadbridge, Ted Fackerell, Greg Reid, and Willy Sarlet. Special thanks go to Alan Head, the author of [LIE](http://archives.math.utk.edu/software/msdos/adv.diff.equations/lie/.html), who has been a continuing source of ideas and assistance. We also thank Charles Wright for his assistance in integrating his **REDUCE** *ODESOLVE* package into **Dimsym**.
+The authors particularly wish to thank the following beta-testers of the program: Phil Broadbridge, Ted Fackerell, Greg Reid, and Willy Sarlet. Special thanks go to Alan Head, the author of [LIE](http://archives.math.utk.edu/software/msdos/adv.diff.equations/lie/.html), who has been a continuing source of ideas and assistance. We also thank Charles Wright for his assistance in integrating his **REDUCE** _ODESOLVE_ package into **Dimsym**.
 
 ## Authors
 
